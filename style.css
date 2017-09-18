@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 30px;
+}
+
+.form {
+  width: 60%;
+  margin-left: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-description {
+  width: 100%;
+  margin-left: 10px;
+}
+
+.form-cell {
+  display: flex;
+  flex-direction: column;
+  width: 120px;
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid red;
+  border-radius: 3px;
+}
+
+.form-cell-input {
+  border-color: green;
+  font-size: 30px;
+  /*outline: none;*/
+}
+
+.form-cell-input:focus {
+  outline-color: red;
+}
