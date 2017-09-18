@@ -1,0 +1,11 @@
+{
+  "name": "mineraljs",
+  "version": "0.0.1",
+  "description": "this is the kind of JS powered amphibole formula unit calculator for my friend and great scientist david",
+  "main": "index.html",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "peter cross",
+  "license": "ISC"
+}
