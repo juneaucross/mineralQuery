@@ -13,8 +13,6 @@ body {
 .form {
   width: 60%;
   margin: 0 auto;
-  /*margin-left: 30px;*/
-  /*align-content: center;*/
   display: flex;
   flex-wrap: wrap;
 }
@@ -44,7 +42,6 @@ body {
 .form__input-cell {
   border-color: green;
   font-size: 30px;
-  /*outline: none;*/
 }
 
 .form__input-cell:focus {
