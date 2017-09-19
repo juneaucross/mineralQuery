@@ -2,13 +2,19 @@
   box-sizing: border-box;
 }
 
+h1 {
+  margin: 0 auto;
+}
+
 body {
   font-size: 30px;
 }
 
 .form {
   width: 60%;
-  margin-left: 30px;
+  margin: 0 auto;
+  /*margin-left: 30px;*/
+  /*align-content: center;*/
   display: flex;
   flex-wrap: wrap;
 }
@@ -21,19 +27,49 @@ body {
 .form-cell {
   display: flex;
   flex-direction: column;
-  width: 120px;
-  margin: 10px;
-  padding: 10px;
+  justify-content: space-around;
+  width: 17%;
+  height: 150px;
+  margin: 5px;
+  padding: 5px;
   border: 2px solid red;
   border-radius: 3px;
+  transition: all 0.3s ease-in;
 }
 
-.form-cell-input {
+.form-cell:hover {
+  transform: scale(1.1);
+}
+
+.form__input-cell {
   border-color: green;
   font-size: 30px;
   /*outline: none;*/
 }
 
-.form-cell-input:focus {
+.form__input-cell:focus {
   outline-color: red;
+}
+
+.form__output-cell {
+  height: 25px;
+  font-size: 25px;
+  line-height: 25px;
+  text-align: center;
+}
+
+.form__btn {
+  width: 300px;
+  align-self: center;
+  margin: 10px 0 10px 220px;
+  padding: 10px;
+  border: none;
+  background: green;
+  font-size: 20px;
+  color: #ffffff;
+  transition: all 0.3s ease-out;
+}
+
+.form__btn:hover {
+  background: blue;
 }
