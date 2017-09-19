@@ -51,6 +51,10 @@ body {
   outline-color: red;
 }
 
+.form__input-cell::-webkit-inner-spin-button {
+  display: none;
+}
+
 .form__output-cell {
   height: 25px;
   font-size: 25px;
