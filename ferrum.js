@@ -108,8 +108,25 @@ button.addEventListener('click', function (evt) {
     return getApfu(MgO_cationRatio) + getApfu(FeO_cationRatio) + getApfu(SiO2_cationRatio) + getApfu(Al2O3_cationRatio) + getApfu(TiO2_cationRatio);
   }
 
-  if (getApfuSumm() > 13) {
+  var getApfuSummFactor = function () {
+    return 13 / getApfuSumm();
+  }
 
+  var getFerrickXZ = function () {
+    return 46*(1-13/getApfuSummFactor());
+  }
+
+  if (getApfuSumm() > 13) {
+    var Na2O_apfu = getApfu(Na2O_cationRatio) * getApfuSummFactor();
+    var K2O_apfu = getApfu(K2O_cationRatio) * getApfuSummFactor();
+    var Al2O3_apfu = getApfu(Al2O3_cationRatio) * getApfuSummFactor();
+    var MgO_apfu = getApfu(MgO_cationRatio) * getApfuSummFactor();
+    var FeO_apfu = getApfu(FeO_cationRatio) * getApfuSummFactor();
+    var CaO_apfu = getApfu(CaO_cationRatio) * getApfuSummFactor();
+    var MnO_apfu = getApfu(MnO_cationRatio) * getApfuSummFactor();
+    var TiO2_apfu = getApfu(TiO2_cationRatio) * getApfuSummFactor();
+    var SiO2_apfu = getApfu(SiO2_cationRatio) * getApfuSummFactor();
+    var Cl_apfu = getApfu(Cl_cationRatio) * getApfuSummFactor();
   } else if (getApfuSumm() <= 13) {
     var Na2O_apfu = getApfu(Na2O_cationRatio);
     var K2O_apfu = getApfu(K2O_cationRatio);
