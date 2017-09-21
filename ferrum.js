@@ -13,14 +13,14 @@ var SIO2_MOL = 60.084;
 var CL_MOL = 35.453;
 
 var getMolRatio = function (elem, mol) {
-  var molRatio = elem / mol;
-  return molRatio;
+  return elem / mol;
+  // return molRatio;
 }
 
-var getAmphiboleFactor = function () {
-  var amphiboleFactor = (getMolRatio(Na2O, NA2O_MOL)*2 + getMolRatio(K2O, K2O_MOL)*2 + getMolRatio(Al2O3, AL2O3_MOL)*2 + getMolRatio(MgO, MGO_MOL) + getMolRatio(FeO, FEO_MOL) + getMolRatio(CaO, CAO_MOL) + getMolRatio(MnO, MNO_MOL) + getMolRatio(TiO2, TIO2_MOL) + getMolRatio(SiO2, SIO2_MOL) + getMolRatio(Cl, CL_MOL)) / 15;
-  return amphiboleFactor;
-}
+// var getAmphiboleFactor = function () {
+//   var amphiboleFactor = (getMolRatio(Na2O, NA2O_MOL)*2 + getMolRatio(K2O, K2O_MOL)*2 + getMolRatio(Al2O3, AL2O3_MOL)*2 + getMolRatio(MgO, MGO_MOL) + getMolRatio(FeO, FEO_MOL) + getMolRatio(CaO, CAO_MOL) + getMolRatio(MnO, MNO_MOL) + getMolRatio(TiO2, TIO2_MOL) + getMolRatio(SiO2, SIO2_MOL) + getMolRatio(Cl, CL_MOL)) / 15;
+//   return amphiboleFactor;
+// }
 
 var button = document.querySelector('.form__btn');
 
@@ -44,9 +44,10 @@ button.addEventListener('click', function (evt) {
   //   return molRatio;
   // }
 
-  var Na2O_MolRatio = getMolRatio(Na2O, NA2O_MOL) * 2;
-  var K2O_MolRatio = getMolRatio(K2O, K2O_MOL) * 2;
-  var Al2O3_MolRatio = getMolRatio(Al2O3, AL2O3_MOL) * 2;
+  // mol ratios
+  var Na2O_MolRatio = getMolRatio(Na2O, NA2O_MOL);
+  var K2O_MolRatio = getMolRatio(K2O, K2O_MOL);
+  var Al2O3_MolRatio = getMolRatio(Al2O3, AL2O3_MOL);
   var MgO_MolRatio = getMolRatio(MgO, MGO_MOL);
   var FeO_MolRatio = getMolRatio(FeO, FEO_MOL);
   var CaO_MolRatio = getMolRatio(CaO, CAO_MOL);
@@ -55,15 +56,42 @@ button.addEventListener('click', function (evt) {
   var SiO2_MolRatio = getMolRatio(SiO2, SIO2_MOL);
   var Cl_MolRatio = getMolRatio(Cl, CL_MOL);
 
+  // cation ratios
+  var Na2O_cationRatio = Na2O_MolRatio * 2;
+  var K2O_cationRatio = K2O_MolRatio * 2;
+  var Al2O3_cationRatio = Al2O3_MolRatio * 2;
+  var MgO_cationRatio = MgO_MolRatio;
+  var FeO_cationRatio = FeO_MolRatio;
+  var CaO_cationRatio = CaO_MolRatio;
+  var MnO_cationRatio = MnO_MolRatio;
+  var TiO2_cationRatio = TiO2_MolRatio;
+  var SiO2_cationRatio = SiO2_MolRatio;
+  var Cl_cationRatio = Cl_MolRatio;
+
+  // anion ratios
+  var Na2O_anionRatio = Na2O_MolRatio;
+  var K2O_anionRatio = K2O_MolRatio;
   var Al2O3_anionRatio = Al2O3_MolRatio * 3;
+  var MgO_anionRatio = MgO_MolRatio;
+  var FeO_anionRatio = FeO_MolRatio;
+  var CaO_anionRatio = CaO_MolRatio;
+  var MnO_anionRatio = MnO_MolRatio;
   var TiO2_anionRatio = TiO2_MolRatio * 2;
   var SiO2_anionRatio = SiO2_MolRatio * 2;
+  var Cl_anionRatio = Cl_MolRatio;
 
-  var getAnionFactor = function () {
-    var anionRatioFactor = (Al2O3_anionRatio + TiO2_anionRatio + SiO2_anionRatio) / 23;
+  // var getCationRatio = function (elem) {
+  //   var cationRatio = elem * 2;
+  //   // console.log(elem + ' cationRatio = ' + cationRatio);
+  //   return cationRatio;
+  // }
 
-    return anionRatioFactor;
+  var getAnionRatioFactor = function () {
+    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_anionRatio + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio + Cl_anionRatio) / 23;
+    // return anionRatioFactor;
   }
+
+  // getAnionRatioFactor();
 
   var getAmphiboleFactor =  function () {
 
@@ -72,6 +100,41 @@ button.addEventListener('click', function (evt) {
     return amphiboleFactor;
   }
 
+  var getApfu = function (mineral) {
+    return mineral / getAnionRatioFactor();
+  }
+
+  var getApfuSumm = function () {
+    return getApfu(MgO_cationRatio) + getApfu(FeO_cationRatio) + getApfu(SiO2_cationRatio) + getApfu(Al2O3_cationRatio) + getApfu(TiO2_cationRatio);
+  }
+
+  if (getApfuSumm() > 13) {
+
+  } else if (getApfuSumm() <= 13) {
+    var Na2O_apfu = getApfu(Na2O_cationRatio);
+    var K2O_apfu = getApfu(K2O_cationRatio);
+    var Al2O3_apfu = getApfu(Al2O3_cationRatio);
+    var MgO_apfu = getApfu(MgO_cationRatio);
+    var FeO_apfu = getApfu(FeO_cationRatio);
+    var CaO_apfu = getApfu(CaO_cationRatio);
+    var MnO_apfu = getApfu(MnO_cationRatio);
+    var TiO2_apfu = getApfu(TiO2_cationRatio);
+    var SiO2_apfu = getApfu(SiO2_cationRatio);
+    var Cl_apfu = getApfu(Cl_cationRatio);
+  }
+
+  console.log(getApfu(Na2O_cationRatio));
+  console.log(getApfu(K2O_cationRatio));
+  console.log(getApfu(Al2O3_cationRatio));
+  console.log(getApfu(MgO_cationRatio));
+  console.log(getApfu(FeO_cationRatio));
+  console.log(getApfu(CaO_cationRatio));
+  console.log(getApfu(MnO_cationRatio));
+  console.log(getApfu(TiO2_cationRatio));
+  console.log(getApfu(SiO2_cationRatio));
+  console.log(getApfu(Cl_cationRatio));
+
+  // final values for stage one
   var Na2O_final = Na2O_MolRatio / getAmphiboleFactor();
   var K2O_final = K2O_MolRatio / getAmphiboleFactor();
   var Al2O3_final = Al2O3_MolRatio / getAmphiboleFactor();
