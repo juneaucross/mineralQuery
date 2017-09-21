@@ -39,10 +39,10 @@ button.addEventListener('click', function (evt) {
 
   evt.preventDefault();
 
-  var getMolRatio = function (elem, mol) {
-    var molRatio = elem / mol;
-    return molRatio;
-  }
+  // var getMolRatio = function (elem, mol) {
+  //   var molRatio = elem / mol;
+  //   return molRatio;
+  // }
 
   var Na2O_MolRatio = getMolRatio(Na2O, NA2O_MOL) * 2;
   var K2O_MolRatio = getMolRatio(K2O, K2O_MOL) * 2;
@@ -54,6 +54,16 @@ button.addEventListener('click', function (evt) {
   var TiO2_MolRatio = getMolRatio(TiO2, TIO2_MOL);
   var SiO2_MolRatio = getMolRatio(SiO2, SIO2_MOL);
   var Cl_MolRatio = getMolRatio(Cl, CL_MOL);
+
+  var Al2O3_anionRatio = Al2O3_MolRatio * 3;
+  var TiO2_anionRatio = TiO2_MolRatio * 2;
+  var SiO2_anionRatio = SiO2_MolRatio * 2;
+
+  var getAnionFactor = function () {
+    var anionRatioFactor = (Al2O3_anionRatio + TiO2_anionRatio + SiO2_anionRatio) / 23;
+
+    return anionRatioFactor;
+  }
 
   var getAmphiboleFactor =  function () {
 

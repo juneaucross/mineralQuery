@@ -10,6 +10,12 @@ body {
   font-size: 30px;
 }
 
+.header-link {
+  color: inherit;
+  text-decoration: none;
+  text-decoration: underline;
+}
+
 .form {
   width: 60%;
   margin: 0 auto;
