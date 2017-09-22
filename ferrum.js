@@ -112,44 +112,73 @@ button.addEventListener('click', function (evt) {
     return 13 / getApfuSumm();
   }
 
-  var getFerrickXZ = function () {
-    return 46*(1-13/getApfuSummFactor());
+  var getFerricFactor = function () {
+    return 46 * (1 - getApfuSummFactor());
   }
 
-  if (getApfuSumm() > 13) {
-    var Na2O_apfu = getApfu(Na2O_cationRatio) * getApfuSummFactor();
-    var K2O_apfu = getApfu(K2O_cationRatio) * getApfuSummFactor();
-    var Al2O3_apfu = getApfu(Al2O3_cationRatio) * getApfuSummFactor();
-    var MgO_apfu = getApfu(MgO_cationRatio) * getApfuSummFactor();
-    var FeO_apfu = getApfu(FeO_cationRatio) * getApfuSummFactor();
-    var CaO_apfu = getApfu(CaO_cationRatio) * getApfuSummFactor();
-    var MnO_apfu = getApfu(MnO_cationRatio) * getApfuSummFactor();
-    var TiO2_apfu = getApfu(TiO2_cationRatio) * getApfuSummFactor();
-    var SiO2_apfu = getApfu(SiO2_cationRatio) * getApfuSummFactor();
-    var Cl_apfu = getApfu(Cl_cationRatio) * getApfuSummFactor();
-  } else if (getApfuSumm() <= 13) {
-    var Na2O_apfu = getApfu(Na2O_cationRatio);
-    var K2O_apfu = getApfu(K2O_cationRatio);
-    var Al2O3_apfu = getApfu(Al2O3_cationRatio);
-    var MgO_apfu = getApfu(MgO_cationRatio);
-    var FeO_apfu = getApfu(FeO_cationRatio);
-    var CaO_apfu = getApfu(CaO_cationRatio);
-    var MnO_apfu = getApfu(MnO_cationRatio);
-    var TiO2_apfu = getApfu(TiO2_cationRatio);
-    var SiO2_apfu = getApfu(SiO2_cationRatio);
-    var Cl_apfu = getApfu(Cl_cationRatio);
-  }
+  console.log('ferricFactor = ' + getFerricFactor());
 
-  console.log(getApfu(Na2O_cationRatio));
-  console.log(getApfu(K2O_cationRatio));
-  console.log(getApfu(Al2O3_cationRatio));
-  console.log(getApfu(MgO_cationRatio));
-  console.log(getApfu(FeO_cationRatio));
-  console.log(getApfu(CaO_cationRatio));
-  console.log(getApfu(MnO_cationRatio));
-  console.log(getApfu(TiO2_cationRatio));
-  console.log(getApfu(SiO2_cationRatio));
-  console.log(getApfu(Cl_cationRatio));
+  // apfu
+  var Na2O_apfu = getApfu(Na2O_cationRatio);
+  var K2O_apfu = getApfu(K2O_cationRatio);
+  var Al2O3_apfu = getApfu(Al2O3_cationRatio);
+  var MgO_apfu = getApfu(MgO_cationRatio);
+  var FeO_apfu = getApfu(FeO_cationRatio);
+  var CaO_apfu = getApfu(CaO_cationRatio);
+  var MnO_apfu = getApfu(MnO_cationRatio);
+  var TiO2_apfu = getApfu(TiO2_cationRatio);
+  var SiO2_apfu = getApfu(SiO2_cationRatio);
+  var Cl_apfu = getApfu(Cl_cationRatio);
+
+  // corrected
+  var Na2O_corr = Na2O_apfu * getApfuSummFactor();
+  var K2O_corr = K2O_apfu * getApfuSummFactor();
+  var Al2O3_corr = Al2O3_apfu * getApfuSummFactor();
+  var MgO_corr = MgO_apfu * getApfuSummFactor();
+  var FeO_corr = FeO_apfu * getApfuSummFactor();
+  var CaO_corr = CaO_apfu * getApfuSummFactor();
+  var MnO_corr = MnO_apfu * getApfuSummFactor();
+  var TiO2_corr = TiO2_apfu * getApfuSummFactor();
+  var SiO2_corr = SiO2_apfu * getApfuSummFactor();
+  var Cl_corr = Cl_apfu * getApfuSummFactor();
+
+  //ferric_mineral_1$negative_iron_check
+  var FeO_ferric = FeO_corr - getFerricFactor();
+
+  console.log(Na2O_corr);
+  console.log(K2O_corr);
+  console.log(Al2O3_corr);
+  console.log(MgO_corr);
+  console.log(FeO_corr);
+  console.log(CaO_corr);
+  console.log(MnO_corr);
+  console.log(TiO2_corr);
+  console.log(SiO2_corr);
+  console.log(Cl_corr);
+
+  console.log('ferr = ' + FeO_ferric);
+
+  // console.log(Na2O_apfu);
+  // console.log(K2O_apfu);
+  // console.log(Al2O3_apfu);
+  // console.log(MgO_apfu);
+  // console.log(FeO_apfu);
+  // console.log(CaO_apfu);
+  // console.log(MnO_apfu);
+  // console.log(TiO2_apfu);
+  // console.log(SiO2_apfu);
+  // console.log(Cl_apfu);
+
+  // console.log(getApfu(Na2O_cationRatio));
+  // console.log(getApfu(K2O_cationRatio));
+  // console.log(getApfu(Al2O3_cationRatio));
+  // console.log(getApfu(MgO_cationRatio));
+  // console.log(getApfu(FeO_cationRatio));
+  // console.log(getApfu(CaO_cationRatio));
+  // console.log(getApfu(MnO_cationRatio));
+  // console.log(getApfu(TiO2_cationRatio));
+  // console.log(getApfu(SiO2_cationRatio));
+  // console.log(getApfu(Cl_cationRatio));
 
   // final values for stage one
   var Na2O_final = Na2O_MolRatio / getAmphiboleFactor();
