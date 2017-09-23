@@ -85,3 +85,27 @@ body {
 .form__btn:active {
   background: red;
 }
+
+.table {
+  margin: 10px;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+.table__header {
+  padding: 7px;
+  /*border-collapse: separate;*/
+  border: 1px solid black;
+}
+
+.table__output {
+  padding: 7px;
+  /*border-collapse: separate;*/
+  border: 1px solid black;
+}
+
+.apfu-table,
+.corr-table,
+.ferr-table {
+  display: none;
+}
