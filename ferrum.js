@@ -116,7 +116,7 @@ button.addEventListener('click', function (evt) {
     return 46 * (1 - getApfuSummFactor());
   }
 
-  console.log('ferricFactor = ' + getFerricFactor());
+  // console.log('ferricFactor = ' + getFerricFactor());
 
   // apfu
   var Na2O_apfu = getApfu(Na2O_cationRatio);
@@ -145,18 +145,18 @@ button.addEventListener('click', function (evt) {
   //ferric_mineral_1$negative_iron_check
   var FeO_ferric = FeO_corr - getFerricFactor();
 
-  console.log(Na2O_corr);
-  console.log(K2O_corr);
-  console.log(Al2O3_corr);
-  console.log(MgO_corr);
-  console.log(FeO_corr);
-  console.log(CaO_corr);
-  console.log(MnO_corr);
-  console.log(TiO2_corr);
-  console.log(SiO2_corr);
-  console.log(Cl_corr);
-
-  console.log('ferr = ' + FeO_ferric);
+  // console.log(Na2O_corr);
+  // console.log(K2O_corr);
+  // console.log(Al2O3_corr);
+  // console.log(MgO_corr);
+  // console.log(FeO_corr);
+  // console.log(CaO_corr);
+  // console.log(MnO_corr);
+  // console.log(TiO2_corr);
+  // console.log(SiO2_corr);
+  // console.log(Cl_corr);
+  //
+  // console.log('ferr = ' + FeO_ferric);
 
   // console.log(Na2O_apfu);
   // console.log(K2O_apfu);
@@ -196,7 +196,7 @@ button.addEventListener('click', function (evt) {
     if (elem === 0) {
       return elem;
     } else {
-      return elem.toFixed(6);
+      return elem.toFixed(2);
     }
   }
 
@@ -256,10 +256,19 @@ button.addEventListener('click', function (evt) {
   ferrTable.querySelector('.table__output--corr-Cl').innerText = setToFixed(Cl_corr);
 
   console.log('apfuuuu   ' + getApfuSumm());
+  console.log('ferrrr    ' + getFerricFactor());
 
-  if (getApfuSumm() > 13) {
+  if (getApfuSumm() <= 13)  {
     apfuTable.style.display = 'table';
-  } else if (getApfuSumm() <= 13) {
+    corrTable.style.display = 'none';
+    ferrTable.style.display = 'none';
+  } else if (getApfuSumm() > 13 && getFerricFactor() > 0) {
+    apfuTable.style.display = 'none';
     corrTable.style.display = 'table';
+    ferrTable.style.display = 'none';
+  } else if (getApfuSumm() > 13 && getFerricFactor() < 0) {
+    apfuTable.style.display = 'none';
+    corrTable.style.display = 'none';
+    ferrTable.style.display = 'table';
   }
 });
