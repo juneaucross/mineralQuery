@@ -76,8 +76,10 @@ button.addEventListener('click', function (evt) {
   var setToFixed = function (elem) {
     if (elem === 0) {
       return elem;
+    } else if (elem === NaN){
+      return 0;
     } else {
-      return elem.toFixed(6);
+      return elem.toFixed(2);
     }
   }
 

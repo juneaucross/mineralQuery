@@ -12,15 +12,11 @@ var TIO2_MOL = 79.879;
 var SIO2_MOL = 60.084;
 var CL_MOL = 35.453;
 
+var FE2O3 = 159.692;
+
 var getMolRatio = function (elem, mol) {
   return elem / mol;
-  // return molRatio;
 }
-
-// var getAmphiboleFactor = function () {
-//   var amphiboleFactor = (getMolRatio(Na2O, NA2O_MOL)*2 + getMolRatio(K2O, K2O_MOL)*2 + getMolRatio(Al2O3, AL2O3_MOL)*2 + getMolRatio(MgO, MGO_MOL) + getMolRatio(FeO, FEO_MOL) + getMolRatio(CaO, CAO_MOL) + getMolRatio(MnO, MNO_MOL) + getMolRatio(TiO2, TIO2_MOL) + getMolRatio(SiO2, SIO2_MOL) + getMolRatio(Cl, CL_MOL)) / 15;
-//   return amphiboleFactor;
-// }
 
 var button = document.querySelector('.form__btn');
 
@@ -39,10 +35,7 @@ button.addEventListener('click', function (evt) {
 
   evt.preventDefault();
 
-  // var getMolRatio = function (elem, mol) {
-  //   var molRatio = elem / mol;
-  //   return molRatio;
-  // }
+  var Fe3_ratio = (FeO * 1.1113); // jelezniy rating chego_to tam
 
   // mol ratios
   var Na2O_MolRatio = getMolRatio(Na2O, NA2O_MOL);
@@ -56,6 +49,8 @@ button.addEventListener('click', function (evt) {
   var SiO2_MolRatio = getMolRatio(SiO2, SIO2_MOL);
   var Cl_MolRatio = getMolRatio(Cl, CL_MOL);
 
+  var FeO_negMolRatio = Fe3_ratio / FE2O3;
+
   // cation ratios
   var Na2O_cationRatio = Na2O_MolRatio * 2;
   var K2O_cationRatio = K2O_MolRatio * 2;
@@ -67,6 +62,8 @@ button.addEventListener('click', function (evt) {
   var TiO2_cationRatio = TiO2_MolRatio;
   var SiO2_cationRatio = SiO2_MolRatio;
   var Cl_cationRatio = Cl_MolRatio;
+
+  var FeO_negCation = FeO_negMolRatio * 2;
 
   // anion ratios
   var Na2O_anionRatio = Na2O_MolRatio;
@@ -80,18 +77,15 @@ button.addEventListener('click', function (evt) {
   var SiO2_anionRatio = SiO2_MolRatio * 2;
   var Cl_anionRatio = Cl_MolRatio;
 
-  // var getCationRatio = function (elem) {
-  //   var cationRatio = elem * 2;
-  //   // console.log(elem + ' cationRatio = ' + cationRatio);
-  //   return cationRatio;
-  // }
+  var FeO_negAnion = FeO_negMolRatio * 3;
 
   var getAnionRatioFactor = function () {
     return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_anionRatio + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio + Cl_anionRatio) / 23;
-    // return anionRatioFactor;
   }
 
-  // getAnionRatioFactor();
+  var getAnionFerNegRatio = function () {
+    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_negAnion + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio + Cl_anionRatio) / 23;
+  }
 
   var getAmphiboleFactor =  function () {
 
@@ -104,6 +98,11 @@ button.addEventListener('click', function (evt) {
     return mineral / getAnionRatioFactor();
   }
 
+  var FeO_negApfu = function () {
+    return FeO_negCation / getAnionFerNegRatio();
+  }
+
+  // R's S function
   var getApfuSumm = function () {
     return getApfu(MgO_cationRatio) + getApfu(FeO_cationRatio) + getApfu(SiO2_cationRatio) + getApfu(Al2O3_cationRatio) + getApfu(TiO2_cationRatio);
   }
@@ -112,11 +111,10 @@ button.addEventListener('click', function (evt) {
     return 13 / getApfuSumm();
   }
 
+  // R's F function
   var getFerricFactor = function () {
     return 46 * (1 - getApfuSummFactor());
   }
-
-  // console.log('ferricFactor = ' + getFerricFactor());
 
   // apfu
   var Na2O_apfu = getApfu(Na2O_cationRatio);
@@ -130,6 +128,8 @@ button.addEventListener('click', function (evt) {
   var SiO2_apfu = getApfu(SiO2_cationRatio);
   var Cl_apfu = getApfu(Cl_cationRatio);
 
+  var FeOneg_apfu = getApfu(FeO_negMolRatio);
+
   // corrected
   var Na2O_corr = Na2O_apfu * getApfuSummFactor();
   var K2O_corr = K2O_apfu * getApfuSummFactor();
@@ -142,45 +142,10 @@ button.addEventListener('click', function (evt) {
   var SiO2_corr = SiO2_apfu * getApfuSummFactor();
   var Cl_corr = Cl_apfu * getApfuSummFactor();
 
-  //ferric_mineral_1$negative_iron_check
+  // R's ferric_mineral_1$negative_iron_check function
   var FeO_ferric = FeO_corr - getFerricFactor();
 
-  // console.log(Na2O_corr);
-  // console.log(K2O_corr);
-  // console.log(Al2O3_corr);
-  // console.log(MgO_corr);
-  // console.log(FeO_corr);
-  // console.log(CaO_corr);
-  // console.log(MnO_corr);
-  // console.log(TiO2_corr);
-  // console.log(SiO2_corr);
-  // console.log(Cl_corr);
-  //
-  // console.log('ferr = ' + FeO_ferric);
-
-  // console.log(Na2O_apfu);
-  // console.log(K2O_apfu);
-  // console.log(Al2O3_apfu);
-  // console.log(MgO_apfu);
-  // console.log(FeO_apfu);
-  // console.log(CaO_apfu);
-  // console.log(MnO_apfu);
-  // console.log(TiO2_apfu);
-  // console.log(SiO2_apfu);
-  // console.log(Cl_apfu);
-
-  // console.log(getApfu(Na2O_cationRatio));
-  // console.log(getApfu(K2O_cationRatio));
-  // console.log(getApfu(Al2O3_cationRatio));
-  // console.log(getApfu(MgO_cationRatio));
-  // console.log(getApfu(FeO_cationRatio));
-  // console.log(getApfu(CaO_cationRatio));
-  // console.log(getApfu(MnO_cationRatio));
-  // console.log(getApfu(TiO2_cationRatio));
-  // console.log(getApfu(SiO2_cationRatio));
-  // console.log(getApfu(Cl_cationRatio));
-
-  // final values for stage one
+  // final values for stage one (amphibole)
   var Na2O_final = Na2O_MolRatio / getAmphiboleFactor();
   var K2O_final = K2O_MolRatio / getAmphiboleFactor();
   var Al2O3_final = Al2O3_MolRatio / getAmphiboleFactor();
@@ -200,7 +165,7 @@ button.addEventListener('click', function (evt) {
     }
   }
 
-  // amphibole output
+  // amphibole table output
   document.querySelector('.form__output-cell--Na2O').innerText = setToFixed(Na2O_final);
   document.querySelector('.form__output-cell--K2O').innerText = setToFixed(K2O_final);
   document.querySelector('.form__output-cell--Al2O3').innerText = setToFixed(Al2O3_final);
@@ -212,7 +177,7 @@ button.addEventListener('click', function (evt) {
   document.querySelector('.form__output-cell--SiO2').innerText = setToFixed(SiO2_final);
   document.querySelector('.form__output-cell--Cl').innerText = setToFixed(Cl_final);
 
-  // apfu output
+  // apfu table output
   var apfuTable = document.querySelector('.apfu-table')
 
   apfuTable.querySelector('.table__output--apfu-Na2O').innerText = setToFixed(Na2O_apfu);
@@ -226,38 +191,37 @@ button.addEventListener('click', function (evt) {
   apfuTable.querySelector('.table__output--apfu-SiO2').innerText = setToFixed(SiO2_apfu);
   apfuTable.querySelector('.table__output--apfu-Cl').innerText = setToFixed(Cl_apfu);
 
-  // corr output
+  // corr table output
   var corrTable = document.querySelector('.corr-table')
 
   corrTable.querySelector('.table__output--corr-Na2O').innerText = setToFixed(Na2O_corr);
   corrTable.querySelector('.table__output--corr-K2O').innerText = setToFixed(K2O_corr);
   corrTable.querySelector('.table__output--corr-Al2O3').innerText = setToFixed(Al2O3_corr);
   corrTable.querySelector('.table__output--corr-MgO').innerText = setToFixed(MgO_corr);
-  corrTable.querySelector('.table__output--corr-FeO').innerText = setToFixed(FeO_corr);
+  corrTable.querySelector('.table__output--corr-FeO').innerText = setToFixed(FeO_ferric);
+  corrTable.querySelector('.table__output--ferr-FeO').innerText = setToFixed(getFerricFactor());
   corrTable.querySelector('.table__output--corr-CaO').innerText = setToFixed(CaO_corr);
   corrTable.querySelector('.table__output--corr-MnO').innerText = setToFixed(MnO_corr);
   corrTable.querySelector('.table__output--corr-TiO2').innerText = setToFixed(TiO2_corr);
   corrTable.querySelector('.table__output--corr-SiO2').innerText = setToFixed(SiO2_corr);
   corrTable.querySelector('.table__output--corr-Cl').innerText = setToFixed(Cl_corr);
 
-  // ferr output
+  // ferr table output
   var ferrTable = document.querySelector('.ferr-table');
 
   ferrTable.querySelector('.table__output--corr-Na2O').innerText = setToFixed(Na2O_corr);
   ferrTable.querySelector('.table__output--corr-K2O').innerText = setToFixed(K2O_corr);
   ferrTable.querySelector('.table__output--corr-Al2O3').innerText = setToFixed(Al2O3_corr);
   ferrTable.querySelector('.table__output--corr-MgO').innerText = setToFixed(MgO_corr);
-  ferrTable.querySelector('.table__output--corr-FeO').innerText = setToFixed(FeO_corr);
-  ferrTable.querySelector('.table__output--ferr-FeO').innerText = setToFixed(FeO_ferric);
+  ferrTable.querySelector('.table__output--corr-FeO').innerText = setToFixed(FeOneg_apfu);
+  // ferrTable.querySelector('.table__output--ferr-FeO').innerText = setToFixed(FeO_ferric);
   ferrTable.querySelector('.table__output--corr-CaO').innerText = setToFixed(CaO_corr);
   ferrTable.querySelector('.table__output--corr-MnO').innerText = setToFixed(MnO_corr);
   ferrTable.querySelector('.table__output--corr-TiO2').innerText = setToFixed(TiO2_corr);
   ferrTable.querySelector('.table__output--corr-SiO2').innerText = setToFixed(SiO2_corr);
   ferrTable.querySelector('.table__output--corr-Cl').innerText = setToFixed(Cl_corr);
 
-  console.log('apfuuuu   ' + getApfuSumm());
-  console.log('ferrrr    ' + getFerricFactor());
-
+  // tables visibility
   if (getApfuSumm() <= 13)  {
     apfuTable.style.display = 'table';
     corrTable.style.display = 'none';
@@ -271,4 +235,7 @@ button.addEventListener('click', function (evt) {
     corrTable.style.display = 'none';
     ferrTable.style.display = 'table';
   }
+
 });
+
+// thats all, falks
