@@ -124,5 +124,4 @@ buttonClear.addEventListener('click', function (evt) {
   document.querySelector('#SiO2-input').value = '';
   document.querySelector('#Cl-input').value = '';
 
-
 });
