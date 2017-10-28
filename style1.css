@@ -1,0 +1,160 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 300px;
+  margin: 30px auto;
+  font-family: AvenirNext, Arial, sans-serif;
+}
+
+.container {
+  width: 240px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 10px;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 0;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+.description {
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 0;
+  font-size: 11px;
+  line-height: 11px;
+  font-weight: lighter;
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.main__input-area {
+  display: flex;
+  flex-direction: column;
+  /*flex-wrap: wrap;*/
+}
+
+.main__input-cell {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+  margin-bottom: 7px;
+}
+
+.main__input-title,
+.main__output-title {
+  /*width: 100%;*/
+  display: block;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #cccccc;
+  font-size: 10px;
+  line-height: 14px;
+  font-weight: lighter;
+  text-transform: uppercase;
+}
+
+.main__input-label {
+  /*width: 45%;*/
+  margin-right: 10px;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.main__input {
+  width: 45%;
+  height: 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: lighter;
+  background-color: #ebebeb;
+  outline: none;
+}
+
+.main__input::-webkit-inner-spin-button {
+  display: none;
+}
+
+.main__output-area {
+  display: flex;
+  flex-direction: column;
+  width: 65px;
+}
+
+.main__output-cell {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 25px;
+  margin-bottom: 4.6px;
+}
+
+.main__output-label {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+.main__output {
+  width: 32px;
+  margin-left: 10px;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+.main__buttons-area {
+  width: 100%;
+}
+
+.button {
+  width: 100%;
+  margin-top: 10px;
+  border: none;
+  border-radius: 4px;
+  color: #ffffff;
+  outline: none;
+  font-size: 15px;
+  line-height: 35px;
+  font-weight: bolder;
+}
+
+.button--calculate {
+  background-color: #325ef6;
+}
+
+.button--calculate:disabled {
+  opacity: 0.7;
+}
+
+.button--calculate:active {
+  background-color: #214bde;
+}
+
+.button--clear {
+  background-color: #f66532;
+}
+
+.button--clear:disabled {
+  opacity: 0.7;
+}
+
+.button--clear:active {
+  background-color: #df5321;
+}
