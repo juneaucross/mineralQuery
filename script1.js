@@ -1,5 +1,7 @@
 'use strict';
 
+console.log(window.screen);
+
 // consts
 var NA2O_MOL = 61.979;
 var K2O_MOL = 94.196;
