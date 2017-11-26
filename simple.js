@@ -62,9 +62,9 @@ buttonCalculate.addEventListener('click', function (evt) {
   var SiO2_anionRatio = SiO2_MolRatio * 2;
   var Cl_anionRatio = Cl_MolRatio;
 
-  var getAnionRatioFactor = function (devider) {
+  var getAnionRatioFactor = function (divisor) {
     // prosto anion rating
-    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_anionRatio + Fe2O3_anionRatio + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio + Cl_anionRatio) / devider;
+    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_anionRatio + Fe2O3_anionRatio + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio + Cl_anionRatio) / divisor;
   }
 
   var getApfu = function (mineral) {
@@ -87,6 +87,8 @@ buttonCalculate.addEventListener('click', function (evt) {
   var setToFixed = function (elem) {
     if (elem === 0) {
       return elem;
+    } else if (elem.toFixed(2) < 0.0001) {
+      return 0;
     } else if (isNaN(elem)) {
       return 0;
     } else {
