@@ -1,6 +1,6 @@
 'use strict';
 
-// consts
+// CONSTS
 var NA2O_MOL = 61.979;
 var K2O_MOL = 94.196;
 var AL2O3_MOL = 101.961;

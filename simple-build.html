@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>mineralJS</title>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <style>
+  * {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    font-family: AvenirNext, Arial, sans-serif;
+  }
+
+  @media only screen and (max-width: 599px) {
+
+    body {
+      /*width: 300px;*/
+      margin: 30px auto;
+      font-family: AvenirNext, Arial, sans-serif;
+    }
+
+    .container {
+      width: 240px;
+      margin: 0 auto;
+    }
+
+    .header {
+      margin-bottom: 10px;
+    }
+
+    .title {
+      margin: 0;
+      margin-bottom: 10px;
+      padding: 0;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: bold;
+    }
+
+    .description {
+      margin: 0;
+      margin-bottom: 10px;
+      padding: 0;
+      font-size: 11px;
+      line-height: 11px;
+      font-weight: lighter;
+    }
+
+    .main {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+    }
+
+    .select-wrap {
+      display: block;
+      width: 100%;
+      height: 20px;
+      margin-bottom: 10px;
+    }
+
+    .mineral-select {
+      display: block;
+      width: 100%;
+      height: 20px;
+      margin-bottom: 30px;
+    }
+
+    .main__input-area {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      /*flex-wrap: wrap;*/
+    }
+
+    .main__input-cell {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      width: 100px;
+      margin-bottom: 7px;
+    }
+
+    .main__input-title,
+    .main__output-title {
+      /*width: 100%;*/
+      display: block;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #cccccc;
+      font-size: 10px;
+      line-height: 14px;
+      font-weight: lighter;
+      text-transform: uppercase;
+    }
+
+    .main__input-label {
+      /*width: 45%;*/
+      margin-right: 10px;
+      font-size: 15px;
+      line-height: 20px;
+    }
+
+    .main__input {
+      width: 45%;
+      height: 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: regular;
+      text-align: right;
+      background-color: #ebebeb;
+      outline: none;
+    }
+
+    .main__input:focus {
+      background-color: #c0c0c0;
+    }
+
+    .main__input::-webkit-inner-spin-button {
+      display: none;
+    }
+
+    .main__output-area {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      width: 65px;
+    }
+
+    .main__output-cell {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      height: 25px;
+      margin-bottom: 4.6px;
+    }
+
+    .main__output-label {
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: bold;
+    }
+
+    .main__output {
+      width: 32px;
+      margin-left: 10px;
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: bold;
+    }
+
+    .main__buttons-area {
+      width: 100%;
+    }
+
+    .button {
+      width: 100%;
+      margin-top: 10px;
+      border: none;
+      border-radius: 4px;
+      color: #ffffff;
+      outline: none;
+      font-size: 15px;
+      line-height: 35px;
+      font-weight: bolder;
+    }
+
+    .button--calculate {
+      background-color: #325ef6;
+    }
+
+    .button--calculate:disabled {
+      opacity: 0.7;
+    }
+
+    .button--calculate:active {
+      background-color: #214bde;
+    }
+
+    .button--clear {
+      background-color: #f66532;
+    }
+
+    .button--clear:disabled {
+      opacity: 0.7;
+    }
+
+    .button--clear:active {
+      background-color: #df5321;
+    }
+
+  }
+
+  @media only screen and (min-width: 600px) {
+    body {
+      /*width: 300px;*/
+      margin: 30px auto;
+      font-family: AvenirNext, Arial, sans-serif;
+    }
+
+    .container {
+      width: 500px;
+      margin: 0 auto;
+    }
+
+    .header {
+      margin-bottom: 25px;
+    }
+
+    .title {
+      margin: 0;
+      margin-bottom: 25px;
+      padding: 0;
+      font-size: 31px;
+      line-height: 1.3;
+      font-weight: bold;
+    }
+
+    .description {
+      margin: 0;
+      margin-bottom: 30px;
+      padding: 0;
+      font-size: 24px;
+      line-height: 1;
+      font-weight: lighter;
+    }
+
+    .main {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+    }
+
+    .select-wrap {
+      display: block;
+      width: 100%;
+      height: 30px;
+      margin-bottom: 30px;
+    }
+
+    .mineral-select {
+      display: block;
+      width: 100%;
+      height: 30px;
+      margin-bottom: 30px;
+      font-size: 20px;
+    }
+
+    .main__input-area {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      /*flex-wrap: wrap;*/
+    }
+
+    .main__input-cell {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      height: 45px;
+      width: 210px;
+      margin-bottom: 14px;
+    }
+
+    .main__input-title,
+    .main__output-title {
+      /*width: 100%;*/
+      display: block;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #cccccc;
+      font-size: 21px;
+      line-height: 1.4;
+      font-weight: lighter;
+      text-transform: uppercase;
+    }
+
+    .main__input-label {
+      /*width: 45%;*/
+      margin-right: 30px;
+      font-size: 31px;
+      line-height: 1.3;
+      font-weight: bold;
+    }
+
+    .main__input {
+      width: 45%;
+      height: 33px;
+      border: none;
+      border-radius: 4px;
+      font-size: 31px;
+      line-height: 1.3;
+      text-align: right;
+      font-weight: regular;
+      background-color: #ebebeb;
+      outline: none;
+    }
+
+    .main__input:focus {
+      background-color: #c0c0c0;
+    }
+
+    .main__input::-webkit-inner-spin-button {
+      display: none;
+    }
+
+    .main__output-area {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      width: 164px;
+    }
+
+    .main__output-cell {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      height: 45px;
+      margin-bottom: 14px;
+    }
+
+    .main__output-label {
+      display: block;
+      width: 72px;
+      font-size: 31px;
+      line-height: 1.3;
+      font-weight: bold;
+    }
+
+    .main__output {
+      /*width: 63px;*/
+      margin-left: 30px;
+      font-size: 31px;
+      line-height: 1.3;
+      font-weight: regular;
+      text-align: right;
+    }
+
+    .main__buttons-area {
+      width: 100%;
+    }
+
+    .button {
+      width: 100%;
+      margin-top: 30px;
+      border: none;
+      border-radius: 4px;
+      color: #ffffff;
+      outline: none;
+      font-size: 30px;
+      line-height: 2.3;
+      font-weight: bolder;
+    }
+
+    .button--calculate {
+      background-color: #325ef6;
+    }
+
+    .button--calculate:disabled {
+      opacity: 0.7;
+    }
+
+    .button--calculate:active {
+      background-color: #214bde;
+    }
+
+    .button--clear {
+      background-color: #f66532;
+    }
+
+    .button--clear:disabled {
+      opacity: 0.7;
+    }
+
+    .button--clear:active {
+      background-color: #df5321;
+    }
+
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="title">calculating formula using simple anion method</h1>
+      <p class="description">This one calculates some really cool and smart minerological things with calculating formula using simple anion method.</p>
+    </header>
+
+    <form class="main">
+
+      <div class="select-wrap">
+        <select class="mineral-select" name="mineral select">
+          <option value="8">Fieldspars</option>
+          <option value="23">Amphiboles</option>
+          <option value="6">Pyroxenes</option>
+          <option value="12">Garnets</option>
+          <option value="4">Olivines</option>
+          <option value="12">Micas</option>
+        </select>
+      </div>
+
+      <div class="main__input-area">
+        <span class="main__input-title">Element %</span>
+
+        <div class="main__input-cell">
+          <label for="Na2O-input" class="main__input-label">Na<sub>2</sub>O</label>
+          <input class="main__input" type="number" id="Na2O-input" value="11.65">
+        </div>
+
+        <div class="main__input-cell">
+          <label for="K2O-input" class="main__input-label">K<sub>2</sub>O</label>
+          <input class="main__input" type="number" id="K2O-input" value="0.08">
+        </div>
+
+        <div class="main__input-cell">
+          <label for="Al2O3-input" class="main__input-label">Al<sub>2</sub>O<sub>3</sub></label>
+          <input class="main__input" type="number" id="Al2O3-input" value="19.64">
+        </div>
+
+        <div class="main__input-cell">
+          <label for="MgO-input" class="main__input-label">MgO</label>
+          <input class="main__input" type="number" id="MgO-input" value="0">
+        </div>
+
+        <div class="main__input-cell">
+          <label for="FeO-input" class="main__input-label">FeO</label>
+          <input class="main__input" type="number" id="FeO-input" value="0.08">
+        </div>
+
+        <div class="main__input-cell">
+          <label for="Fe2O3-input" class="main__input-label">Fe<sub>2</sub>O<sub>3</sub></label>
+          <input class="main__input" type="number" id="Fe2O3-input" value="0">
+        </div>
+
+        <div class="main__input-cell">
+          <label for="CaO-input" class="main__input-label">CaO</label>
+          <input class="main__input" type="number" id="CaO-input" value="0.08">
+        </div>
+
+        <div class="main__input-cell">
+          <label for="MnO-input" class="main__input-label">MnO</label>
+          <input class="main__input" type="number" id="MnO-input" value="0">
+        </div>
+
+        <div class="main__input-cell">
+          <label for="TiO2-input" class="main__input-label">TiO<sub>2</sub></label>
+          <input class="main__input" type="number" id="TiO2-input" value="0">
+        </div>
+
+        <div class="main__input-cell">
+          <label for="SiO2-input" class="main__input-label">SiO<sub>2</sub></label>
+          <input class="main__input" type="number" id="SiO2-input" value="68.3">
+        </div>
+
+        <div class="main__input-cell">
+          <label for="Cl-input" class="main__input-label">Cl</label>
+          <input class="main__input" type="number" id="Cl-input" value="0">
+        </div>
+      </div>
+
+      <div class="main__output-area">
+        <span class="main__output-title">Value</span>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Na</label>
+          <span class="main__output" id="Na2O-output"></span>
+        </div>
+        <div class="main__output-cell">
+          <label class="main__output-label">K</label>
+          <span class="main__output" id="K2O-output"></span>
+        </div>
+        <div class="main__output-cell">
+          <label class="main__output-label">Al</label>
+          <span class="main__output" id="Al2O3-output"></span>
+        </div>
+        <div class="main__output-cell">
+          <label class="main__output-label">Mg</label>
+          <span class="main__output" id="MgO-output"></span>
+        </div>
+        <div class="main__output-cell">
+          <label class="main__output-label">Fe</label>
+          <span class="main__output" id="FeO-output"></span>
+        </div>
+        <div class="main__output-cell">
+          <label class="main__output-label">Fe3+</label>
+          <span class="main__output" id="Fe2O3-output"></span>
+        </div>
+        <div class="main__output-cell">
+          <label class="main__output-label">Ca</label>
+          <span class="main__output" id="CaO-output"></span>
+        </div>
+        <div class="main__output-cell">
+          <label class="main__output-label">Mn</label>
+          <span class="main__output" id="MnO-output"></span>
+        </div>
+        <div class="main__output-cell">
+          <label class="main__output-label">Ti</label>
+          <span class="main__output" id="TiO2-output"></span>
+        </div>
+        <div class="main__output-cell">
+          <label class="main__output-label">Si</label>
+          <span class="main__output" id="SiO2-output"></span>
+        </div>
+        <div class="main__output-cell">
+          <label class="main__output-label">Cl</label>
+          <span class="main__output" id="Cl-output"></span>
+        </div>
+      </div>
+
+      <div class="main__buttons-area">
+        <button class="button button--calculate" type="button">Calculate</button>
+        <button class="button button--clear" type="button">Clear</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- <script src="simple.js" defer></script> -->
+  <script>
+  'use strict';
+
+  // CONSTS
+  var NA2O_MOL = 61.979;
+  var K2O_MOL = 94.196;
+  var AL2O3_MOL = 101.961;
+  var MGO_MOL = 40.304;
+  var FEO_MOL = 71.846;
+  var FE2O3_MOL = 159.692; // new
+  var CAO_MOL = 56.077;
+  var MNO_MOL = 70.938;
+  var TIO2_MOL = 79.879;
+  var SIO2_MOL = 60.084;
+  var CL_MOL = 35.453;
+
+  var getMolRatio = function (elem, mol) {
+    return elem / mol;
+  }
+
+  var buttonCalculate = document.querySelector('.button--calculate');
+  var buttonClear = document.querySelector('.button--clear');
+  var mineralSelect = document.querySelector('.mineral-select');
+
+  buttonCalculate.addEventListener('click', function (evt) {
+
+    var Na2O = document.querySelector('#Na2O-input').value;
+    var K2O = document.querySelector('#K2O-input').value;
+    var Al2O3 = document.querySelector('#Al2O3-input').value;
+    var MgO = document.querySelector('#MgO-input').value;
+    var FeO = document.querySelector('#FeO-input').value;
+    var Fe2O3 = document.querySelector('#Fe2O3-input').value;
+    var CaO = document.querySelector('#CaO-input').value;
+    var MnO = document.querySelector('#MnO-input').value;
+    var TiO2 = document.querySelector('#TiO2-input').value;
+    var SiO2 = document.querySelector('#SiO2-input').value;
+    var Cl = document.querySelector('#Cl-input').value;
+
+    evt.preventDefault();
+
+    // mol ratios
+    var Na2O_MolRatio = getMolRatio(Na2O, NA2O_MOL);
+    var K2O_MolRatio = getMolRatio(K2O, K2O_MOL);
+    var Al2O3_MolRatio = getMolRatio(Al2O3, AL2O3_MOL);
+    var MgO_MolRatio = getMolRatio(MgO, MGO_MOL);
+    var FeO_MolRatio = getMolRatio(FeO, FEO_MOL);
+    var Fe2O3_MolRatio = getMolRatio(Fe2O3, FE2O3_MOL);
+    var CaO_MolRatio = getMolRatio(CaO, CAO_MOL);
+    var MnO_MolRatio = getMolRatio(MnO, MNO_MOL);
+    var TiO2_MolRatio = getMolRatio(TiO2, TIO2_MOL);
+    var SiO2_MolRatio = getMolRatio(SiO2, SIO2_MOL);
+    var Cl_MolRatio = getMolRatio(Cl, CL_MOL);
+
+    // anion ratios
+    var Na2O_anionRatio = Na2O_MolRatio;
+    var K2O_anionRatio = K2O_MolRatio;
+    var Al2O3_anionRatio = Al2O3_MolRatio * 3;
+    var MgO_anionRatio = MgO_MolRatio;
+    var FeO_anionRatio = FeO_MolRatio;
+    var Fe2O3_anionRatio = Fe2O3_MolRatio * 3;
+    var CaO_anionRatio = CaO_MolRatio;
+    var MnO_anionRatio = MnO_MolRatio;
+    var TiO2_anionRatio = TiO2_MolRatio * 2;
+    var SiO2_anionRatio = SiO2_MolRatio * 2;
+    var Cl_anionRatio = Cl_MolRatio;
+
+    var getAnionRatioFactor = function (divisor) {
+      // prosto anion rating
+      return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_anionRatio + Fe2O3_anionRatio + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio + Cl_anionRatio) / divisor;
+    }
+
+    var getApfu = function (mineral) {
+      return mineral / getAnionRatioFactor(mineralSelect.value);
+    }
+
+    // apfu
+    var Na2O_apfu = getApfu(Na2O_anionRatio);
+    var K2O_apfu = getApfu(K2O_anionRatio);
+    var Al2O3_apfu = getApfu(Al2O3_anionRatio);
+    var MgO_apfu = getApfu(MgO_anionRatio);
+    var FeO_apfu = getApfu(FeO_anionRatio);
+    var Fe2O3_apfu = getApfu(Fe2O3_anionRatio);
+    var CaO_apfu = getApfu(CaO_anionRatio);
+    var MnO_apfu = getApfu(MnO_anionRatio);
+    var TiO2_apfu = getApfu(TiO2_anionRatio);
+    var SiO2_apfu = getApfu(SiO2_anionRatio);
+    var Cl_apfu = getApfu(Cl_anionRatio);
+
+    var setToFixed = function (elem) {
+      if (elem === 0) {
+        return elem;
+      } else if (elem.toFixed(2) < 0.0001) {
+        return 0;
+      } else if (isNaN(elem)) {
+        return 0;
+      } else {
+        return elem.toFixed(2);
+      }
+    }
+
+    // prost outputy dlya prilojeniya
+    document.querySelector('#Na2O-output').innerText = setToFixed(Na2O_apfu);
+    document.querySelector('#K2O-output').innerText = setToFixed(K2O_apfu);
+    document.querySelector('#Al2O3-output').innerText = setToFixed(Al2O3_apfu);
+    document.querySelector('#MgO-output').innerText = setToFixed(MgO_apfu);
+    document.querySelector('#FeO-output').innerText = setToFixed(FeO_apfu);
+    document.querySelector('#Fe2O3-output').innerText = setToFixed(Fe2O3_apfu);
+    document.querySelector('#CaO-output').innerText = setToFixed(CaO_apfu);
+    document.querySelector('#MnO-output').innerText = setToFixed(MnO_apfu);
+    document.querySelector('#TiO2-output').innerText = setToFixed(TiO2_apfu);
+    document.querySelector('#SiO2-output').innerText = setToFixed(SiO2_apfu);
+    document.querySelector('#Cl-output').innerText = setToFixed(Cl_apfu);
+
+  });
+
+  buttonClear.addEventListener('click', function (evt) {
+
+    // output clear
+    document.querySelector('#Na2O-output').innerText = '';
+    document.querySelector('#K2O-output').innerText = '';
+    document.querySelector('#Al2O3-output').innerText = '';
+    document.querySelector('#MgO-output').innerText = '';
+    document.querySelector('#FeO-output').innerText = '';
+    document.querySelector('#Fe2O3-output').innerText = '';
+    document.querySelector('#CaO-output').innerText = '';
+    document.querySelector('#MnO-output').innerText = '';
+    document.querySelector('#TiO2-output').innerText = '';
+    document.querySelector('#SiO2-output').innerText = '';
+    document.querySelector('#Cl-output').innerText = '';
+
+    // input clear
+    document.querySelector('#Na2O-input').value = '';
+    document.querySelector('#K2O-input').value = '';
+    document.querySelector('#Al2O3-input').value = '';
+    document.querySelector('#MgO-input').value = '';
+    document.querySelector('#FeO-input').value = '';
+    document.querySelector('#Fe2O3-input').value = '';
+    document.querySelector('#CaO-input').value = '';
+    document.querySelector('#MnO-input').value = '';
+    document.querySelector('#TiO2-input').value = '';
+    document.querySelector('#SiO2-input').value = '';
+    document.querySelector('#Cl-input').value = '';
+
+  });
+
+  // thats all, falks
+  </script>
+
+</body>
+</html>
