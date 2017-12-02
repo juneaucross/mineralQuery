@@ -19,6 +19,7 @@ var getMolRatio = function (elem, mol) {
 
 var buttonCalculate = document.querySelector('.button--calculate');
 var buttonClear = document.querySelector('.button--clear');
+var mineralSelect = document.querySelector('.mineral-select');
 
 buttonCalculate.addEventListener('click', function (evt) {
 
@@ -68,7 +69,7 @@ buttonCalculate.addEventListener('click', function (evt) {
   }
 
   var getApfu = function (mineral) {
-    return mineral / getAnionRatioFactor(8);
+    return mineral / getAnionRatioFactor(mineralSelect.value);
   }
 
   // apfu
