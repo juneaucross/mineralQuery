@@ -6,7 +6,6 @@
 @media only screen and (max-width: 599px) {
 
   body {
-    /*width: 300px;*/
     margin: 30px auto;
     font-family: AvenirNext, Arial, sans-serif;
   }
@@ -115,7 +114,7 @@
   .main__output-area {
     display: flex;
     flex-direction: column;
-    width: 65px;
+    width: 75px;
   }
 
   .main__output-cell {
@@ -127,17 +126,19 @@
   }
 
   .main__output-label {
+    width: 35px;
     font-size: 15px;
     line-height: 20px;
     font-weight: bold;
   }
 
   .main__output {
-    width: 32px;
-    margin-left: 10px;
+    /*width: 38px;*/
+    /*margin-left: 10px;*/
     font-size: 15px;
     line-height: 20px;
-    font-weight: bold;
+    font-weight: regular;
+    text-align: right;
   }
 
   .main__buttons-area {
