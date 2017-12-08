@@ -63,6 +63,19 @@ buttonCalculate.addEventListener('click', function (evt) {
   var SiO2_anionRatio = SiO2_MolRatio * 2;
   var Cl_anionRatio = Cl_MolRatio;
 
+  // cation ratios
+  var Na2O_cationRatio = Na2O_MolRatio * 2;
+  var K2O_cationRatio = K2O_MolRatio * 2;
+  var Al2O3_cationRatio = Al2O3_MolRatio * 2;
+  var MgO_cationRatio = MgO_MolRatio;
+  var FeO_cationRatio = FeO_MolRatio;
+  var Fe2O3_cationRatio = Fe2O3_MolRatio * 2;
+  var CaO_cationRatio = CaO_MolRatio;
+  var MnO_cationRatio = MnO_MolRatio;
+  var TiO2_cationRatio = TiO2_MolRatio;
+  var SiO2_cationRatio = SiO2_MolRatio;
+  var Cl_cationRatio = Cl_MolRatio;
+
   var getAnionRatioFactor = function (divisor) {
     // prosto anion rating
     return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_anionRatio + Fe2O3_anionRatio + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio + Cl_anionRatio) / divisor;
@@ -73,17 +86,17 @@ buttonCalculate.addEventListener('click', function (evt) {
   }
 
   // apfu
-  var Na2O_apfu = getApfu(Na2O_anionRatio);
-  var K2O_apfu = getApfu(K2O_anionRatio);
-  var Al2O3_apfu = getApfu(Al2O3_anionRatio);
-  var MgO_apfu = getApfu(MgO_anionRatio);
-  var FeO_apfu = getApfu(FeO_anionRatio);
-  var Fe2O3_apfu = getApfu(Fe2O3_anionRatio);
-  var CaO_apfu = getApfu(CaO_anionRatio);
-  var MnO_apfu = getApfu(MnO_anionRatio);
-  var TiO2_apfu = getApfu(TiO2_anionRatio);
-  var SiO2_apfu = getApfu(SiO2_anionRatio);
-  var Cl_apfu = getApfu(Cl_anionRatio);
+  var Na2O_apfu = getApfu(Na2O_cationRatio);
+  var K2O_apfu = getApfu(K2O_cationRatio);
+  var Al2O3_apfu = getApfu(Al2O3_cationRatio);
+  var MgO_apfu = getApfu(MgO_cationRatio);
+  var FeO_apfu = getApfu(FeO_cationRatio);
+  var Fe2O3_apfu = getApfu(Fe2O3_cationRatio);
+  var CaO_apfu = getApfu(CaO_cationRatio);
+  var MnO_apfu = getApfu(MnO_cationRatio);
+  var TiO2_apfu = getApfu(TiO2_cationRatio);
+  var SiO2_apfu = getApfu(SiO2_cationRatio);
+  var Cl_apfu = getApfu(Cl_cationRatio);
 
   var setToFixed = function (elem) {
     if (elem === 0) {
