@@ -1,1 +1,2 @@
 # mineraljs
+# mineralQuery
