@@ -117,10 +117,18 @@ var calculate = function () {
 
 //clear function
 var clear = function () {
+  Na2O = 0;
+  K2O = 0;
+  Al2O3 = 0;
+  MgO = 0;
+  FeO = 0;
+  CaO = 0;
+  MnO = 0;
+  TiO2 = 0;
+  SiO2 = 0;
+  Cl = 0;
   $('.main__input').val('');
   $('.main__output').text('');
-  var Na2O = 0, K2O = 0, Al2O3 = 0, MgO = 0, FeO = 0, CaO = 0, MnO = 0, TiO2 = 0, SiO2 = 0, Cl = 0;
-
 };
 
 // set buttons events
