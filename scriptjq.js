@@ -12,7 +12,7 @@ var TIO2_MOL = 79.879;
 var SIO2_MOL = 60.084;
 var CL_MOL = 35.453;
 
-// set element values
+// setting element values
 var Na2O = 0, K2O = 0, Al2O3 = 0, MgO = 0, FeO = 0, CaO = 0, MnO = 0, TiO2 = 0, SiO2 = 0, Cl = 0;
 
 // setting inputs keypress event
@@ -138,3 +138,20 @@ $('.button--calculate').on('click', function () {
 $('.button--clear').on('click', function () {
   clear();
 });
+
+
+// $('.button--calculate').prop('disabled', true);
+// $('.main__input')).on('change', function {
+//   if
+//   // (isNaN($('.main__input')))
+//   ($('.main__input').value == null)
+//    {
+//     $('.button--calculate').prop('disabled', true);
+//     // alert('huj');
+//   } else if
+//   (!($('.main__input').value == null))
+//   {
+//     // $('.button--calculate').prop('disabled', false);
+//      alert('huj');
+//   }
+// });

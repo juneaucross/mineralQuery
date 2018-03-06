@@ -13,29 +13,58 @@ var TIO2_MOL = 79.879;
 var SIO2_MOL = 60.084;
 var CL_MOL = 35.453;
 
-var getMolRatio = function (elem, mol) {
-  return elem / mol;
-}
+// setting element values
+var Na2O = 0, K2O = 0, Al2O3 = 0, MgO = 0, FeO = 0, Fe2O3 = 0, CaO = 0, MnO = 0, TiO2 = 0, SiO2 = 0, Cl = 0;
 
-var buttonCalculate = document.querySelector('.button--calculate');
-var buttonClear = document.querySelector('.button--clear');
-var mineralSelect = document.querySelector('.mineral-select');
+// setting inputs keypress event
+$('.main__input').keypress(function(e) {
+  if (e.which == 13) {
+    calculate();
+  }
+});
 
-buttonCalculate.addEventListener('click', function (evt) {
+// getting inputs values
+$('#Na2O-input').on('input', function() {
+  Na2O = this.value;
+});
+$('#K2O-input').on('input', function() {
+  K2O = this.value;
+});
+$('#Al2O3-input').on('input', function() {
+  Al2O3 = this.value;
+});
+$('#MgO-input').on('input', function() {
+  MgO = this.value;
+});
+$('#FeO-input').on('input', function() {
+  FeO = this.value;
+});
+$('#Fe2O3-input').on('input', function() {
+  Fe2O3 = this.value;
+});
+$('#CaO-input').on('input', function() {
+  CaO = this.value;
+});
+$('#MnO-input').on('input', function() {
+  MnO = this.value;
+});
+$('#TiO2-input').on('input', function() {
+  TiO2 = this.value;
+});
+$('#SiO2-input').on('input', function() {
+  SiO2 = this.value;
+});
+$('#Cl-input').on('input', function() {
+  Cl = this.value;
+});
 
-  var Na2O = document.querySelector('#Na2O-input').value;
-  var K2O = document.querySelector('#K2O-input').value;
-  var Al2O3 = document.querySelector('#Al2O3-input').value;
-  var MgO = document.querySelector('#MgO-input').value;
-  var FeO = document.querySelector('#FeO-input').value;
-  var Fe2O3 = document.querySelector('#Fe2O3-input').value;
-  var CaO = document.querySelector('#CaO-input').value;
-  var MnO = document.querySelector('#MnO-input').value;
-  var TiO2 = document.querySelector('#TiO2-input').value;
-  var SiO2 = document.querySelector('#SiO2-input').value;
-  var Cl = document.querySelector('#Cl-input').value;
+//calculate function
+var calculate = function () {
 
-  evt.preventDefault();
+  var getMolRatio = function (elem, mol) {
+    var molRatio = elem / mol;
+    return molRatio;
+  };
 
   // mol ratios
   var Na2O_MolRatio = getMolRatio(Na2O, NA2O_MOL);
@@ -82,8 +111,10 @@ buttonCalculate.addEventListener('click', function (evt) {
   }
 
   var getApfu = function (mineral) {
-    return mineral / getAnionRatioFactor(mineralSelect.value);
+    return mineral / getAnionRatioFactor(mineralSelect);
   }
+
+console.log(mineralSelect);
 
   // apfu
   var Na2O_apfu = getApfu(Na2O_cationRatio);
@@ -110,50 +141,116 @@ buttonCalculate.addEventListener('click', function (evt) {
     }
   }
 
-  // prost outputy dlya prilojeniya
-  document.querySelector('#Na2O-output').innerText = setToFixed(Na2O_apfu);
-  document.querySelector('#K2O-output').innerText = setToFixed(K2O_apfu);
-  document.querySelector('#Al2O3-output').innerText = setToFixed(Al2O3_apfu);
-  document.querySelector('#MgO-output').innerText = setToFixed(MgO_apfu);
-  document.querySelector('#FeO-output').innerText = setToFixed(FeO_apfu);
-  document.querySelector('#Fe2O3-output').innerText = setToFixed(Fe2O3_apfu);
-  document.querySelector('#CaO-output').innerText = setToFixed(CaO_apfu);
-  document.querySelector('#MnO-output').innerText = setToFixed(MnO_apfu);
-  document.querySelector('#TiO2-output').innerText = setToFixed(TiO2_apfu);
-  document.querySelector('#SiO2-output').innerText = setToFixed(SiO2_apfu);
-  document.querySelector('#Cl-output').innerText = setToFixed(Cl_apfu);
+  // setting outputs values
+  $('#Na2O-output').text(setToFixed(Na2O_apfu));
+  $('#K2O-output').text(setToFixed(K2O_apfu));
+  $('#Al2O3-output').text(setToFixed(Al2O3_apfu));
+  $('#MgO-output').text(setToFixed(MgO_apfu));
+  $('#FeO-output').text(setToFixed(FeO_apfu));
+  $('#Fe2O3-output').text(setToFixed(Fe2O3_apfu));
+  $('#CaO-output').text(setToFixed(CaO_apfu));
+  $('#MnO-output').text(setToFixed(MnO_apfu));
+  $('#TiO2-output').text(setToFixed(TiO2_apfu));
+  $('#SiO2-output').text(setToFixed(SiO2_apfu));
+  $('#Cl-output').text(setToFixed(Cl_apfu));
 
+};
+
+// set buttons events
+$('.button--calculate').on('click', function () {
+  calculate();
+});
+$('.button--clear').on('click', function () {
+  clear();
 });
 
-buttonClear.addEventListener('click', function (evt) {
-
-  // output clear
-  document.querySelector('#Na2O-output').innerText = '';
-  document.querySelector('#K2O-output').innerText = '';
-  document.querySelector('#Al2O3-output').innerText = '';
-  document.querySelector('#MgO-output').innerText = '';
-  document.querySelector('#FeO-output').innerText = '';
-  document.querySelector('#Fe2O3-output').innerText = '';
-  document.querySelector('#CaO-output').innerText = '';
-  document.querySelector('#MnO-output').innerText = '';
-  document.querySelector('#TiO2-output').innerText = '';
-  document.querySelector('#SiO2-output').innerText = '';
-  document.querySelector('#Cl-output').innerText = '';
-
-  // input clear
-  document.querySelector('#Na2O-input').value = '';
-  document.querySelector('#K2O-input').value = '';
-  document.querySelector('#Al2O3-input').value = '';
-  document.querySelector('#MgO-input').value = '';
-  document.querySelector('#FeO-input').value = '';
-  document.querySelector('#Fe2O3-input').value = '';
-  document.querySelector('#CaO-input').value = '';
-  document.querySelector('#MnO-input').value = '';
-  document.querySelector('#TiO2-input').value = '';
-  document.querySelector('#SiO2-input').value = '';
-  document.querySelector('#Cl-input').value = '';
-
+var mineralSelect = $('.mineral-select')[0].value;
+$('.mineral-select').on('change', function() {
+  mineralSelect = $('.mineral-select')[0].value;
+  console.log(mineralSelect);
 });
+// var mineralSelect = document.querySelector('.mineral-select');
+
+
+//clear function
+var clear = function () {
+  Na2O = 0;
+  K2O = 0;
+  Al2O3 = 0;
+  MgO = 0;
+  FeO = 0;
+  Fe2O3 = 0;
+  CaO = 0;
+  MnO = 0;
+  TiO2 = 0;
+  SiO2 = 0;
+  Cl = 0;
+  $('.main__input').val('');
+  $('.main__output').text('');
+};
+
+// buttonCalculate.addEventListener('click', function (evt) {
+//
+//   evt.preventDefault();
+//
+//
+//
+//
+//
+//
+//
+//   // // prost outputy dlya prilojeniya
+//   // document.querySelector('#Na2O-output').innerText = setToFixed(Na2O_apfu);
+//   // document.querySelector('#K2O-output').innerText = setToFixed(K2O_apfu);
+//   // document.querySelector('#Al2O3-output').innerText = setToFixed(Al2O3_apfu);
+//   // document.querySelector('#MgO-output').innerText = setToFixed(MgO_apfu);
+//   // document.querySelector('#FeO-output').innerText = setToFixed(FeO_apfu);
+//   // document.querySelector('#Fe2O3-output').innerText = setToFixed(Fe2O3_apfu);
+//   // document.querySelector('#CaO-output').innerText = setToFixed(CaO_apfu);
+//   // document.querySelector('#MnO-output').innerText = setToFixed(MnO_apfu);
+//   // document.querySelector('#TiO2-output').innerText = setToFixed(TiO2_apfu);
+//   // document.querySelector('#SiO2-output').innerText = setToFixed(SiO2_apfu);
+//   // document.querySelector('#Cl-output').innerText = setToFixed(Cl_apfu);
+//
+// });
+
+// set buttons events
+$('.button--calculate').on('click', function () {
+  calculate();
+});
+$('.button--clear').on('click', function () {
+  clear();
+});
+
+// buttonClear.addEventListener('click', function (evt) {
+//
+//   // output clear
+//   document.querySelector('#Na2O-output').innerText = '';
+//   document.querySelector('#K2O-output').innerText = '';
+//   document.querySelector('#Al2O3-output').innerText = '';
+//   document.querySelector('#MgO-output').innerText = '';
+//   document.querySelector('#FeO-output').innerText = '';
+//   document.querySelector('#Fe2O3-output').innerText = '';
+//   document.querySelector('#CaO-output').innerText = '';
+//   document.querySelector('#MnO-output').innerText = '';
+//   document.querySelector('#TiO2-output').innerText = '';
+//   document.querySelector('#SiO2-output').innerText = '';
+//   document.querySelector('#Cl-output').innerText = '';
+//
+//   // input clear
+//   document.querySelector('#Na2O-input').value = '';
+//   document.querySelector('#K2O-input').value = '';
+//   document.querySelector('#Al2O3-input').value = '';
+//   document.querySelector('#MgO-input').value = '';
+//   document.querySelector('#FeO-input').value = '';
+//   document.querySelector('#Fe2O3-input').value = '';
+//   document.querySelector('#CaO-input').value = '';
+//   document.querySelector('#MnO-input').value = '';
+//   document.querySelector('#TiO2-input').value = '';
+//   document.querySelector('#SiO2-input').value = '';
+//   document.querySelector('#Cl-input').value = '';
+//
+// });
 
 
 // thats all, falks
