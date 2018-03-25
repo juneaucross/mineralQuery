@@ -11,8 +11,10 @@ var MNO_MOL = 70.938;
 var TIO2_MOL = 79.879;
 var SIO2_MOL = 60.084;
 var CL_MOL = 35.453;
+var FE2O3_MOL = 159.692;
 
-var FE2O3 = 159.692;
+// setting element values
+var Na2O = 0, K2O = 0, Al2O3 = 0, MgO = 0, FeO = 0, CaO = 0, MnO = 0, TiO2 = 0, SiO2 = 0, Cl = 0;
 
 var getMolRatio = function (elem, mol) {
   return elem / mol;
@@ -35,7 +37,7 @@ button.addEventListener('click', function (evt) {
 
   evt.preventDefault();
 
-  var Fe3_ratio = (FeO * 1.1113); // jelezniy rating chego_to tam
+  var Fe3_ratio = (FeO * 1.1113); // all iron is Fe2O3
 
   // mol ratios
   var Na2O_MolRatio = getMolRatio(Na2O, NA2O_MOL);
@@ -49,7 +51,7 @@ button.addEventListener('click', function (evt) {
   var SiO2_MolRatio = getMolRatio(SiO2, SIO2_MOL);
   var Cl_MolRatio = getMolRatio(Cl, CL_MOL);
 
-  var FeO_negMolRatio = Fe3_ratio / FE2O3;
+  var FeO_negMolRatio = Fe3_ratio / FE2O3_MOL;
 
   // cation ratios
   var Na2O_cationRatio = Na2O_MolRatio * 2;
@@ -80,18 +82,18 @@ button.addEventListener('click', function (evt) {
   var FeO_negAnion = FeO_negMolRatio * 3;
 
   var getAnionRatioFactor = function () {
-    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_anionRatio + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio + Cl_anionRatio) / 23;
+    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_anionRatio + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio + Cl_anionRatio) / 23; //calc using anion sums
   }
 
   var getAnionFerNegRatio = function () {
-    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_negAnion + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio + Cl_anionRatio) / 23;
+    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_negAnion + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio + Cl_anionRatio) / 23; //calc using anion sums with all arion Fe2O3
   }
 
   var getAmphiboleFactor =  function () {
 
     var amphiboleFactor = (Na2O_MolRatio + K2O_MolRatio + Al2O3_MolRatio + MgO_MolRatio + FeO_MolRatio + CaO_MolRatio + MnO_MolRatio + TiO2_MolRatio + SiO2_MolRatio + Cl_MolRatio) / 15;
 
-    return amphiboleFactor;
+    return amphiboleFactor; //calc using cation sums
   }
 
   var getApfu = function (mineral) {
@@ -214,7 +216,7 @@ button.addEventListener('click', function (evt) {
   ferrTable.querySelector('.table__output--corr-Al2O3').innerText = setToFixed(Al2O3_corr);
   ferrTable.querySelector('.table__output--corr-MgO').innerText = setToFixed(MgO_corr);
   ferrTable.querySelector('.table__output--corr-FeO').innerText = setToFixed(FeOneg_apfu);
-  // ferrTable.querySelector('.table__output--ferr-FeO').innerText = setToFixed(FeO_ferric);
+  ferrTable.querySelector('.table__output--ferr-FeO').innerText = setToFixed(FeO_ferric);
   ferrTable.querySelector('.table__output--corr-CaO').innerText = setToFixed(CaO_corr);
   ferrTable.querySelector('.table__output--corr-MnO').innerText = setToFixed(MnO_corr);
   ferrTable.querySelector('.table__output--corr-TiO2').innerText = setToFixed(TiO2_corr);
@@ -238,4 +240,4 @@ button.addEventListener('click', function (evt) {
 
 });
 
-// thats all, falks
+// thats all, fu(l)cks

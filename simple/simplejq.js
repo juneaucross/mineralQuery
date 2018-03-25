@@ -164,9 +164,9 @@ $('.button--clear').on('click', function () {
   clear();
 });
 
-var mineralSelect = $('.mineral-select')[0].value;
-$('.mineral-select').on('change', function() {
-  mineralSelect = $('.mineral-select')[0].value;
+var mineralSelect = $('#mineral-select')[0].value;
+$('#mineral-select').on('change', function() {
+  mineralSelect = $('#mineral-select')[0].value;
   console.log(mineralSelect);
 });
 // var mineralSelect = document.querySelector('.mineral-select');
