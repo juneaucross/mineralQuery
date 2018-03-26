@@ -168,6 +168,7 @@ var mineralSelect = $('#mineral-select')[0].value;
 $('#mineral-select').on('change', function() {
   mineralSelect = $('#mineral-select')[0].value;
   console.log(mineralSelect);
+
 });
 // var mineralSelect = document.querySelector('.mineral-select');
 
