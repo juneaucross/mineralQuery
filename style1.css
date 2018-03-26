@@ -185,7 +185,6 @@
 
 @media only screen and (min-width: 600px) {
   body {
-    /*width: 300px;*/
     margin: 30px auto;
     font-family: AvenirNext, Arial, sans-serif;
   }

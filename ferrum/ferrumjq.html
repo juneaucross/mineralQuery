@@ -8,69 +8,131 @@
   <link rel="stylesheet" href="../style1.css">
 </head>
 <body>
-  <div class="containder">
+  <div class="container">
     <div class="header">
       <a href="indexxx.html" class="header-link">
         <h1 class="title">amphibole calclation_distinguishing between Fe2/Fe3</h1>
       </a>
       <p class="description">This calculator coverts wight percent oxides to formula units for major rock-forming minerals. Determining Fe2+/Fe3+ ratio is available for amphiboles only using Droop (1972) algorithm.</p>
     </div>
-    <form class=main>
-      <p class="form-description">enter element value (in percents)</p>
+    <form class="main">
       <div class="main__input-area">
-        <div class="form-cell">
-          <label for="Na2O-input">Na2O</label>
-          <input class="form__input-cell" type="number" id="Na2O-input"  placeholder="value" value="1.97">
-          <span class="form__output-cell form__output-cell--Na2O"></span>
+        <span class="main__input-title">Element %</span>
+
+        <div class="main__input-cell">
+          <label for="Na2O-input" class="main__input-label">Na2O</label>
+          <input class="main__input" type="number" id="Na2O-input" value="1.97">
         </div>
-        <div class="form-cell">
-          <label for="K2O-input">K2O</label>
-          <input class="form__input-cell" type="number" id="K2O-input" placeholder="value" value=" ">
-          <span class="form__output-cell form__output-cell--K2O"></span>
+
+        <div class="main__input-cell">
+          <label for="K2O-input" class="main__input-label">K2O</label>
+          <input class="main__input" type="number" id="K2O-input" value="">
         </div>
-        <div class="form-cell">
-          <label for="Al2O3-input">Al2O3</label>
-          <input class="form__input-cell" type="number" id="Al2O3-input" placeholder="value" value="18.26">
-          <span class="form__output-cell form__output-cell--Al2O3"></span>
+
+        <div class="main__input-cell">
+          <label for="Al2O3-input" class="main__input-label">Al2O3</label>
+          <input class="main__input" type="number" id="Al2O3-input" value="18.26">
         </div>
-        <div class="form-cell">
-          <label for="MgO-input">MgO</label>
-          <input class="form__input-cell" type="number" id="MgO-input" placeholder="value" value="19.67">
-          <span class="form__output-cell form__output-cell--MgO"></span>
+
+        <div class="main__input-cell">
+          <label for="MgO-input" class="main__input-label">MgO</label>
+          <input class="main__input" type="number" id="MgO-input" value="19.67">
         </div>
-        <div class="form-cell">
-          <label for="FeO-input">FeO</label>
-          <input class="form__input-cell" type="number" id="FeO-input" placeholder="value" value="12.85">
-          <span class="form__output-cell form__output-cell--FeO"></span>
+
+        <div class="main__input-cell">
+          <label for="FeO-input" class="main__input-label">FeO</label>
+          <input class="main__input" type="number" id="FeO-input" value="12.85">
         </div>
-        <div class="form-cell">
-          <label for="CaO-input">CaO</label>
-          <input class="form__input-cell" type="number" id="CaO-input" placeholder="value" value="0.64">
-          <span class="form__output-cell form__output-cell--CaO"></span>
+
+        <div class="main__input-cell">
+          <label for="CaO-input" class="main__input-label">CaO</label>
+          <input class="main__input" type="number" id="CaO-input" value="0.64">
         </div>
-        <div class="form-cell">
-          <label for="MnO-input">MnO</label>
-          <input class="form__input-cell" type="number" id="MnO-input" placeholder="value" value="0">
-          <span class="form__output-cell form__output-cell--MnO"></span>
+
+        <div class="main__input-cell">
+          <label for="MnO-input" class="main__input-label">MnO</label>
+          <input class="main__input" type="number" id="MnO-input" value="0">
         </div>
-        <div class="form-cell">
-          <label for="TiO2-input">TiO2</label>
-          <input class="form__input-cell" type="number" id="TiO2-input" placeholder="value" value="0.2">
-          <span class="form__output-cell form__output-cell--TiO2"></span>
+
+        <div class="main__input-cell">
+          <label for="TiO2-input" class="main__input-label">TiO2</label>
+          <input class="main__input" type="number" id="TiO2-input" value="0.2">
         </div>
-        <div class="form-cell">
-          <label for="SiO2-input">SiO2</label>
-          <input class="form__input-cell" type="number" id="SiO2-input" placeholder="value" value="43.43">
-          <span class="form__output-cell form__output-cell--SiO2"></span>
+
+        <div class="main__input-cell">
+          <label for="SiO2-input" class="main__input-label">SiO2</label>
+          <input class="main__input" type="number" id="SiO2-input" value="43.43">
         </div>
-        <div class="form-cell">
-          <label for="Cl-input">Cl</label>
-          <input class="form__input-cell" type="number" id="Cl-input" placeholder="value" value="0">
-          <span class="form__output-cell form__output-cell--Cl"></span>
+
+        <div class="main__input-cell">
+          <label for="Cl-input" class="main__input-label">Cl</label>
+          <input class="main__input" type="number" id="Cl-input" value="0">
         </div>
       </div>
-      <button class="form__btn">calculate</button>
-    </form>
+
+      <div class="main__output-area">
+        <span class="main__output-title">Value</span>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Na</label>
+          <span class="main__output" id="Na2O-output"></span>
+        </div>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">K</label>
+          <span class="main__output" id="K2O-output"></span>
+        </div>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Al</label>
+          <span class="main__output" id="Al2O3-output"></span>
+        </div>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Mg</label>
+          <span class="main__output" id="MgO-output"></span>
+        </div>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Fe</label>
+          <span class="main__output" id="FeO-output"></span>
+        </div>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Fe3+</label>
+          <span class="main__output" id="Fe2O3-output"></span>
+        </div>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Ca</label>
+          <span class="main__output" id="CaO-output"></span>
+        </div>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Mn</label>
+          <span class="main__output" id="MnO-output"></span>
+        </div>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Ti</label>
+          <span class="main__output" id="TiO2-output"></span>
+        </div>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Si</label>
+          <span class="main__output" id="SiO2-output"></span>
+        </div>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Cl</label>
+          <span class="main__output" id="Cl-output"></span>
+        </div>
+      </div>
+
+      <div class="main__buttons-area">
+        <button class="button button--calculate" type="button">Calculate</button>
+        <button class="button button--clear" type="button">Clear</button>
+      </div>
 
     <table class="table apfu-table">
       <caption class="table-caption">apfu table</caption>
