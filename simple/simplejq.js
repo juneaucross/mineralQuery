@@ -127,7 +127,7 @@ console.log(mineralSelect);
   var MnO_apfu = getApfu(MnO_cationRatio);
   var TiO2_apfu = getApfu(TiO2_cationRatio);
   var SiO2_apfu = getApfu(SiO2_cationRatio);
-  var Cl_apfu = getApfu(Cl_cationRatio);
+  var H2O_apfu = getApfu(H2O_cationRatio);
 
   var setToFixed = function (elem) {
     if (elem === 0) {
@@ -152,7 +152,7 @@ console.log(mineralSelect);
   $('#MnO-output').text(setToFixed(MnO_apfu));
   $('#TiO2-output').text(setToFixed(TiO2_apfu));
   $('#SiO2-output').text(setToFixed(SiO2_apfu));
-  $('#Cl-output').text(setToFixed(Cl_apfu));
+  $('#H2O-output').text(setToFixed(H2O_apfu));
 
 };
 
@@ -184,7 +184,7 @@ var clear = function () {
   MnO = 0;
   TiO2 = 0;
   SiO2 = 0;
-  Cl = 0;
+  H2O = 0;
   $('.main__input').val('');
   $('.main__output').text('');
 };
