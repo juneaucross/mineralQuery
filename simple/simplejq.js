@@ -11,10 +11,10 @@ var CAO_MOL = 56.077;
 var MNO_MOL = 70.938;
 var TIO2_MOL = 79.879;
 var SIO2_MOL = 60.084;
-var CL_MOL = 35.453;
+var H2O_MOL = 18.015;
 
 // setting element values
-var Na2O = 0, K2O = 0, Al2O3 = 0, MgO = 0, FeO = 0, Fe2O3 = 0, CaO = 0, MnO = 0, TiO2 = 0, SiO2 = 0, Cl = 0;
+var Na2O = 0, K2O = 0, Al2O3 = 0, MgO = 0, FeO = 0, Fe2O3 = 0, CaO = 0, MnO = 0, TiO2 = 0, SiO2 = 0, H2O = 0;
 
 // setting inputs keypress event
 $('.main__input').keypress(function(e) {
@@ -54,8 +54,8 @@ $('#TiO2-input').on('input', function() {
 $('#SiO2-input').on('input', function() {
   SiO2 = this.value;
 });
-$('#Cl-input').on('input', function() {
-  Cl = this.value;
+$('#H2O-input').on('input', function() {
+  H2O = this.value;
 });
 
 //calculate function
@@ -77,7 +77,7 @@ var calculate = function () {
   var MnO_MolRatio = getMolRatio(MnO, MNO_MOL);
   var TiO2_MolRatio = getMolRatio(TiO2, TIO2_MOL);
   var SiO2_MolRatio = getMolRatio(SiO2, SIO2_MOL);
-  var Cl_MolRatio = getMolRatio(Cl, CL_MOL);
+  var H2O_MolRatio = getMolRatio(H2O, H2O_MOL);
 
   // anion ratios
   var Na2O_anionRatio = Na2O_MolRatio;
@@ -90,7 +90,7 @@ var calculate = function () {
   var MnO_anionRatio = MnO_MolRatio;
   var TiO2_anionRatio = TiO2_MolRatio * 2;
   var SiO2_anionRatio = SiO2_MolRatio * 2;
-  var Cl_anionRatio = Cl_MolRatio;
+  var H2O_anionRatio = H2O_MolRatio;
 
   // cation ratios
   var Na2O_cationRatio = Na2O_MolRatio * 2;
@@ -103,11 +103,11 @@ var calculate = function () {
   var MnO_cationRatio = MnO_MolRatio;
   var TiO2_cationRatio = TiO2_MolRatio;
   var SiO2_cationRatio = SiO2_MolRatio;
-  var Cl_cationRatio = Cl_MolRatio;
+  var H2O_cationRatio = H2O_MolRatio * 2;
 
   var getAnionRatioFactor = function (divisor) {
     // prosto anion rating
-    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_anionRatio + Fe2O3_anionRatio + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio + Cl_anionRatio) / divisor;
+    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_anionRatio + Fe2O3_anionRatio + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio + H2O_anionRatio) / divisor;
   }
 
   var getApfu = function (mineral) {
@@ -127,7 +127,7 @@ console.log(mineralSelect);
   var MnO_apfu = getApfu(MnO_cationRatio);
   var TiO2_apfu = getApfu(TiO2_cationRatio);
   var SiO2_apfu = getApfu(SiO2_cationRatio);
-  var Cl_apfu = getApfu(Cl_cationRatio);
+  var H2O_apfu = getApfu(H2O_cationRatio);
 
   var setToFixed = function (elem) {
     if (elem === 0) {
@@ -152,7 +152,7 @@ console.log(mineralSelect);
   $('#MnO-output').text(setToFixed(MnO_apfu));
   $('#TiO2-output').text(setToFixed(TiO2_apfu));
   $('#SiO2-output').text(setToFixed(SiO2_apfu));
-  $('#Cl-output').text(setToFixed(Cl_apfu));
+  $('#H2O-output').text(setToFixed(H2O_apfu));
 
 };
 
@@ -184,7 +184,7 @@ var clear = function () {
   MnO = 0;
   TiO2 = 0;
   SiO2 = 0;
-  Cl = 0;
+  H2O = 0;
   $('.main__input').val('');
   $('.main__output').text('');
 };
