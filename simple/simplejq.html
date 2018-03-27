@@ -19,13 +19,13 @@
 
       <div class="select-wrap">
         <select id="mineral-select" name="mineral select">
-          <option value="8">Feldspars (8 anions)</option>
-          <option value="6">Pyroxenes (6 anions)</option>
-          <option value="12">Garnets (12 anions)</option>
-          <option value="4">Olivines (4 anions)</option>
-          <option value="23">Amphiboles anhydrous (23 anions)</option>
-          <option value="24">Amphiboles hydrous (24 anions)</option>
-          <option value="12">Micas hydrous (12 anions)</option>
+          <option value="8" class="anhydrous">Feldspars (8 anions)</option>
+          <option value="6" class="anhydrous">Pyroxenes (6 anions)</option>
+          <option value="12" class="anhydrous">Garnets (12 anions)</option>
+          <option value="4" class="anhydrous">Olivines (4 anions)</option>
+          <option value="23" class="anhydrous">Amphiboles anhydrous (23 anions)</option>
+          <option value="24" class="hydrous">Amphiboles hydrous (24 anions)</option>
+          <option value="12" class="hydrous">Micas hydrous (12 anions)</option>
         </select>
       </div>
 
@@ -82,7 +82,7 @@
           <input class="main__input" type="number" id="SiO2-input">
         </div>
 
-        <div class="main__input-cell">
+        <div class="main__input-cell main__input-cell--H2O">
           <label for="H2O-input" class="main__input-label">H<sub>2</sub>O</label>
           <input class="main__input" type="number" id="H2O-input">
         </div>
@@ -132,7 +132,7 @@
           <span class="main__output" id="SiO2-output"></span>
         </div>
 
-        <div class="main__output-cell">
+        <div class="main__output-cell main__output-cell--H2O">
           <label class="main__output-label">OH</label>
           <span class="main__output" id="H2O-output"></span>
         </div>

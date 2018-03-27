@@ -23,6 +23,9 @@ $('.main__input').keypress(function(e) {
   }
 });
 
+$('.main__input-cell--H2O').hide();
+$('.main__output-cell--H2O').hide();
+
 // getting inputs values
 $('#Na2O-input').on('input', function() {
   Na2O = this.value;
@@ -111,10 +114,8 @@ var calculate = function () {
   }
 
   var getApfu = function (mineral) {
-    return mineral / getAnionRatioFactor(mineralSelect);
+    return mineral / getAnionRatioFactor(mineralSelectValue);
   }
-
-console.log(mineralSelect);
 
   // apfu
   var Na2O_apfu = getApfu(Na2O_cationRatio);
@@ -164,14 +165,18 @@ $('.button--clear').on('click', function () {
   clear();
 });
 
-var mineralSelect = $('#mineral-select')[0].value;
+var mineralSelectValue = $('#mineral-select')[0].value;
+
 $('#mineral-select').on('change', function() {
-  mineralSelect = $('#mineral-select')[0].value;
-  console.log(mineralSelect);
-
+  mineralSelectValue = $('#mineral-select')[0].value;
+  if ($('#mineral-select option:selected')[0].className == 'hydrous') {
+    $('.main__input-cell--H2O').slideDown('fast');
+    $('.main__output-cell--H2O').slideDown('fast');
+  } else if ($('#mineral-select option:selected')[0].className == 'anhydrous') {
+    $('.main__input-cell--H2O').slideUp('fast');
+    $('.main__output-cell--H2O').slideUp('fast');
+  }
 });
-// var mineralSelect = document.querySelector('.mineral-select');
-
 
 //clear function
 var clear = function () {
