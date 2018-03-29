@@ -13,6 +13,7 @@
       <a href="indexxx.html" class="header-link">
         <h1 class="title">amphibole calclation_distinguishing between Fe2/Fe3</h1>
       </a>
+      <button class="button button--toggle">Show desc</button>
       <p class="description">This calculator coverts wight percent oxides to formula units for major rock-forming minerals. Determining Fe2+/Fe3+ ratio is available for amphiboles only using Droop (1972) algorithm.</p>
     </div>
     <form class="main">
@@ -42,6 +43,11 @@
         <div class="main__input-cell">
           <label for="FeO-input" class="main__input-label">FeO</label>
           <input class="main__input" type="number" id="FeO-input" value="12.85">
+        </div>
+
+        <div class="main__input-cell main__input-cell--Fe2O3">
+          <!-- <label for="FeO-input" class="main__input-label">FeO++</label> -->
+          <span class="info" title="cool info about that whats happening"></span>
         </div>
 
         <div class="main__input-cell">
@@ -98,7 +104,7 @@
           <span class="main__output" id="FeO-output"></span>
         </div>
 
-        <div class="main__output-cell">
+        <div class="main__output-cell main__output-cell--Fe2O3">
           <label class="main__output-label">Fe3+</label>
           <span class="main__output" id="Fe2O3-output"></span>
         </div>

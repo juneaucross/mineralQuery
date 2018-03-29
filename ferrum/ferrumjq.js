@@ -198,6 +198,19 @@ var calculate = function () {
     }
 };
 
+// setting outputs values
+// $('#Na2O-output').text(setToFixed(Na2O_apfu));
+// $('#K2O-output').text(setToFixed(K2O_apfu));
+// $('#Al2O3-output').text(setToFixed(Al2O3_apfu));
+// $('#MgO-output').text(setToFixed(MgO_apfu));
+// $('#FeO-output').text(setToFixed(FeO_apfu));
+// $('#Fe2O3-output').text(setToFixed(Fe2O3_apfu));
+// $('#CaO-output').text(setToFixed(CaO_apfu));
+// $('#MnO-output').text(setToFixed(MnO_apfu));
+// $('#TiO2-output').text(setToFixed(TiO2_apfu));
+// $('#SiO2-output').text(setToFixed(SiO2_apfu));
+// $('#H2O-output').text(setToFixed(H2O_apfu));
+
   // amphibole table output
   $('.form__output-cell--Na2O').text(setToFixed(Na2O_final));
   $('.form__output-cell--K2O').text(setToFixed(K2O_final));
@@ -269,22 +282,104 @@ var calculate = function () {
   //   ferrTable.style.display = 'table';
   // }
 
-  //tables visibility
-  if (getApfuSumm() <= 13)  {
-    $('.apfu-table').show();
-    $('.corr-table').hide();
-    $('.ferr-table').hide();
-  } else if (getApfuSumm() > 13 && getFerricFactor() > 0) {
-    $('.apfu-table').hide();
-    $('.corr-table').show();
-    $('.ferr-table').hide();
-  } else if (getApfuSumm() > 13 && getFerricFactor() < 0) {
-    $('.apfu-table').hide();
-    $('.corr-table').hide();
-    $('.ferr-table').show();
-  }
+  // //tables visibility
+  // if (getApfuSumm() <= 13)  {
+  //   $('.apfu-table').show();
+  //   $('.corr-table').hide();
+  //   $('.ferr-table').hide();
+  // } else if (getApfuSumm() > 13 && getFerricFactor() > 0) {
+  //   $('.apfu-table').hide();
+  //   $('.corr-table').show();
+  //   $('.ferr-table').hide();
+  // } else if (getApfuSumm() > 13 && getFerricFactor() < 0) {
+  //   $('.apfu-table').hide();
+  //   $('.corr-table').hide();
+  //   $('.ferr-table').show();
+  // }
 
+
+  if (getApfuSumm() <= 13)  {
+    $('.main__input-cell--Fe2O3').slideUp('fast');
+    $('.main__output-cell--Fe2O3').slideUp('fast');
+
+    console.log('тут апфу');
+
+
+    $('#Na2O-output').text(setToFixed(Na2O_apfu));
+    $('#K2O-output').text(setToFixed(K2O_apfu));
+    $('#Al2O3-output').text(setToFixed(Al2O3_apfu));
+    $('#MgO-output').text(setToFixed(MgO_apfu));
+    $('#FeO-output').text(setToFixed(FeO_apfu));
+    // $('#Fe2O3-output').text(setToFixed(Fe2O3_apfu));
+    $('#CaO-output').text(setToFixed(CaO_apfu));
+    $('#MnO-output').text(setToFixed(MnO_apfu));
+    $('#TiO2-output').text(setToFixed(TiO2_apfu));
+    $('#SiO2-output').text(setToFixed(SiO2_apfu));
+    $('#Cl-output').text(setToFixed(Cl_apfu));
+
+  } else if (getApfuSumm() > 13 && getFerricFactor() > 0) {
+    $('.main__input-cell--Fe2O3').slideDown('fast');
+    $('.main__output-cell--Fe2O3').slideDown('fast');
+
+    console.log('тут корр');
+
+
+    $('#Na2O-output').text(setToFixed(Na2O_corr));
+    $('#K2O-output').text(setToFixed(K2O_corr));
+    $('#Al2O3-output').text(setToFixed(Al2O3_apfu));
+    $('#MgO-output').text(setToFixed(MgO_corr));
+    $('#FeO-output').text(setToFixed(FeO_ferric));
+    $('#Fe2O3-output').text(setToFixed(getFerricFactor()));
+    $('#CaO-output').text(setToFixed(CaO_corr));
+    $('#MnO-output').text(setToFixed(MnO_corr));
+    $('#TiO2-output').text(setToFixed(TiO2_corr));
+    $('#SiO2-output').text(setToFixed(SiO2_corr));
+    $('#Cl-output').text(setToFixed(Cl_corr));
+
+  } else if (getApfuSumm() > 13 && getFerricFactor() < 0) {
+    $('.main__input-cell--Fe2O3').slideDown('fast');
+    $('.main__output-cell--Fe2O3').slideDown('fast');
+
+    console.log('тут ферум');
+
+    $('#Na2O-output').text(setToFixed(Na2O_corr));
+    $('#K2O-output').text(setToFixed(K2O_corr));
+    $('#Al2O3-output').text(setToFixed(Al2O3_apfu));
+    $('#MgO-output').text(setToFixed(MgO_corr));
+    $('#FeO-output').text(setToFixed(FeOneg_apfu));
+    $('#Fe2O3-output').text(setToFixed(FeO_ferric));
+    $('#CaO-output').text(setToFixed(CaO_corr));
+    $('#MnO-output').text(setToFixed(MnO_corr));
+    $('#TiO2-output').text(setToFixed(TiO2_corr));
+    $('#SiO2-output').text(setToFixed(SiO2_corr));
+    $('#Cl-output').text(setToFixed(Cl_corr));
+
+  }
 };
+
+var clear = function () {
+  Na2O = 0;
+  K2O = 0;
+  Al2O3 = 0;
+  MgO = 0;
+  FeO = 0;
+  // Fe2O3 = 0;
+  CaO = 0;
+  MnO = 0;
+  TiO2 = 0;
+  SiO2 = 0;
+  Cl = 0;
+  $('.main__input').val('');
+  $('.main__output').text('');
+
+  $('.main__input-cell--Fe2O3').slideUp('fast');
+  $('.main__output-cell--Fe2O3').slideUp('fast');
+};
+
+// visibility settings
+$('.description').hide();
+$('.main__input-cell--Fe2O3').hide();
+$('.main__output-cell--Fe2O3').hide();
 
 // set buttons events
 $('.button--calculate').on('click', function () {
@@ -292,6 +387,9 @@ $('.button--calculate').on('click', function () {
 });
 $('.button--clear').on('click', function () {
   clear();
+});
+$('.button--toggle').on('click', function () {
+  $('.description').slideToggle('fast');
 });
 
 // thats all, fu(l)cks
