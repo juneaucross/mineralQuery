@@ -15,11 +15,12 @@ var CAO_MOL = 56.077;
 var MNO_MOL = 70.938;
 var TIO2_MOL = 79.879;
 var SIO2_MOL = 60.084;
-var CL_MOL = 35.453;
+// var CL_MOL = 35.453;
 var FE2O3_MOL = 159.692;
 
 // setting element values
-var Na2O = 0, K2O = 0, Al2O3 = 0, MgO = 0, FeO = 0, CaO = 0, MnO = 0, TiO2 = 0, SiO2 = 0, Cl = 0;
+var Na2O = 0, K2O = 0, Al2O3 = 0, MgO = 0, FeO = 0, CaO = 0, MnO = 0, TiO2 = 0, SiO2 = 0;
+// Cl = 0;
 
 // getting inputs values
 $('#Na2O-input').on('input', function() {
@@ -52,9 +53,9 @@ $('#TiO2-input').on('input', function() {
 $('#SiO2-input').on('input', function() {
   SiO2 = this.value;
 });
-$('#Cl-input').on('input', function() {
-  Cl = this.value;
-});
+// $('#Cl-input').on('input', function() {
+//   Cl = this.value;
+// });
 
 //calculate function
 var calculate = function () {
@@ -75,7 +76,7 @@ var calculate = function () {
   var MnO_MolRatio = getMolRatio(MnO, MNO_MOL);
   var TiO2_MolRatio = getMolRatio(TiO2, TIO2_MOL);
   var SiO2_MolRatio = getMolRatio(SiO2, SIO2_MOL);
-  var Cl_MolRatio = getMolRatio(Cl, CL_MOL);
+  // var Cl_MolRatio = getMolRatio(Cl, CL_MOL);
 
   var FeO_negMolRatio = Fe3_ratio / FE2O3_MOL;
 
@@ -89,7 +90,7 @@ var calculate = function () {
   var MnO_cationRatio = MnO_MolRatio;
   var TiO2_cationRatio = TiO2_MolRatio;
   var SiO2_cationRatio = SiO2_MolRatio;
-  var Cl_cationRatio = Cl_MolRatio;
+  // var Cl_cationRatio = Cl_MolRatio;
 
   var FeO_negCation = FeO_negMolRatio * 2;
 
@@ -103,24 +104,27 @@ var calculate = function () {
   var MnO_anionRatio = MnO_MolRatio;
   var TiO2_anionRatio = TiO2_MolRatio * 2;
   var SiO2_anionRatio = SiO2_MolRatio * 2;
-  var Cl_anionRatio = Cl_MolRatio;
+  // var Cl_anionRatio = Cl_MolRatio;
 
   var FeO_negAnion = FeO_negMolRatio * 3;
 
   //calc using anion sums
   var getAnionRatioFactor = function () {
-    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_anionRatio + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio + Cl_anionRatio) / 23;
+    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_anionRatio + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio) / 23;
+    //  + Cl_anionRatio
   }
 
   //calc using anion sums with all arion Fe2O3
   var getAnionFerNegRatio = function () {
-    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_negAnion + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio + Cl_anionRatio) / 23;
+    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_negAnion + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio) / 23;
+    //  + Cl_anionRatio
   }
 
   //calc using cation sums
   var getAmphiboleFactor =  function () {
 
-    var amphiboleFactor = (Na2O_MolRatio + K2O_MolRatio + Al2O3_MolRatio + MgO_MolRatio + FeO_MolRatio + CaO_MolRatio + MnO_MolRatio + TiO2_MolRatio + SiO2_MolRatio + Cl_MolRatio) / 15;
+    var amphiboleFactor = (Na2O_MolRatio + K2O_MolRatio + Al2O3_MolRatio + MgO_MolRatio + FeO_MolRatio + CaO_MolRatio + MnO_MolRatio + TiO2_MolRatio + SiO2_MolRatio) / 15;
+    //  + Cl_MolRatio
 
     return amphiboleFactor;
   }
@@ -157,7 +161,7 @@ var calculate = function () {
   var MnO_apfu = getApfu(MnO_cationRatio);
   var TiO2_apfu = getApfu(TiO2_cationRatio);
   var SiO2_apfu = getApfu(SiO2_cationRatio);
-  var Cl_apfu = getApfu(Cl_cationRatio);
+  // var Cl_apfu = getApfu(Cl_cationRatio);
 
   var FeOneg_apfu = getApfu(FeO_negMolRatio);
 
@@ -171,7 +175,7 @@ var calculate = function () {
   var MnO_corr = MnO_apfu * getApfuSummFactor();
   var TiO2_corr = TiO2_apfu * getApfuSummFactor();
   var SiO2_corr = SiO2_apfu * getApfuSummFactor();
-  var Cl_corr = Cl_apfu * getApfuSummFactor();
+  // var Cl_corr = Cl_apfu * getApfuSummFactor();
 
   // R's ferric_mineral_1$negative_iron_check function
   var FeO_ferric = FeO_corr - getFerricFactor();
@@ -186,7 +190,7 @@ var calculate = function () {
   var MnO_final = MnO_MolRatio / getAmphiboleFactor();
   var TiO2_final = TiO2_MolRatio / getAmphiboleFactor();
   var SiO2_final = SiO2_MolRatio / getAmphiboleFactor();
-  var Cl_final = Cl_MolRatio / getAmphiboleFactor();
+  // var Cl_final = Cl_MolRatio / getAmphiboleFactor();
 
   var setToFixed = function (elem) {
     if (elem === 0) {
@@ -206,7 +210,7 @@ var calculate = function () {
   $('.form__output-cell--MnO').text(setToFixed(MnO_final));
   $('.form__output-cell--TiO2').text(setToFixed(TiO2_final));
   $('.form__output-cell--SiO2').text(setToFixed(SiO2_final));
-  $('.form__output-cell--Cl').text(setToFixed(Cl_final));
+  // $('.form__output-cell--Cl').text(setToFixed(Cl_final));
 
   // apfu table output
   var apfuTable = $('.apfu-table');
@@ -220,7 +224,7 @@ var calculate = function () {
   $('.table__output--apfu-MnO').text(setToFixed(MnO_apfu));
   $('.table__output--apfu-TiO2').text(setToFixed(TiO2_apfu));
   $('.table__output--apfu-SiO2').text(setToFixed(SiO2_apfu));
-  $('.table__output--apfu-Cl').text(setToFixed(Cl_apfu));
+  // $('.table__output--apfu-Cl').text(setToFixed(Cl_apfu));
 
   // corr table output
   var corrTable = $('.corr-table');
@@ -235,7 +239,7 @@ var calculate = function () {
   $('.table__output--corr-MnO').text(setToFixed(MnO_corr));
   $('.table__output--corr-TiO2').text(setToFixed(TiO2_corr));
   $('.table__output--corr-SiO2').text(setToFixed(SiO2_corr));
-  $('.table__output--corr-Cl').text(setToFixed(Cl_corr));
+  // $('.table__output--corr-Cl').text(setToFixed(Cl_corr));
 
   // ferr table output
   var ferrTable = $('.ferr-table');
@@ -250,7 +254,7 @@ var calculate = function () {
   $('.table__output--ferr-MnO').text(setToFixed(MnO_corr));
   $('.table__output--ferr-TiO2').text(setToFixed(TiO2_corr));
   $('.table__output--ferr-SiO2').text(setToFixed(SiO2_corr));
-  $('.table__output--ferr-Cl').text(setToFixed(Cl_corr));
+  // $('.table__output--ferr-Cl').text(setToFixed(Cl_corr));
 
   // //tables visibility
   // if (getApfuSumm() <= 13)  {
@@ -299,14 +303,13 @@ var calculate = function () {
     $('#MnO-output').text(setToFixed(MnO_apfu));
     $('#TiO2-output').text(setToFixed(TiO2_apfu));
     $('#SiO2-output').text(setToFixed(SiO2_apfu));
-    $('#Cl-output').text(setToFixed(Cl_apfu));
+    // $('#Cl-output').text(setToFixed(Cl_apfu));
 
   } else if (getApfuSumm() > 13 && getFerricFactor() > 0) {
     $('.main__input-cell--Fe2O3').slideDown('fast');
     $('.main__output-cell--Fe2O3').slideDown('fast');
 
     console.log('тут корр');
-
 
     $('#Na2O-output').text(setToFixed(Na2O_corr));
     $('#K2O-output').text(setToFixed(K2O_corr));
@@ -318,7 +321,7 @@ var calculate = function () {
     $('#MnO-output').text(setToFixed(MnO_corr));
     $('#TiO2-output').text(setToFixed(TiO2_corr));
     $('#SiO2-output').text(setToFixed(SiO2_corr));
-    $('#Cl-output').text(setToFixed(Cl_corr));
+    // $('#Cl-output').text(setToFixed(Cl_corr));
 
   } else if (getApfuSumm() > 13 && getFerricFactor() < 0) {
     $('.main__input-cell--Fe2O3').slideDown('fast');
@@ -336,7 +339,7 @@ var calculate = function () {
     $('#MnO-output').text(setToFixed(MnO_corr));
     $('#TiO2-output').text(setToFixed(TiO2_corr));
     $('#SiO2-output').text(setToFixed(SiO2_corr));
-    $('#Cl-output').text(setToFixed(Cl_corr));
+    // $('#Cl-output').text(setToFixed(Cl_corr));
 
   }
 };
@@ -352,7 +355,7 @@ var clear = function () {
   MnO = 0;
   TiO2 = 0;
   SiO2 = 0;
-  Cl = 0;
+  // Cl = 0;
   $('.main__input').val('');
   $('.main__output').text('');
 
