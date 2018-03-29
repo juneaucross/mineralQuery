@@ -133,12 +133,26 @@ var clear = function () {
   $('.main__output').text('');
 };
 
+// visibility settings
+$('.description-wrap').hide();
+
 // set buttons events
 $('.button--calculate').on('click', function () {
   calculate();
 });
 $('.button--clear').on('click', function () {
   clear();
+});
+$('.button--toggle').on('click', function () {
+
+  if ($('.description-wrap').is(':hidden'))
+  {
+    $('.button--toggle').text('Hide description');
+  } else if ($('.description-wrap').not(':hidden')) {
+    $('.button--toggle').text('Show description');
+  }
+
+  $('.description-wrap').slideToggle('fast');
 });
 
 

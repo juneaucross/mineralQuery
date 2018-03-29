@@ -377,7 +377,7 @@ var clear = function () {
 };
 
 // visibility settings
-$('.description').hide();
+$('.description-wrap').hide();
 $('.main__input-cell--Fe2O3').hide();
 $('.main__output-cell--Fe2O3').hide();
 
@@ -389,7 +389,16 @@ $('.button--clear').on('click', function () {
   clear();
 });
 $('.button--toggle').on('click', function () {
-  $('.description').slideToggle('fast');
+
+  if ($('.description-wrap').is(':hidden'))
+  {
+    $('.button--toggle').text('Hide description');
+  } else if ($('.description-wrap').not(':hidden')) {
+    $('.button--toggle').text('Show description');
+  }
+
+  $('.description-wrap').slideToggle('fast');
 });
+
 
 // thats all, fu(l)cks

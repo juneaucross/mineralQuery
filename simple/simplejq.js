@@ -23,6 +23,8 @@ $('.main__input').keypress(function(e) {
   }
 });
 
+// visibility settings
+$('.description-wrap').hide();
 $('.main__input-cell--H2O').hide();
 $('.main__output-cell--H2O').hide();
 
@@ -227,6 +229,17 @@ $('.button--calculate').on('click', function () {
 $('.button--clear').on('click', function () {
   clear();
 });
+$('.button--toggle').on('click', function () {
+
+  if ($('.description-wrap').is(':hidden'))
+  {
+    $('.button--toggle').text('Hide description');
+  } else if ($('.description-wrap').not(':hidden')) {
+      $('.button--toggle').text('Show description');
+    }
+
+    $('.description-wrap').slideToggle('fast');
+  });
 
 // buttonClear.addEventListener('click', function (evt) {
 //
