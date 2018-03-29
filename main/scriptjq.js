@@ -1,8 +1,11 @@
 'use strict';
 
+// visibility settings
+$('.description-wrap').hide();
+
 //Обычный анионный метод без разделения железа
 
-// consts
+// CONSTS
 var NA2O_MOL = 61.979;
 var K2O_MOL = 94.196;
 var AL2O3_MOL = 101.961;
@@ -16,13 +19,6 @@ var CL_MOL = 35.453;
 
 // setting element values
 var Na2O = 0, K2O = 0, Al2O3 = 0, MgO = 0, FeO = 0, CaO = 0, MnO = 0, TiO2 = 0, SiO2 = 0, Cl = 0;
-
-// setting inputs keypress event
-$('.main__input').keypress(function(e) {
-  if (e.which == 13) {
-    calculate();
-  }
-});
 
 // getting inputs values
 $('#Na2O-input').on('input', function() {
@@ -78,7 +74,6 @@ var calculate = function () {
   var getAmphiboleFactor =  function () {
 
     var amphiboleFactor = (Na2O_MolRatio + K2O_MolRatio + Al2O3_MolRatio + MgO_MolRatio + FeO_MolRatio + CaO_MolRatio + MnO_MolRatio + TiO2_MolRatio + SiO2_MolRatio + Cl_MolRatio) / 15;
-
     return amphiboleFactor;
   }
 
@@ -133,16 +128,22 @@ var clear = function () {
   $('.main__output').text('');
 };
 
-// visibility settings
-$('.description-wrap').hide();
+// setting inputs keypress event
+$('.main__input').keypress(function(e) {
+  if (e.which == 13) {
+    calculate();
+  }
+});
 
 // set buttons events
 $('.button--calculate').on('click', function () {
   calculate();
 });
+
 $('.button--clear').on('click', function () {
   clear();
 });
+
 $('.button--toggle').on('click', function () {
 
   if ($('.description-wrap').is(':hidden'))

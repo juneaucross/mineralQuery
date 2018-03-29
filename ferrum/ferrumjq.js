@@ -1,6 +1,11 @@
 'use strict';
 
-// consts
+// visibility settings
+$('.description-wrap').hide();
+$('.main__input-cell--Fe2O3').hide();
+$('.main__output-cell--Fe2O3').hide();
+
+// CONSTS
 var NA2O_MOL = 61.979;
 var K2O_MOL = 94.196;
 var AL2O3_MOL = 101.961;
@@ -354,11 +359,6 @@ var clear = function () {
   $('.main__input-cell--Fe2O3').slideUp('fast');
   $('.main__output-cell--Fe2O3').slideUp('fast');
 };
-
-// visibility settings
-$('.description-wrap').hide();
-$('.main__input-cell--Fe2O3').hide();
-$('.main__output-cell--Fe2O3').hide();
 
 // setting inputs keypress event
 $('.main__input').keypress(function(e) {
