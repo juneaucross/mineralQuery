@@ -16,13 +16,6 @@ var FE2O3_MOL = 159.692;
 // setting element values
 var Na2O = 0, K2O = 0, Al2O3 = 0, MgO = 0, FeO = 0, CaO = 0, MnO = 0, TiO2 = 0, SiO2 = 0, Cl = 0;
 
-// setting inputs keypress event
-$('.main__input').keypress(function(e) {
-  if (e.which == 13) {
-    calculate();
-  }
-});
-
 // getting inputs values
 $('#Na2O-input').on('input', function() {
   Na2O = this.value;
@@ -198,19 +191,6 @@ var calculate = function () {
     }
 };
 
-// setting outputs values
-// $('#Na2O-output').text(setToFixed(Na2O_apfu));
-// $('#K2O-output').text(setToFixed(K2O_apfu));
-// $('#Al2O3-output').text(setToFixed(Al2O3_apfu));
-// $('#MgO-output').text(setToFixed(MgO_apfu));
-// $('#FeO-output').text(setToFixed(FeO_apfu));
-// $('#Fe2O3-output').text(setToFixed(Fe2O3_apfu));
-// $('#CaO-output').text(setToFixed(CaO_apfu));
-// $('#MnO-output').text(setToFixed(MnO_apfu));
-// $('#TiO2-output').text(setToFixed(TiO2_apfu));
-// $('#SiO2-output').text(setToFixed(SiO2_apfu));
-// $('#H2O-output').text(setToFixed(H2O_apfu));
-
   // amphibole table output
   $('.form__output-cell--Na2O').text(setToFixed(Na2O_final));
   $('.form__output-cell--K2O').text(setToFixed(K2O_final));
@@ -297,13 +277,12 @@ var calculate = function () {
   //   $('.ferr-table').show();
   // }
 
-
+  //output visibility
   if (getApfuSumm() <= 13)  {
     $('.main__input-cell--Fe2O3').slideUp('fast');
     $('.main__output-cell--Fe2O3').slideUp('fast');
 
     console.log('тут апфу');
-
 
     $('#Na2O-output').text(setToFixed(Na2O_apfu));
     $('#K2O-output').text(setToFixed(K2O_apfu));
@@ -381,13 +360,22 @@ $('.description-wrap').hide();
 $('.main__input-cell--Fe2O3').hide();
 $('.main__output-cell--Fe2O3').hide();
 
+// setting inputs keypress event
+$('.main__input').keypress(function(e) {
+  if (e.which == 13) {
+    calculate();
+  }
+});
+
 // set buttons events
 $('.button--calculate').on('click', function () {
   calculate();
 });
+
 $('.button--clear').on('click', function () {
   clear();
 });
+
 $('.button--toggle').on('click', function () {
 
   if ($('.description-wrap').is(':hidden'))
