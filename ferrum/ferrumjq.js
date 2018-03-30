@@ -64,6 +64,8 @@ var calculate = function () {
     return elem / mol;
   }
 
+  // debugger;
+
   var Fe3_ratio = (FeO * 1.1113); // all iron is Fe2O3
 
   // mol ratios
@@ -234,7 +236,7 @@ var calculate = function () {
   $('.table__output--corr-Al2O3').text(setToFixed(Al2O3_corr));
   $('.table__output--corr-MgO').text(setToFixed(MgO_corr));
   $('.table__output--corr-FeO').text(setToFixed(FeO_ferric));
-  $('.table__output--ferr-FeO').text(setToFixed(getFerricFactor()));
+  $('.table__output--corr-FeO').text(setToFixed(getFerricFactor()));
   $('.table__output--corr-CaO').text(setToFixed(CaO_corr));
   $('.table__output--corr-MnO').text(setToFixed(MnO_corr));
   $('.table__output--corr-TiO2').text(setToFixed(TiO2_corr));
@@ -291,7 +293,8 @@ var calculate = function () {
     $('.main__input-cell--Fe2O3').slideUp('fast');
     $('.main__output-cell--Fe2O3').slideUp('fast');
 
-    console.log('тут апфу');
+    console.log('тут апфу!  и все охуенно пашет !!');
+    console.log(getApfuSumm());
 
     $('#Na2O-output').text(setToFixed(Na2O_apfu));
     $('#K2O-output').text(setToFixed(K2O_apfu));
@@ -305,15 +308,18 @@ var calculate = function () {
     $('#SiO2-output').text(setToFixed(SiO2_apfu));
     // $('#Cl-output').text(setToFixed(Cl_apfu));
 
-  } else if (getApfuSumm() > 13 && getFerricFactor() > 0) {
+  } else if (getApfuSumm() > 13 && getFerricFactor() > 0) {  //getFerricFactor()
     $('.main__input-cell--Fe2O3').slideDown('fast');
     $('.main__output-cell--Fe2O3').slideDown('fast');
 
-    console.log('тут корр');
+    console.log('тут корр! и все охуенно пашет !!');
+    console.log('men', getFerricFactor() < 0);
+    console.log('bol', getFerricFactor() > 0);
+
 
     $('#Na2O-output').text(setToFixed(Na2O_corr));
     $('#K2O-output').text(setToFixed(K2O_corr));
-    $('#Al2O3-output').text(setToFixed(Al2O3_apfu));
+    $('#Al2O3-output').text(setToFixed(Al2O3_corr)); //
     $('#MgO-output').text(setToFixed(MgO_corr));
     $('#FeO-output').text(setToFixed(FeO_ferric));
     $('#Fe2O3-output').text(setToFixed(getFerricFactor()));
@@ -323,7 +329,7 @@ var calculate = function () {
     $('#SiO2-output').text(setToFixed(SiO2_corr));
     // $('#Cl-output').text(setToFixed(Cl_corr));
 
-  } else if (getApfuSumm() > 13 && getFerricFactor() < 0) {
+  } else if (getApfuSumm() > 13 && getFerricFactor() < 0) { //FeO_ferric
     $('.main__input-cell--Fe2O3').slideDown('fast');
     $('.main__output-cell--Fe2O3').slideDown('fast');
 
