@@ -209,5 +209,50 @@ $('.button--toggle').on('click', function () {
 
     $('.description-wrap').slideToggle('fast');
   });
+  // console.log($('.main__input'));
+
+  // button disable settings
+    $('.button--calculate').prop('disabled', true);
+
+//   Array.prototype.map.call($('.main__input'), (item) => {
+//   console.log(item);
+// });
+
+// var positiveArr = Array.prototype.filter.call($('.main__input'). (item) => {
+//   return item.value !== '';
+// });
+
+var inputsArr = [];
+$('.main').on('input', function (e) {
+  e.preventDefault();
+  inputsArr = Array.prototype.filter.call($('.main__input'), item => {
+    return item.value !== '';
+  });
+
+  if (inputsArr.length < 2) {
+    $('.button--calculate').prop('disabled', true);
+  } else if (inputsArr.length >= 2) {
+    $('.button--calculate').prop('disabled', false);
+  }
+
+});
+
+  // var inputsArr = [];
+  // $('.main').on('change', function (e) {
+  //   e.preventDefault();
+  //   Array.prototype.map.call($('.main__input'), (item) => {
+  //     if (item.value !== '') {
+  //       inputsArr.push(item.value);
+  //     } else if (item.value == '' && inputsArr.length > 3) {
+  //       inputsArr.pop();
+  //     }
+  //     console.log(inputsArr);
+  //   })
+    // if (inputsArr.length < 2) {
+    //   $('.button--calculate').prop('disabled', true);
+    // } else if (inputsArr.length > 2) {
+    //   $('.button--calculate').prop('disabled', false);
+    // }
+  // });
 
 // thats all, falks
