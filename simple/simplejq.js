@@ -201,29 +201,21 @@ $('.button--clear').on('click', function () {
 
 $('.button--toggle').on('click', function () {
 
-  if ($('.description-wrap').is(':hidden')) {
-      $('.button--toggle').text('Hide description');
-    } else if ($('.description-wrap').not(':hidden')) {
-      $('.button--toggle').text('Show description');
-    }
+if ($('.description-wrap').is(':hidden')) {
+    $('.button--toggle').text('Hide description');
+  } else if ($('.description-wrap').not(':hidden')) {
+    $('.button--toggle').text('Show description');
+  }
 
-    $('.description-wrap').slideToggle('fast');
-  });
-  // console.log($('.main__input'));
+  $('.description-wrap').slideToggle('fast');
+});
 
-  // button disable settings
-    $('.button--calculate').prop('disabled', true);
-
-//   Array.prototype.map.call($('.main__input'), (item) => {
-//   console.log(item);
-// });
-
-// var positiveArr = Array.prototype.filter.call($('.main__input'). (item) => {
-//   return item.value !== '';
-// });
+// button disable settings
+$('.button--calculate').prop('disabled', true);
 
 var inputsArr = [];
 $('.main').on('input', function (e) {
+
   e.preventDefault();
   inputsArr = Array.prototype.filter.call($('.main__input'), item => {
     return item.value !== '';
@@ -236,23 +228,5 @@ $('.main').on('input', function (e) {
   }
 
 });
-
-  // var inputsArr = [];
-  // $('.main').on('change', function (e) {
-  //   e.preventDefault();
-  //   Array.prototype.map.call($('.main__input'), (item) => {
-  //     if (item.value !== '') {
-  //       inputsArr.push(item.value);
-  //     } else if (item.value == '' && inputsArr.length > 3) {
-  //       inputsArr.pop();
-  //     }
-  //     console.log(inputsArr);
-  //   })
-    // if (inputsArr.length < 2) {
-    //   $('.button--calculate').prop('disabled', true);
-    // } else if (inputsArr.length > 2) {
-    //   $('.button--calculate').prop('disabled', false);
-    // }
-  // });
 
 // thats all, falks

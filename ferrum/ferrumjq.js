@@ -397,5 +397,23 @@ $('.button--toggle').on('click', function () {
   $('.description-wrap').slideToggle('fast');
 });
 
+// button disable settings
+  $('.button--calculate').prop('disabled', true);
+
+var inputsArr = [];
+$('.main').on('input', function (e) {
+e.preventDefault();
+inputsArr = Array.prototype.filter.call($('.main__input'), item => {
+  return item.value !== '';
+});
+
+if (inputsArr.length < 2) {
+  $('.button--calculate').prop('disabled', true);
+} else if (inputsArr.length >= 2) {
+  $('.button--calculate').prop('disabled', false);
+}
+
+});
+
 
 // thats all, fu(l)cks

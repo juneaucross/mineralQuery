@@ -156,84 +156,20 @@ $('.button--toggle').on('click', function () {
   $('.description-wrap').slideToggle('fast');
 });
 
+// button disable settings
+  $('.button--calculate').prop('disabled', true);
 
-// $('.button--calculate').prop('disabled', true);
+var inputsArr = [];
+$('.main').on('input', function (e) {
+e.preventDefault();
+inputsArr = Array.prototype.filter.call($('.main__input'), item => {
+  return item.value !== '';
+});
 
-// $('.main').on('input', function (e) {
-//   // console.log(e.target.id);
-//   if (e.target.id) {
-//     // console.log('huj');
-//     $('.button--calculate').prop('disabled', false);
-//   }
-//   });
+if (inputsArr.length < 2) {
+  $('.button--calculate').prop('disabled', true);
+} else if (inputsArr.length >= 2) {
+  $('.button--calculate').prop('disabled', false);
+}
 
-  // var mainInputSelector = $('.main__input');
-  // console.log(mainInputSelector);
-
-
-
-  // var xzfunc = function () {
-  //   Array.from(mainInputSelector).map(item => {
-  //     if (item.value) {
-  //       console.log('true');
-  //       return true;
-  //     } else {
-  //       console.log('xz');
-  //       return false;
-  //     }
-  //   });
-  //   console.log('false');
-  //   return false;
-  // };
-
-  // var xzfunc = function () {
-  //  Array.from(mainInputSelector).map(item => {
-  //    if (item.value) {
-  //      console.log('123');
-  //      $('.button--calculate').prop('disabled', false);
-  //      return;
-  //    } else {
-  //      console.log(321);
-  //      $('.button--calculate').prop('disabled', true);
-  //      return;
-  //    }
-  //  });
-
-// xzfunc();
-
-
-  // $('.main').on('change', xzfunc);
-
-  // } else if ($('.main__input').val('')) {
-  //   console.log('jopa');
-  //   $('.button--calculate').prop('disabled', true);
-  // }
-  // if
-  // (isNaN($('.main__input')))
-  // ($('.main__input').value == null)
-  //  {
-  //   $('.button--calculate').prop('disabled', true);
-  //   // alert('huj');
-  // } else if
-  // (!($('.main__input').value == null))
-  // {
-  //   // $('.button--calculate').prop('disabled', false);
-  //    alert('huj');
-  // }
-// });
-
-
-// $('.main__input').on('change', function () {
-//   if
-//   // (isNaN($('.main__input')))
-//   ($('.main__input').value == null)
-//    {
-//     $('.button--calculate').prop('disabled', true);
-//     // alert('huj');
-//   } else if
-//   (!($('.main__input').value == null))
-//   {
-//     // $('.button--calculate').prop('disabled', false);
-//      alert('huj');
-//   }
-// });
+});
