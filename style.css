@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+  font-family: AvenirNext, Arial, sans-serif;
+}
+
+.container {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.container--flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+}
+
+.header {
+  width: 100%;
+  min-height: 50px;
+  background: #222222;
+}
+
+.header__logo-text {
+  color: #ffffff;
+  font-style: 35px;
+}
+
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+}
+
+.header__link {
+  color: #ffffff;
+  font-style: 35px;
+  text-decoration: none;
+}
+
+.header__link:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.header__link:active {
+  color: red;
+}
+
+.header__link:visited {
+  color: green;
+}
