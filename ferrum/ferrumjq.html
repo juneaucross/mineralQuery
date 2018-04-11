@@ -10,9 +10,6 @@
 <body>
   <div class="container">
     <div class="header">
-      <a href="indexxx.html" class="header-link">
-        <h1 class="title">amphibole calclation_distinguishing between Fe2/Fe3</h1>
-      </a>
       <button class="button button--toggle">Show description</button>
       <div class="description-wrap">
         <p class="description-text">This calculator coverts wight percent oxides to formula units for major rock-forming minerals. Determining Fe2+/Fe3+ ratio is available for amphiboles only using Droop (1972) algorithm.</p>
@@ -24,7 +21,7 @@
 
         <div class="main__input-cell">
           <label for="Na2O-input" class="main__input-label">Na<sub>2</sub>O</label>
-          <input class="main__input" type="number" id="Na2O-input" value="1.97">
+          <input class="main__input" type="number" id="Na2O-input" value="">
         </div>
 
         <div class="main__input-cell">
@@ -34,17 +31,17 @@
 
         <div class="main__input-cell">
           <label for="Al2O3-input" class="main__input-label">Al<sub>2</sub>O<sub>3</sub></label>
-          <input class="main__input" type="number" id="Al2O3-input" value="18.26">
+          <input class="main__input" type="number" id="Al2O3-input" value="">
         </div>
 
         <div class="main__input-cell">
           <label for="MgO-input" class="main__input-label">MgO</label>
-          <input class="main__input" type="number" id="MgO-input" value="19.67">
+          <input class="main__input" type="number" id="MgO-input" value="">
         </div>
 
         <div class="main__input-cell">
           <label for="FeO-input" class="main__input-label">FeO</label>
-          <input class="main__input" type="number" id="FeO-input" value="12.85">
+          <input class="main__input" type="number" id="FeO-input" value="">
         </div>
 
         <div class="main__input-cell main__input-cell--Fe2O3">
@@ -54,22 +51,22 @@
 
         <div class="main__input-cell">
           <label for="CaO-input" class="main__input-label">CaO</label>
-          <input class="main__input" type="number" id="CaO-input" value="0.64">
+          <input class="main__input" type="number" id="CaO-input" value="">
         </div>
 
         <div class="main__input-cell">
           <label for="MnO-input" class="main__input-label">MnO</label>
-          <input class="main__input" type="number" id="MnO-input" value="0">
+          <input class="main__input" type="number" id="MnO-input" value="">
         </div>
 
         <div class="main__input-cell">
           <label for="TiO2-input" class="main__input-label">TiO<sub>2</sub></label>
-          <input class="main__input" type="number" id="TiO2-input" value="0.2">
+          <input class="main__input" type="number" id="TiO2-input" value="">
         </div>
 
         <div class="main__input-cell">
           <label for="SiO2-input" class="main__input-label">SiO<sub>2</sub></label>
-          <input class="main__input" type="number" id="SiO2-input" value="43.43">
+          <input class="main__input" type="number" id="SiO2-input" value="">
         </div>
 
         <!-- <div class="main__input-cell">
@@ -142,93 +139,6 @@
         <button class="button button--clear" type="button">Clear</button>
       </div>
 
-    <table class="table apfu-table">
-      <caption class="table-caption">apfu table</caption>
-      <tr>
-        <th class="table__header">Na</th>
-        <th class="table__header">K</th>
-        <th class="table__header">Al</th>
-        <th class="table__header">Mg</th>
-        <th class="table__header">Fe2+</th>
-        <th class="table__header">Ca</th>
-        <th class="table__header">Mn</th>
-        <th class="table__header">Ti</th>
-        <th class="table__header">Si</th>
-        <!-- <th class="table__header">Cl</th> -->
-      </tr>
-      <tr>
-        <td class="table__output table__output--apfu-Na2O"></td>
-        <td class="table__output table__output--apfu-K2O"></td>
-        <td class="table__output table__output--apfu-Al2O3"></td>
-        <td class="table__output table__output--apfu-MgO"></td>
-        <td class="table__output table__output--apfu-FeO"></td>
-        <td class="table__output table__output--apfu-CaO"></td>
-        <td class="table__output table__output--apfu-MnO"></td>
-        <td class="table__output table__output--apfu-TiO2"></td>
-        <td class="table__output table__output--apfu-SiO2"></td>
-        <!-- <td class="table__output table__output--apfu-Cl"></td> -->
-      </tr>
-    </table>
-
-    <table class="table corr-table">
-      <caption class="table-caption">corr table</caption>
-      <tr>
-        <th class="table__header">Na</th>
-        <th class="table__header">K</th>
-        <th class="table__header">Al</th>
-        <th class="table__header">Mg</th>
-        <th class="table__header">Fe2+</th>
-        <th class="table__header">Fe3+</th>
-        <th class="table__header">Ca</th>
-        <th class="table__header">Mn</th>
-        <th class="table__header">Ti</th>
-        <th class="table__header">Si</th>
-        <!-- <th class="table__header">Cl</th> -->
-      </tr>
-      <tr>
-        <td class="table__output table__output--corr-Na2O"></td>
-        <td class="table__output table__output--corr-K2O"></td>
-        <td class="table__output table__output--corr-Al2O3"></td>
-        <td class="table__output table__output--corr-MgO"></td>
-        <td class="table__output  table__output--corr-FeO"></td>
-        <td class="table__output  table__output--ferr-FeO"></td>
-        <td class="table__output table__output--corr-CaO"></td>
-        <td class="table__output table__output--corr-MnO"></td>
-        <td class="table__output table__output--corr-TiO2"></td>
-        <td class="table__output table__output--corr-SiO2"></td>
-        <!-- <td class="table__output table__output--corr-Cl"></td> -->
-      </tr>
-    </table>
-
-    <table class="table ferr-table">
-      <caption class="table-caption">ferr table</caption>
-      <tr>
-        <th class="table__header">Na</th>
-        <th class="table__header">K</th>
-        <th class="table__header">Al</th>
-        <th class="table__header">Mg</th>
-        <th class="table__header">Fe2+</th>
-        <th class="table__header">Fe3+</th>
-        <th class="table__header">Ca</th>
-        <th class="table__header">Mn</th>
-        <th class="table__header">Ti</th>
-        <th class="table__header">Si</th>
-        <!-- <th class="table__header">Cl</th> -->
-      </tr>
-      <tr>
-        <td class="table__output table__output--ferr-Na2O"></td>
-        <td class="table__output table__output--ferr-K2O"></td>
-        <td class="table__output table__output--ferr-Al2O3"></td>
-        <td class="table__output table__output--ferr-MgO"></td>
-        <td class="table__output  table__output--ferr-FeO"></td>
-        <td class="table__output  table__output--ferr-FeO"></td>
-        <td class="table__output table__output--ferr-CaO"></td>
-        <td class="table__output table__output--ferr-MnO"></td>
-        <td class="table__output table__output--ferr-TiO2"></td>
-        <td class="table__output table__output--ferr-SiO2"></td>
-        <!-- <td class="table__output table__output--ferr-Cl"></td> -->
-      </tr>
-    </table>
   </div>
 
   <script src="../jquery-3.3.1.min.js"></script>
