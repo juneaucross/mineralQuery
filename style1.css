@@ -62,6 +62,17 @@ body {
   font-weight: lighter;
 }
 
+.description-toggle {
+  font-size: 22px;
+  font-weight: bold;
+  color: blue;
+  cursor: pointer;
+}
+
+.description-toggle:hover {
+  text-decoration: underline;
+}
+
 .main {
   display: flex;
   justify-content: space-between;
@@ -76,7 +87,7 @@ body {
   margin-bottom: 10px;
 }
 
-.mineral-select {
+#mineral-select {
   display: block;
   width: 100%;
   height: 40px;
@@ -196,7 +207,8 @@ body {
   opacity: 0.7;
 }
 
-.button--calculate:active {
+.button--calculate:active,
+.button--calculate--active {
   background-color: #214bde;
 }
 
@@ -290,7 +302,7 @@ body {
     margin-bottom: 30px;
   }
 
-  .mineral-select {
+  #mineral-select {
     /*display: block;
     width: 100%;*/
     height: 30px;
