@@ -393,7 +393,9 @@ var calculate = function () {
 
   //media settings
   if ($(window).width() < 600) {
-    $('.main__output-area').slideDown('fast');
+    $('.main__output-area').slideDown('fast', function () {
+      $('html, body').animate({ scrollTop: $(document).height() }, 'fast');
+    });
   }
 
 };
