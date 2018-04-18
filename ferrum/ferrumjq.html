@@ -10,12 +10,11 @@
 <body>
   <div class="container">
     <div class="header">
+      <h1 class="title">Fe oxidation state calculation for amphiboles</h1>
       <div class="description-wrap">
-        <p class="description-text">This calculator coverts wight percent oxides to formula units for major rock-forming minerals.
+        <p class="description-text">This method allows to compute Fe2+ and Fe3+ in amphiboles using stoichiometric criteria assuming that iron is the only cation with variable oxidation state and that oxygen is the only anion.
           <span class="description-text--more">
-          Determining Fe2+/Fe3+ ratio is available for amphiboles only using Droop (1972) algorithm.
-
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione veniam earum, incidunt nam vel quaerat dolor soluta exercitationem quam repellat dolorem rem ipsam harum a iste unde accusamus, in odio.
+            Works for most calcic amphiboles, especially for hornblendes, edenites, pargasites and actinolites. Just enter the oxide percents with all iron reported as FeO and click "Calculate". To convert Fe2O3 to FeO multiple the amount by 0.8998. Fe3+ will show up in formula units if it is present. Show more: The calculator is aimed to work with amphiboles that have all K constrained to A-position, with Na constrained to A- and M4-positions, and Ca constrained to M4-position.  For more info see Droop (1987), eq. 6. <a href="http://www.minersoc.org/pages/Archive-MM/Volume_51/51-361-431.pdf">Link to the paper.</a> <br>The method was tested using compositions of amphiboles (tremolites, hornblendes, edenites) from Deer, Howie and Zussman Vol. 2 Chain Silicates. The results generally match the formula units for Fe2+ and Fe3+ within ±0.015.
         </span>
         <span role="button" class="description-toggle">Show more.</span></p>
       </div>
@@ -51,7 +50,7 @@
 
         <div class="main__input-cell main__input-cell--Fe2O3">
           <!-- <label for="FeO-input" class="main__input-label">FeO++</label> -->
-          <span class="info"><span class="info--span">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, cum maiores voluptate ipsum reprehenderit deleniti doloribus assumenda aliquid id et minima ullam ab debitis ad magni quae! Alias, quo, labore!</span></span>
+          <span class="info"><span class="info--span">Some iron is present as Fe3+.</span></span>
         </div>
 
         <div class="main__input-cell">
@@ -85,57 +84,57 @@
 
         <div class="main__output-cell">
           <label class="main__output-label">Na</label>
-          <span class="main__output" id="Na2O-output"></span>
+          <output class="main__output" id="Na2O-output"></output>
         </div>
 
         <div class="main__output-cell">
           <label class="main__output-label">K</label>
-          <span class="main__output" id="K2O-output"></span>
+          <output class="main__output" id="K2O-output"></output>
         </div>
 
         <div class="main__output-cell">
           <label class="main__output-label">Al</label>
-          <span class="main__output" id="Al2O3-output"></span>
+          <output class="main__output" id="Al2O3-output"></output>
         </div>
 
         <div class="main__output-cell">
           <label class="main__output-label">Mg</label>
-          <span class="main__output" id="MgO-output"></span>
+          <output class="main__output" id="MgO-output"></output>
         </div>
 
         <div class="main__output-cell">
           <label class="main__output-label">Fe<sup>2+</sup></label>
-          <span class="main__output" id="FeO-output"></span>
+          <output class="main__output" id="FeO-output"></output>
         </div>
 
         <div class="main__output-cell main__output-cell--Fe2O3">
           <label class="main__output-label">Fe<sup>3+</sup></label>
-          <span class="main__output" id="Fe2O3-output"></span>
+          <output class="main__output" id="Fe2O3-output"></output>
         </div>
 
         <div class="main__output-cell">
           <label class="main__output-label">Ca</label>
-          <span class="main__output" id="CaO-output"></span>
+          <output class="main__output" id="CaO-output"></output>
         </div>
 
         <div class="main__output-cell">
           <label class="main__output-label">Mn</label>
-          <span class="main__output" id="MnO-output"></span>
+          <output class="main__output" id="MnO-output"></output>
         </div>
 
         <div class="main__output-cell">
           <label class="main__output-label">Ti</label>
-          <span class="main__output" id="TiO2-output"></span>
+          <output class="main__output" id="TiO2-output"></output>
         </div>
 
         <div class="main__output-cell">
           <label class="main__output-label">Si</label>
-          <span class="main__output" id="SiO2-output"></span>
+          <output class="main__output" id="SiO2-output"></output>
         </div>
 
         <!-- <div class="main__output-cell">
           <label class="main__output-label">Cl</label>
-          <span class="main__output" id="Cl-output"></span>
+          <output class="main__output" id="Cl-output"></output>
         </div> -->
       </div>
 
