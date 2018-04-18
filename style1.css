@@ -200,6 +200,7 @@ body {
 }
 
 .button--calculate {
+  order: 2;
   background-color: #325ef6;
 }
 
@@ -213,6 +214,7 @@ body {
 }
 
 .button--clear {
+  order: 4;
   background-color: #f66532;
 }
 
@@ -222,6 +224,14 @@ body {
 
 .button--clear:active {
   background-color: #df5321;
+}
+
+.button--main {
+  display: none;
+}
+
+.button--adaptive {
+  display: block;
 }
 
 .button--toggle {
@@ -415,6 +425,14 @@ body {
     font-size: 30px;
     line-height: 2.3;
     /*font-weight: bolder;*/
+  }
+
+  .button--main {
+    display: block;
+  }
+
+  .button--adaptive {
+    display: none;
   }
 
   /*.button--calculate {
