@@ -14,7 +14,7 @@
       <div class="description-wrap">
         <p class="description-text">This method allows to compute Fe2+ and Fe3+ in amphiboles using stoichiometric criteria assuming that iron is the only cation with variable oxidation state and that oxygen is the only anion.
           <span class="description-text--more">
-            Works for most calcic amphiboles, especially for hornblendes, edenites, pargasites and actinolites. Just enter the oxide percents with all iron reported as FeO and click "Calculate". To convert Fe2O3 to FeO multiple the amount by 0.8998. Fe3+ will show up in formula units if it is present. Show more: The calculator is aimed to work with amphiboles that have all K constrained to A-position, with Na constrained to A- and M4-positions, and Ca constrained to M4-position.  For more info see Droop (1987), eq. 6. <a href="http://www.minersoc.org/pages/Archive-MM/Volume_51/51-361-431.pdf">Link to the paper.</a> <br>The method was tested using compositions of amphiboles (tremolites, hornblendes, edenites) from Deer, Howie and Zussman Vol. 2 Chain Silicates. The results generally match the formula units for Fe2+ and Fe3+ within ±0.015.
+            Works for most calcic amphiboles, especially for hornblendes, edenites, pargasites and actinolites. Just enter the oxide percents with all iron reported as FeO and click "Calculate". To convert Fe2O3 to FeO multiple the amount by 0.8998. Fe3+ will show up in formula units if it is present. For more info see Droop (1987), eq. 6. <a href="http://www.minersoc.org/pages/Archive-MM/Volume_51/51-361-431.pdf">Link to the paper.</a> <br>The method was tested using compositions of amphiboles (tremolites, hornblendes, edenites) from Deer, Howie and Zussman Vol. 2 Chain Silicates. The results generally match the formula units for Fe2+ and Fe3+ within ±0.015.
         </span>
         <span role="button" class="description-toggle">Show more.</span></p>
       </div>
@@ -34,13 +34,18 @@
         </div>
 
         <div class="main__input-cell">
-          <label for="Al2O3-input" class="main__input-label">Al<sub>2</sub>O<sub>3</sub></label>
-          <input class="main__input" type="number" id="Al2O3-input" value="">
+          <label for="CaO-input" class="main__input-label">CaO</label>
+          <input class="main__input" type="number" id="CaO-input" value="">
         </div>
 
         <div class="main__input-cell">
           <label for="MgO-input" class="main__input-label">MgO</label>
           <input class="main__input" type="number" id="MgO-input" value="">
+        </div>
+
+        <div class="main__input-cell">
+          <label for="MnO-input" class="main__input-label">MnO</label>
+          <input class="main__input" type="number" id="MnO-input" value="">
         </div>
 
         <div class="main__input-cell">
@@ -54,13 +59,8 @@
         </div>
 
         <div class="main__input-cell">
-          <label for="CaO-input" class="main__input-label">CaO</label>
-          <input class="main__input" type="number" id="CaO-input" value="">
-        </div>
-
-        <div class="main__input-cell">
-          <label for="MnO-input" class="main__input-label">MnO</label>
-          <input class="main__input" type="number" id="MnO-input" value="">
+          <label for="Al2O3-input" class="main__input-label">Al<sub>2</sub>O<sub>3</sub></label>
+          <input class="main__input" type="number" id="Al2O3-input" value="">
         </div>
 
         <div class="main__input-cell">
@@ -95,13 +95,18 @@
         </div>
 
         <div class="main__output-cell">
-          <label class="main__output-label">Al</label>
-          <output class="main__output" id="Al2O3-output"></output>
+          <label class="main__output-label">Ca</label>
+          <output class="main__output" id="CaO-output"></output>
         </div>
 
         <div class="main__output-cell">
           <label class="main__output-label">Mg</label>
           <output class="main__output" id="MgO-output"></output>
+        </div>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Mn</label>
+          <output class="main__output" id="MnO-output"></output>
         </div>
 
         <div class="main__output-cell">
@@ -115,13 +120,8 @@
         </div>
 
         <div class="main__output-cell">
-          <label class="main__output-label">Ca</label>
-          <output class="main__output" id="CaO-output"></output>
-        </div>
-
-        <div class="main__output-cell">
-          <label class="main__output-label">Mn</label>
-          <output class="main__output" id="MnO-output"></output>
+          <label class="main__output-label">Al</label>
+          <output class="main__output" id="Al2O3-output"></output>
         </div>
 
         <div class="main__output-cell">
