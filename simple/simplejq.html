@@ -15,14 +15,15 @@
         <p class="description-text">This method uses the amount of anions per formula unit as a basis for calculation.
           <span class="description-text--more">
             To compute the formula of a mineral select appropriate mineral, enter the oxide percent values and click "Calculate". Currently no other additional anions but OH- are implemented.</span></span>
-          <span role="button" class="description-toggle">Show more.</span>
+          <span role="button" tabindex="0" class="description-toggle">Show more.</span>
         </p>
       </div>
     </header>
 
     <form class="main">
 
-      <div class="select-wrap">
+      <section class="select-wrap">
+        <h2 class="section-heading visually-hidden">Element select section</h2>
         <select id="mineral-select" name="mineral select">
           <option value="8" class="anhydrous">Feldspars (8 anions)</option>
           <option value="6" class="anhydrous">Pyroxenes (6 anions)</option>
@@ -32,9 +33,10 @@
           <option value="24" class="hydrous">Amphiboles hydrous (24 anions)</option>
           <option value="12" class="hydrous">Micas hydrous (12 anions)</option>
         </select>
-      </div>
+      </section>
 
-      <div class="main__input-area">
+      <section class="main__input-area">
+        <h2 class="section-heading visually-hidden">Input section</h2>
         <span class="main__input-title">Element %</span>
 
         <div class="main__input-cell">
@@ -91,11 +93,12 @@
           <label for="H2O-input" class="main__input-label">H<sub>2</sub>O</label>
           <input class="main__input" type="number" id="H2O-input">
         </div>
-      </div>
+      </section>
 
       <button class="button button--clear button--adaptive" type="button">Clear</button>
 
-      <div class="main__output-area">
+      <section class="main__output-area">
+        <h2 class="section-heading visually-hidden">Output section</h2>
         <span class="main__output-title">Value</span>
 
         <div class="main__output-cell">
@@ -152,12 +155,13 @@
           <label class="main__output-label">OH</label>
           <output class="main__output" id="H2O-output"></output>
         </div>
-      </div>
+      </section>
 
-      <div class="main__buttons-area">
+      <section class="main__buttons-area">
+        <h2 class="section-heading visually-hidden">Buttons section</h2>
         <button class="button button--calculate" type="button">Calculate</button>
         <button class="button button--clear button--main" type="button">Clear</button>
-      </div>
+      </section>
     </form>
   </div>
 

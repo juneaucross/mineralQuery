@@ -23,6 +23,11 @@ var SIO2_MOL = 60.084;
 // var CL_MOL = 35.453;
 var FE2O3_MOL = 159.692;
 
+const KEYCODES = {
+  ENTER: 13,
+  SPACE: 32,
+};
+
 // setting element values
 var Na2O = 0, K2O = 0, Al2O3 = 0, MgO = 0, FeO = 0, CaO = 0, MnO = 0, TiO2 = 0, SiO2 = 0;
 // Cl = 0;
@@ -463,7 +468,7 @@ $('.button--clear').on('click', function () {
 // });
 
 // description visibility
-$('.description-toggle').on('click', function () {
+var descriptionToggle = function () {
   $('.description-text--more').fadeToggle('fast', function() {
     if ($('.description-text--more').is(':hidden'))
     {
@@ -472,6 +477,14 @@ $('.description-toggle').on('click', function () {
       $('.description-toggle').text('Show less.');
     }
   });
+};
+
+$('.description-toggle').on('click', descriptionToggle);
+
+$('.description-toggle').on('keyup', function (e) {
+  if (e.keyCode === KEYCODES.SPACE || e.keyCode === KEYCODES.ENTER) {
+    descriptionToggle();
+  }
 });
 
 // button disable settings

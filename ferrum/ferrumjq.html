@@ -16,11 +16,12 @@
           <span class="description-text--more">
             Works for most calcic amphiboles, especially for hornblendes, edenites, pargasites and actinolites. Just enter the oxide percents with all iron reported as FeO and click "Calculate". To convert Fe2O3 to FeO multiple the amount by 0.8998. Fe3+ will show up in formula units if it is present. For more info see Droop (1987), eq. 6. <a href="http://www.minersoc.org/pages/Archive-MM/Volume_51/51-361-431.pdf">Link to the paper.</a> <br>The method was tested using compositions of amphiboles (tremolites, hornblendes, edenites) from Deer, Howie and Zussman Vol. 2 Chain Silicates. The results generally match the formula units for Fe2+ and Fe3+ within ±0.015.
         </span>
-        <span role="button" class="description-toggle">Show more.</span></p>
+        <span role="button" tabindex="0" class="description-toggle">Show more.</span></p>
       </div>
     </div>
     <form class="main">
-      <div class="main__input-area">
+      <section class="main__input-area">
+        <h2 class="section-heading visually-hidden">Input section</h2>
         <span class="main__input-title">Element %</span>
 
         <div class="main__input-cell">
@@ -77,11 +78,12 @@
           <label for="Cl-input" class="main__input-label">Cl</label>
           <input class="main__input" type="number" id="Cl-input" value="0">
         </div> -->
-      </div>
+      </section>
 
       <button class="button button--clear button--adaptive" type="button">Clear</button>
 
-      <div class="main__output-area">
+      <section class="main__output-area">
+        <h2 class="section-heading visually-hidden">Output section</h2>
         <span class="main__output-title">Value</span>
 
         <div class="main__output-cell">
@@ -138,17 +140,18 @@
           <label class="main__output-label">Cl</label>
           <output class="main__output" id="Cl-output"></output>
         </div> -->
-      </div>
+      </section>
 
-      <div class="main__buttons-area">
+      <section class="main__buttons-area">
+        <h2 class="section-heading visually-hidden">Buttons section</h2>
         <button class="button button--calculate" type="button">Calculate</button>
         <button class="button button--clear button--main" type="button">Clear</button>
-      </div>
+      </section>
 
   </div>
 
   <script src="../jquery-3.3.1.min.js"></script>
-  <script src="ferrumjq.js" defer></script>
+  <script src="ferrumjq.js"></script>
 
 </body>
 </html>
