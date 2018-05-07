@@ -158,6 +158,13 @@ html {
     height: 100%;
   }
 
+  .container {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
   .container--header {
     align-items: center;
     justify-content: space-between;
