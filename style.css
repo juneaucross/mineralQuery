@@ -6,8 +6,8 @@
 
 body {
   /*background: red;*/
-  margin: 30px auto;
-  font-family: AvenirNext, Arial, sans-serif;
+  /*margin: 30px auto;*/
+  /*font-family: AvenirNext, Arial, sans-serif;*/
 }
 
 .visually-hidden {
@@ -166,7 +166,7 @@ body {
   background-color: #c0c0c0;
 }
 
-.main__input:-webkit-inner-spin-button {
+.main__input::-webkit-inner-spin-button {
   display: none;
 }
 
@@ -289,8 +289,8 @@ body {
   body {
     background: #fff;
     margin-bottom: 20px;
-    /*margin: 30px auto;
-    font-family: AvenirNext, Arial, sans-serif;*/
+    /*margin: 30px auto;*/
+    font-family: Avenir, Arial, sans-serif;
   }
 
   .container {
