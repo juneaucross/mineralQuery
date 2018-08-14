@@ -28,6 +28,12 @@ const KEYCODES = {
   SPACE: 32,
 };
 
+// magic divisor numbers
+var thirteen = 13;
+var fifteen = 15;
+var twentyThree = 23;
+var fourtySix = 46;
+
 // setting element values
 var Na2O = 0, K2O = 0, Al2O3 = 0, MgO = 0, FeO = 0, CaO = 0, MnO = 0, TiO2 = 0, SiO2 = 0;
 // Cl = 0;
@@ -122,20 +128,20 @@ var calculate = function () {
 
   //calc using anion sums
   var getAnionRatioFactor = function () {
-    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_anionRatio + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio) / 23;
+    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_anionRatio + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio) / twentyThree;
     //  + Cl_anionRatio
   }
 
   //calc using anion sums with all arion Fe2O3
   var getAnionFerNegRatio = function () {
-    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_negAnion + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio) / 23;
+    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_negAnion + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio) / twentyThree;
     //  + Cl_anionRatio
   }
 
   //calc using cation sums
   var getAmphiboleFactor =  function () {
 
-    var amphiboleFactor = (Na2O_MolRatio + K2O_MolRatio + Al2O3_MolRatio + MgO_MolRatio + FeO_MolRatio + CaO_MolRatio + MnO_MolRatio + TiO2_MolRatio + SiO2_MolRatio) / 15;
+    var amphiboleFactor = (Na2O_MolRatio + K2O_MolRatio + Al2O3_MolRatio + MgO_MolRatio + FeO_MolRatio + CaO_MolRatio + MnO_MolRatio + TiO2_MolRatio + SiO2_MolRatio) / fifteen;
     //  + Cl_MolRatio
 
     return amphiboleFactor;
@@ -155,12 +161,12 @@ var calculate = function () {
   }
 
   var getApfuSummFactor = function () {
-    return 13 / getApfuSumm();
+    return thirteen / getApfuSumm();
   }
 
   // R's F function
   var getFerricFactor = function () {
-    return 46 * (1 - getApfuSummFactor());
+    return fourtySix * (1 - getApfuSummFactor());
   }
 
   // apfu
@@ -267,36 +273,6 @@ var calculate = function () {
   $('.table__output--ferr-TiO2').text(setToFixed(TiO2_corr));
   $('.table__output--ferr-SiO2').text(setToFixed(SiO2_corr));
   // $('.table__output--ferr-Cl').text(setToFixed(Cl_corr));
-
-  // //tables visibility
-  // if (getApfuSumm() <= 13)  {
-  //   apfuTable.style.display = 'table';
-  //   corrTable.style.display = 'none';
-  //   ferrTable.style.display = 'none';
-  // } else if (getApfuSumm() > 13 && getFerricFactor() > 0) {
-  //   apfuTable.style.display = 'none';
-  //   corrTable.style.display = 'table';
-  //   ferrTable.style.display = 'none';
-  // } else if (getApfuSumm() > 13 && getFerricFactor() < 0) {
-  //   apfuTable.style.display = 'none';
-  //   corrTable.style.display = 'none';
-  //   ferrTable.style.display = 'table';
-  // }
-
-  // //tables visibility
-  // if (getApfuSumm() <= 13)  {
-  //   $('.apfu-table').show();
-  //   $('.corr-table').hide();
-  //   $('.ferr-table').hide();
-  // } else if (getApfuSumm() > 13 && getFerricFactor() > 0) {
-  //   $('.apfu-table').hide();
-  //   $('.corr-table').show();
-  //   $('.ferr-table').hide();
-  // } else if (getApfuSumm() > 13 && getFerricFactor() < 0) {
-  //   $('.apfu-table').hide();
-  //   $('.corr-table').hide();
-  //   $('.ferr-table').show();
-  // }
 
   //output visibility
   if (getApfuSumm() <= 13)  {
