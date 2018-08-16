@@ -29,10 +29,10 @@ const KEYCODES = {
 };
 
 // magic divisor numbers
-var thirteen = 13;
-var fifteen = 15;
-var twentyThree = 23;
-var fourtySix = 46;
+var thirteen = 13; // mineralSelectValueT
+var fifteen = 15; // ???
+var twentyThree = 23; // mineralSelectValueX
+var fourtySix = 46; // 2 * mineralSelectValueX
 
 // setting element values
 var Na2O = 0, K2O = 0, Al2O3 = 0, MgO = 0, FeO = 0, CaO = 0, MnO = 0, TiO2 = 0, SiO2 = 0;
@@ -281,7 +281,7 @@ var calculate = function () {
     $('.main__output-cell--Fe2O3').slideUp('fast');
 
     console.log('тут апфу!  и все охуенно пашет !!');
-    console.log(getApfuSumm());
+    // console.log(getApfuSumm());
 
     $('#Na2O-output').text(setToFixed(Na2O_apfu));
     $('#K2O-output').text(setToFixed(K2O_apfu));
