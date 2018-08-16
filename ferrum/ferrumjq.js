@@ -134,7 +134,7 @@ var calculate = function () {
 
   //calc using anion sums with all arion Fe2O3
   var getAnionFerNegRatio = function () {
-    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_negAnion + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio) / twentyThree;
+    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_negAnion + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio) / mineralSelectValueX; // originally 23
     //  + Cl_anionRatio
   }
 
@@ -161,7 +161,7 @@ var calculate = function () {
   }
 
   var getApfuSummFactor = function () {
-    return thirteen / getApfuSumm();
+    return mineralSelectValueT / getApfuSumm(); //originally 13
   }
 
   // R's F function
@@ -380,6 +380,22 @@ var calculate = function () {
   }
 
 };
+
+// getting <select> value
+var mineralSelectValueX = +$('#mineral-select')[0].value;
+var mineralSelectValueT = 13;
+$('#mineral-select').on('change', function() {
+  mineralSelectValueX = +$('#mineral-select')[0].value;
+  if (mineralSelectValueX == 23) {
+    mineralSelectValueT = 13;
+  } else if (mineralSelectValueX == 6) {
+    mineralSelectValueT = 4;
+  } else if (mineralSelectValueX == 12) {
+    mineralSelectValueT = 8;
+  }
+  console.log({mineralSelectValueX});
+  console.log({mineralSelectValueT});
+})
 
 var clear = function () {
   Na2O = 0;
