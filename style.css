@@ -206,15 +206,11 @@ body {
   text-align: right;
   /*background-color: #ebebeb;*/
   outline: none;
-	-webkit-box-shadow: 2px 2px 2px rgb(180, 180, 180) inset, -2px -2px 2px rgb(180, 180, 180) inset;
-	box-shadow: 2px 2px 2px rgb(180, 180, 180) inset, -2px -2px 2px rgb(180, 180, 180) inset;
 }
 
 .main__input:focus {
   /*background-color: #c0c0c0;*/
 	border: 2px solid rgb(114, 114, 114);
-	-webkit-box-shadow: 2px 2px 2px rgb(114, 114, 114) inset, -2px -2px 2px rgb(114, 114, 114) inset;
-	box-shadow: 2px 2px 2px rgb(114, 114, 114) inset, -2px -2px 2px rgb(114, 114, 114) inset;
 }
 
 .main__input::-webkit-inner-spin-button {
@@ -440,11 +436,13 @@ body {
     font-weight: 300;
     /*background-color: #ebebeb;*/
     outline: none;
+		box-shadow: 2px 2px 2px rgb(180, 180, 180) inset, -2px -2px 2px rgb(180, 180, 180) inset;
   }
 
-  /*.main__input:focus {
-    background-color: #c0c0c0;
-  }*/
+  .main__input:focus {
+    /*background-color: #c0c0c0;*/
+		box-shadow: 2px 2px 2px rgb(114, 114, 114) inset, -2px -2px 2px rgb(114, 114, 114) inset;
+  }
 
   /*.main__input::-webkit-inner-spin-button {
     display: none;
