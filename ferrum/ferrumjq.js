@@ -128,7 +128,7 @@ var calculate = function () {
 
   //calc using anion sums
   var getAnionRatioFactor = function () {
-    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_anionRatio + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio) / twentyThree;
+    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_anionRatio + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio) / mineralSelectValueX; // originally 23
     //  + Cl_anionRatio
   }
 
@@ -166,7 +166,7 @@ var calculate = function () {
 
   // R's F function
   var getFerricFactor = function () {
-    return fourtySix * (1 - getApfuSummFactor());
+    return 2 * mineralSelectValueX * (1 - getApfuSummFactor()); // originally 46
   }
 
   // apfu
