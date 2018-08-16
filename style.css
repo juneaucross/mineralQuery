@@ -101,6 +101,23 @@ body {
   margin-bottom: 25px;
 }
 
+.header__logo {
+	width: 240px;
+	height: 80px;
+	margin-top: -15px;
+	margin-bottom: -5px;
+}
+
+.header__logo-img {
+  display: block;
+  width: 240px;
+  height: 80px;
+	overflow: hidden;
+	transform: translateX(-17px);
+  /*margin-bottom: 8px;*/
+  /*background-color: forestgreen;*/
+}
+
 .title {
   margin: 0;
   margin-bottom: 15px;
@@ -265,33 +282,66 @@ body {
   font-size: 20px;
   line-height: 2.3;
   font-weight: bolder;
+	transition: background-color linear 0.1s;
 }
 
-.button--calculate {
+/*.button--calculate {
   order: 2;
   background-color: #325ef6;
-}
+}*/
 
-.button--calculate:disabled {
+.button:disabled {
   opacity: 0.7;
 }
 
-.button--calculate:active,
-.button--calculate--active {
+/*.button--calculate:active,
+.button--calculate-anion-active {
   background-color: #214bde;
+}*/
+
+.button--calculate-anion {
+	order: 2;
+  background-color: rgb(62, 87, 179);
+}
+
+.button--calculate-anion:hover {
+	background-color: rgb(53, 79, 177);
+}
+
+.button--calculate-anion:active,
+.button--calculate-anion-active {
+	background-color: rgb(33, 62, 172);
+}
+
+/*.button--calculate-anion:active {
+	background-color: rgb(33, 62, 172);
+}*/
+
+.button--calculate-ferrum {
+	order: 2;
+  background-color: rgb(83, 124,209);
+}
+
+.button--calculate-ferrum:hover {
+  background-color: rgb(70, 115, 207);
+}
+
+.button--calculate-ferrum:active,
+.button--calculate-ferrum-active {
+  background-color: rgb(45, 97, 204);
 }
 
 .button--clear {
   order: 4;
-  background-color: #f66532;
+  background-color: rgb(246, 101, 50);
 }
 
-.button--clear:disabled {
-  opacity: 0.7;
+.button--clear:hover {
+	border-color: rgb(240, 91, 39);
 }
 
 .button--clear:active {
-  background-color: #df5321;
+  background-color: rgb(233, 75, 20);
 }
 
 .button--main {
@@ -347,6 +397,22 @@ body {
 
   .header {
     margin-bottom: 25px;
+  }
+
+	.header__logo {
+		width: 300px;
+    height: 80px;
+		margin-bottom: 20px;
+	}
+
+  .header__logo-img {
+		/*width: 100%;*/
+		/*height: 100%;*/
+    width: 300px;
+    height: 80px;
+		overflow: hidden;
+		transform: translateX(-20px);
+    /*margin-bottom: 20px;*/
   }
 
   .title {

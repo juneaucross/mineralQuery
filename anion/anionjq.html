@@ -11,13 +11,19 @@
 <body>
   <div class="container">
     <header class="header">
-      <h1 class="title">Anion method for major rock-forming minerals</h1>
+      <div class="header__logo">
+        <a href="../index.html" class="header__logo-link" title="To the main page!">
+          <img src="../assets/svg/logo1024.svg" alt="project logo" class="header__logo-img">
+        </a>
+      </div>
+      <h1 class="title">Amount of anions</h1>
       <div class="description-wrap">
-        <p class="description-text">This method uses the amount of anions per formula unit as a basis for calculation.
+        <p class="description-text">The formula units are calculated based on the amount of anions.</p>
+        <!-- <p class="description-text">This method uses the amount of anions per formula unit as a basis for calculation.
           <span class="description-text--more">
             To compute the formula of a mineral select appropriate mineral, enter the oxide percent values and click "Calculate". Currently no other additional anions but OH- are implemented.</span>
           <span role="button" tabindex="0" class="description-toggle">Show more.</span>
-        </p>
+        </p> -->
       </div>
     </header>
 
@@ -160,14 +166,14 @@
 
       <section class="main__buttons-area">
         <h2 class="section-heading visually-hidden">Buttons section</h2>
-        <button class="button button--calculate" type="button">Calculate</button>
+        <button class="button button--calculate-anion" type="button">Calculate</button>
         <button class="button button--clear button--main" type="button">Clear</button>
       </section>
     </form>
   </div>
 
   <script src="../jquery-3.3.1.min.js"></script>
-  <script src="simplejq.js" defer></script>
+  <script src="./anionjq.js" defer></script>
 
 </body>
 </html>

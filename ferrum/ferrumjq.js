@@ -400,7 +400,7 @@ var clear = function () {
   $('.main__input-cell--Fe2O3').slideUp('fast');
   $('.main__output-cell--Fe2O3').slideUp('fast');
 
-  $('.button--calculate').prop('disabled', true);
+  $('.button--calculate-ferrum').prop('disabled', true);
 
   //media settings
   if ($(window).width() < 600) {
@@ -411,19 +411,19 @@ var clear = function () {
 // setting inputs keypress event
 $(document).keydown(function(e) {
   if (e.which == 13 && inputsArr.length >= 2) {
-    $('.button--calculate').addClass('button--calculate--active');
+    $('.button--calculate-ferrum').addClass('button--calculate-ferrum-active');
   }
 });
 
 $(document).keyup(function(e) {
   if (e.which == 13 && inputsArr.length >= 2) {
-    $('.button--calculate').removeClass('button--calculate--active');
+    $('.button--calculate-ferrum').removeClass('button--calculate-ferrum-active');
     calculate();
   }
 });
 
 // set buttons events
-$('.button--calculate').on('click', function () {
+$('.button--calculate-ferrum').on('click', function () {
   calculate();
 });
 
@@ -464,7 +464,7 @@ $('.description-toggle').on('keyup', function (e) {
 });
 
 // button disable settings
-$('.button--calculate').prop('disabled', true);
+$('.button--calculate-ferrum').prop('disabled', true);
 
 var inputsArr = [];
 $('.main').on('input', function (e) {
@@ -474,9 +474,9 @@ $('.main').on('input', function (e) {
 });
 
 if (inputsArr.length < 2) {
-  $('.button--calculate').prop('disabled', true);
+  $('.button--calculate-ferrum').prop('disabled', true);
 } else if (inputsArr.length >= 2) {
-  $('.button--calculate').prop('disabled', false);
+  $('.button--calculate-ferrum').prop('disabled', false);
 }
 
 });

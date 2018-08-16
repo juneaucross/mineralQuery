@@ -11,48 +11,52 @@
 </head>
 
 <body>
+
+  <div class="container">
+
   <header class="header">
-    <div class="container container--header">
-
-      <div class="header__logo">
-        <img src="" alt="" class="header__logo-img">
-        <span class="header__logo-text">adularia</span>
-      </div>
-      <nav class="header__nav">
-        <a class="header__link" href="./ferrum/ferrumjq.html">Fe in amphiboles</a>
-        <!-- <a class="header__link" href="./main/index1.html">main</a> -->
-        <a class="header__link" href="./simple/simplejq.html">Anion method: rock-forming minerals</a>
-      </nav>
-
+    <div class="header__logo">
+      <img src="./assets/svg/logo1024.svg" alt="" class="header__logo-img">
     </div>
-
-    <div class="banner">
-      <span class="banner-text">!!! Under construction !!!</span>
+    <div class="header__description">
+      <p class="header-description-text">This application converts weight percents to formula units for common rock forming minerals. We have two calculators that use different methods.</p>
     </div>
   </header>
 
   <main class="main">
-    <div class="container container--main">
-      <div class="main__content">
-        <p class="main__content-text">The results of chemical analysis of minerals and rocks are most often presented in weight percent of oxides such as SiO2, Al2O3, FeO, H2O, etc. In mineralogical studies however it is more useful to present chemical composition as formulas. The
-          same way composition of water is more pleasantly expressed as H2O, not 89 wt. % O and 11 wt. % H. The Adularia is an attempt to gather together various method of computing formulas for major rock-forming minerals. We started out with the most
-          commonly used method, anion-based method that allows simple calculations for most rock-forming minerals. In addition, we provide a method to compute Fe2+/Fe3+ ratio in complex iron-bearing minerals such as chlorites, amphiboles and pyroxenes.
-          So far we only implemented the calculation for amphiboles since this group of minerals is more complex yet very abundant.
-          <br><br> The idea, calculation algorithms are by David Zakharov.<br> The design, interface are by Nikita Krupnik.<br> Poorly developed by Peter Cross.</p>
-      </div>
+    <div class="calc-select__wrap calc-select__wrap--anion">
+      <h3 class="calc-select__heading">Amount of anions</h3>
+      <p class="calc-select__description">The formula units are calculated based on the amount of anions.</p>
+      <a href="./anion/anionjq.html" class="calc-select__btn
+      calc-select__btn--anion ">Calculate</a>
+    </div>
+
+    <div class="calc-select__wrap calc-select__wrap--ferrum">
+      <h3 class="calc-select__heading">Fe2+/Fe3+ ratio</h3>
+      <p class="calc-select__description">The formula is calculated based on the amount of cations and charge balance.</p>
+      <a href="./ferrum/ferrumjq.html" class="calc-select__btn calc-select__btn--ferrum">Calculate</a>
     </div>
   </main>
 
   <footer class="footer">
-
-    <div class="container container--footer">
-      <a href="http://opticalmineralogy.blogspot.com" class="footer__link">Blog</a>
-      <a href="https://twitter.com/thepetrographer" class="footer__link">Twitter</a>
-      <a href="https://www.instagram.com/thepetrographer/" class="footer__link">Instagram</a>
-      <a href="mailto:adulariaproject@gmail.com" class="footer__link">Email</a>
+    <p class="footer__description">
+      The idea, algorithms by David Zakharov<br>
+      Designed by Nikita Krupnik<br>
+      Developed by Peter Cross
+    </p>
+    <div class="footer__contacts">
+      <p class="footer__email">Contact us:
+        <a href="mailto:adulariaproject@gmail.com" class="footer__email-link">adulariaproject@gmail.com</a>
+      </p>
+      <div class="footer__social-wrap">
+        <div class="footer__social-link"></div>
+        <div class="footer__social-link"></div>
+        <div class="footer__social-link"></div>
+      </div>
     </div>
-
   </footer>
+
+  </div>
 
 </body>
 
