@@ -53,6 +53,7 @@ body {
   /*background: red;*/
   /*margin: 30px auto;*/
   /*font-family: AvenirNext, Arial, sans-serif;*/
+	margin: 0; //
 }
 
 .visually-hidden {
@@ -383,6 +384,7 @@ body {
 }
 
 @media only screen and (min-width: 600px) {
+
   body {
     background: #fff;
     margin-bottom: 20px;
@@ -630,8 +632,13 @@ body {
 
 @media only screen and (min-width: 960px) {
 
+	body {
+    margin: 15px 0;
+  }
+
   .container {
     width: 760px;
+		/*width: 944px;*/
     margin-bottom: 20px;
   }
 
