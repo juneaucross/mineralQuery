@@ -187,21 +187,21 @@ body {
 }
 
 .footer__social-link--inst {
-	background-image: url('./assets/svg/inst.svg');
+	background-image: url('../svg/inst.svg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 }
 
 .footer__social-link--blg {
-	background-image: url('./assets/svg/blg.svg');
+	background-image: url('../svg/blg.svg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 }
 
 .footer__social-link--twi {
-	background-image: url('./assets/svg/twi.svg');
+	background-image: url('../svg/twi.svg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
