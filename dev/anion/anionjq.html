@@ -76,7 +76,7 @@
           <option value="12" class="anhydrous">Garnets (12 anions)</option>
           <option value="4" class="anhydrous">Olivines (4 anions)</option>
           <option value="23" class="anhydrous">Amphiboles anhydrous (23 anions)</option>
-          <option value="24" class="hydrous">Amphiboles hydrous (24 anions)</option>
+          <option value="24" class="hydrousAmphiboles">Amphiboles hydrous (24 anions)</option>
           <option value="12" class="micas">Micas hydrous (12 anions)</option>
         </select>
       </section>
@@ -144,6 +144,11 @@
           <label for="F-input" class="main__input-label">F</label>
           <input class="main__input" type="number" id="F-input">
         </div>
+
+        <div class="main__input-cell main__input-cell--Cl">
+          <label for="Cl-input" class="main__input-label">Cl</label>
+          <input class="main__input" type="number" id="Cl-input">
+        </div>
       </section>
 
       <button class="button button--clear button--adaptive" type="button">Clear</button>
@@ -210,6 +215,11 @@
         <div class="main__output-cell main__output-cell--F">
           <label class="main__output-label">F</label>
           <output class="main__output" id="F-output"></output>
+        </div>
+
+        <div class="main__output-cell main__output-cell--Cl">
+          <label class="main__output-label">Cl</label>
+          <output class="main__output" id="Cl-output"></output>
         </div>
       </section>
 

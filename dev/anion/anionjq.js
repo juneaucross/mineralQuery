@@ -6,6 +6,8 @@ $('.main__input-cell--H2O').hide();
 $('.main__output-cell--H2O').hide();
 $('.main__input-cell--F').hide();
 $('.main__output-cell--F').hide();
+$('.main__input-cell--Cl').hide();
+$('.main__output-cell--Cl').hide();
 
 // media querys options
 if ($(window).width() < 600) {
@@ -25,6 +27,7 @@ var TIO2_MOL = 79.879;
 var SIO2_MOL = 60.084;
 var H2O_MOL = 18.015;
 var F_MOL = 18.994;
+var CL_MOL = 35.453;
 
 var KEYCODES = {
   ENTER: 13,
@@ -32,7 +35,7 @@ var KEYCODES = {
 };
 
 // setting element values
-var Na2O = 0, K2O = 0, Al2O3 = 0, MgO = 0, FeO = 0, Fe2O3 = 0, CaO = 0, MnO = 0, TiO2 = 0, SiO2 = 0, H2O = 0, F = 0;
+var Na2O = 0, K2O = 0, Al2O3 = 0, MgO = 0, FeO = 0, Fe2O3 = 0, CaO = 0, MnO = 0, TiO2 = 0, SiO2 = 0, H2O = 0, F = 0, Cl = 0;
 
 // getting inputs values
 $('#Na2O-input').on('input', function() {
@@ -67,8 +70,12 @@ $('#SiO2-input').on('input', function() {
 });
 $('#H2O-input').on('input', function() {
   H2O = this.value;
-});$('#F-input').on('input', function() {
+});
+$('#F-input').on('input', function() {
   F = this.value;
+});
+$('#Cl-input').on('input', function() {
+  Cl = this.value;
 });
 
 //calculate function
@@ -91,6 +98,7 @@ var calculate = function () {
   var SiO2_MolRatio = getMolRatio(SiO2, SIO2_MOL);
   var H2O_MolRatio = getMolRatio(H2O, H2O_MOL);
   var F_MolRatio = getMolRatio(F, F_MOL);
+  var Cl_MolRatio = getMolRatio(Cl, CL_MOL);
 
   // anion ratios
   var Na2O_anionRatio = Na2O_MolRatio;
@@ -105,6 +113,7 @@ var calculate = function () {
   var SiO2_anionRatio = SiO2_MolRatio * 2;
   var H2O_anionRatio = H2O_MolRatio;
   var F_anionRatio = F_MolRatio;
+  var Cl_anionRatio = Cl_MolRatio;
 
   // cation ratios
   var Na2O_cationRatio = Na2O_MolRatio * 2;
@@ -119,10 +128,11 @@ var calculate = function () {
   var SiO2_cationRatio = SiO2_MolRatio;
   var H2O_cationRatio = H2O_MolRatio * 2;
   var F_cationRatio = F_MolRatio;
+  var Cl_cationRatio = Cl_MolRatio;
 
   // prosto anion rating
   var getAnionRatioFactor = function (divisor) {
-    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_anionRatio + Fe2O3_anionRatio + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio + H2O_anionRatio + F_anionRatio - (F_anionRatio/2)) / divisor;
+    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_anionRatio + Fe2O3_anionRatio + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio + H2O_anionRatio + F_anionRatio + Cl_anionRatio - ((F_anionRatio + Cl_anionRatio)/2)) / divisor;
   }
 
   var getApfu = function (mineral) {
@@ -142,6 +152,7 @@ var calculate = function () {
   var SiO2_apfu = getApfu(SiO2_cationRatio);
   var H2O_apfu = getApfu(H2O_cationRatio);
   var F_apfu = getApfu(F_cationRatio);
+  var Cl_apfu = getApfu(Cl_cationRatio);
 
   var setToFixed = function (elem) {
     if (elem === 0) {
@@ -168,6 +179,7 @@ var calculate = function () {
   $('#SiO2-output').text(setToFixed(SiO2_apfu));
   $('#H2O-output').text(setToFixed(H2O_apfu));
   $('#F-output').text(setToFixed(F_apfu));
+  $('#Cl-output').text(setToFixed(Cl_apfu));
 
   //media settings
   if ($(window).width() < 600) {
@@ -187,16 +199,29 @@ $('#mineral-select').on('change', function() {
     $('.main__output-cell--H2O').slideDown('fast');
     $('.main__input-cell--F').slideUp('fast');
     $('.main__output-cell--F').slideUp('fast');
+    $('.main__input-cell--Cl').slideUp('fast');
+    $('.main__output-cell--Cl').slideUp('fast');
   } else if ($('#mineral-select option:selected')[0].className == 'anhydrous') {
     $('.main__input-cell--H2O').slideUp('fast');
     $('.main__output-cell--H2O').slideUp('fast');
     $('.main__input-cell--F').slideUp('fast');
     $('.main__output-cell--F').slideUp('fast');
+    $('.main__input-cell--Cl').slideUp('fast');
+    $('.main__output-cell--Cl').slideUp('fast');
   } else if ($('#mineral-select option:selected')[0].className == 'micas') {
     $('.main__input-cell--H2O').slideDown('fast');
     $('.main__output-cell--H2O').slideDown('fast');
     $('.main__input-cell--F').slideDown('fast');
     $('.main__output-cell--F').slideDown('fast');
+    $('.main__input-cell--Cl').slideUp('fast');
+    $('.main__output-cell--Cl').slideUp('fast');
+  } else if ($('#mineral-select option:selected')[0].className == 'hydrousAmphiboles') {
+    $('.main__input-cell--H2O').slideDown('fast');
+    $('.main__output-cell--H2O').slideDown('fast');
+    $('.main__input-cell--F').slideDown('fast');
+    $('.main__output-cell--F').slideDown('fast');
+    $('.main__input-cell--Cl').slideDown('fast');
+    $('.main__output-cell--Cl').slideDown('fast');
   }
 })
 
@@ -214,6 +239,7 @@ var clear = function () {
   SiO2 = 0;
   H2O = 0;
   F = 0;
+  Cl = 0;
   $('.main__input').val('');
   $('.main__output').text('');
   inputsArr.length = 0;
