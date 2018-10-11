@@ -51,7 +51,7 @@
     <header class="header">
       <div class="header__logo">
         <a href="../index.html" class="header__logo-link" title="To the main page!">
-          <img src="../assets/svg/logo.svg" alt="adularia logo" class="header__logo-img">
+          <img src="../assets/svg/logo.svg" alt="project logo" class="header__logo-img">
         </a>
       </div>
       <h1 class="title">Anion method</h1>
@@ -76,7 +76,7 @@
           <option value="4" class="anhydrous">Olivines (4 anions)</option>
           <option value="23" class="anhydrous">Amphiboles anhydrous (23 anions)</option>
           <option value="24" class="hydrous">Amphiboles hydrous (24 anions)</option>
-          <option value="12" class="hydrous">Micas hydrous (12 anions)</option>
+          <option value="12" class="micas">Micas hydrous (12 anions)</option>
         </select>
       </section>
 
@@ -137,6 +137,11 @@
         <div class="main__input-cell main__input-cell--H2O">
           <label for="H2O-input" class="main__input-label">H<sub>2</sub>O</label>
           <input class="main__input" type="number" id="H2O-input">
+        </div>
+
+        <div class="main__input-cell main__input-cell--F">
+          <label for="F-input" class="main__input-label">F</label>
+          <input class="main__input" type="number" id="F-input">
         </div>
       </section>
 
@@ -200,6 +205,11 @@
           <label class="main__output-label">OH</label>
           <output class="main__output" id="H2O-output"></output>
         </div>
+
+        <div class="main__output-cell main__output-cell--F">
+          <label class="main__output-label">F</label>
+          <output class="main__output" id="F-output"></output>
+        </div>
       </section>
 
       <section class="main__buttons-area">
@@ -210,8 +220,8 @@
     </form>
   </div>
 
-  <script src="../assets/js/jquery-3.3.1.min.js"></script>
-  <script src="./anionjq.min.js" defer></script>
+  <script src="../jquery-3.3.1.min.js"></script>
+  <script src="./anionjq.js" defer></script>
 
 </body>
 </html>

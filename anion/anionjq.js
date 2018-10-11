@@ -4,6 +4,8 @@
 $('.description-text--more').hide();
 $('.main__input-cell--H2O').hide();
 $('.main__output-cell--H2O').hide();
+$('.main__input-cell--F').hide();
+$('.main__output-cell--F').hide();
 
 // media querys options
 if ($(window).width() < 600) {
@@ -22,14 +24,15 @@ var MNO_MOL = 70.938;
 var TIO2_MOL = 79.879;
 var SIO2_MOL = 60.084;
 var H2O_MOL = 18.015;
+var F_MOL = 18.994;
 
-const KEYCODES = {
+var KEYCODES = {
   ENTER: 13,
   SPACE: 32,
 };
 
 // setting element values
-var Na2O = 0, K2O = 0, Al2O3 = 0, MgO = 0, FeO = 0, Fe2O3 = 0, CaO = 0, MnO = 0, TiO2 = 0, SiO2 = 0, H2O = 0;
+var Na2O = 0, K2O = 0, Al2O3 = 0, MgO = 0, FeO = 0, Fe2O3 = 0, CaO = 0, MnO = 0, TiO2 = 0, SiO2 = 0, H2O = 0, F = 0;
 
 // getting inputs values
 $('#Na2O-input').on('input', function() {
@@ -64,11 +67,12 @@ $('#SiO2-input').on('input', function() {
 });
 $('#H2O-input').on('input', function() {
   H2O = this.value;
+});$('#F-input').on('input', function() {
+  F = this.value;
 });
 
 //calculate function
 var calculate = function () {
-  // debugger;
   var getMolRatio = function (elem, mol) {
     var molRatio = elem / mol;
     return molRatio;
@@ -86,6 +90,7 @@ var calculate = function () {
   var TiO2_MolRatio = getMolRatio(TiO2, TIO2_MOL);
   var SiO2_MolRatio = getMolRatio(SiO2, SIO2_MOL);
   var H2O_MolRatio = getMolRatio(H2O, H2O_MOL);
+  var F_MolRatio = getMolRatio(F, F_MOL);
 
   // anion ratios
   var Na2O_anionRatio = Na2O_MolRatio;
@@ -99,6 +104,7 @@ var calculate = function () {
   var TiO2_anionRatio = TiO2_MolRatio * 2;
   var SiO2_anionRatio = SiO2_MolRatio * 2;
   var H2O_anionRatio = H2O_MolRatio;
+  var F_anionRatio = F_MolRatio;
 
   // cation ratios
   var Na2O_cationRatio = Na2O_MolRatio * 2;
@@ -112,10 +118,11 @@ var calculate = function () {
   var TiO2_cationRatio = TiO2_MolRatio;
   var SiO2_cationRatio = SiO2_MolRatio;
   var H2O_cationRatio = H2O_MolRatio * 2;
+  var F_cationRatio = F_MolRatio;
 
   // prosto anion rating
   var getAnionRatioFactor = function (divisor) {
-    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_anionRatio + Fe2O3_anionRatio + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio + H2O_anionRatio) / divisor;
+    return (Na2O_anionRatio + K2O_anionRatio + Al2O3_anionRatio + MgO_anionRatio + FeO_anionRatio + Fe2O3_anionRatio + CaO_anionRatio + MnO_anionRatio + TiO2_anionRatio + SiO2_anionRatio + H2O_anionRatio + F_anionRatio - (F_anionRatio/2)) / divisor;
   }
 
   var getApfu = function (mineral) {
@@ -134,6 +141,7 @@ var calculate = function () {
   var TiO2_apfu = getApfu(TiO2_cationRatio);
   var SiO2_apfu = getApfu(SiO2_cationRatio);
   var H2O_apfu = getApfu(H2O_cationRatio);
+  var F_apfu = getApfu(F_cationRatio);
 
   var setToFixed = function (elem) {
     if (elem === 0) {
@@ -159,6 +167,7 @@ var calculate = function () {
   $('#TiO2-output').text(setToFixed(TiO2_apfu));
   $('#SiO2-output').text(setToFixed(SiO2_apfu));
   $('#H2O-output').text(setToFixed(H2O_apfu));
+  $('#F-output').text(setToFixed(F_apfu));
 
   //media settings
   if ($(window).width() < 600) {
@@ -176,9 +185,18 @@ $('#mineral-select').on('change', function() {
   if ($('#mineral-select option:selected')[0].className == 'hydrous') {
     $('.main__input-cell--H2O').slideDown('fast');
     $('.main__output-cell--H2O').slideDown('fast');
+    $('.main__input-cell--F').slideUp('fast');
+    $('.main__output-cell--F').slideUp('fast');
   } else if ($('#mineral-select option:selected')[0].className == 'anhydrous') {
     $('.main__input-cell--H2O').slideUp('fast');
     $('.main__output-cell--H2O').slideUp('fast');
+    $('.main__input-cell--F').slideUp('fast');
+    $('.main__output-cell--F').slideUp('fast');
+  } else if ($('#mineral-select option:selected')[0].className == 'micas') {
+    $('.main__input-cell--H2O').slideDown('fast');
+    $('.main__output-cell--H2O').slideDown('fast');
+    $('.main__input-cell--F').slideDown('fast');
+    $('.main__output-cell--F').slideDown('fast');
   }
 })
 
@@ -195,6 +213,7 @@ var clear = function () {
   TiO2 = 0;
   SiO2 = 0;
   H2O = 0;
+  F = 0;
   $('.main__input').val('');
   $('.main__output').text('');
   inputsArr.length = 0;
