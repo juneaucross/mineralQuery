@@ -50,7 +50,7 @@
 
 body {
 	margin: 0;
-	background-image: url('./assets/svg/pattern.svg');
+	background-image: url('../svg/pattern.svg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
