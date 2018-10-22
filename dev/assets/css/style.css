@@ -201,7 +201,7 @@ body {
 }
 
 .main__output-title {
-  /*margin-top: 20px;*/
+  margin-top: 20px;
 }
 
 .main__input-label {
@@ -529,6 +529,10 @@ body {
     height: 45px;
     margin-bottom: 14px;
   }
+
+	.main__output-title {
+		margin-top: 0;
+	}
 
   .main__output-label {
     display: block;
