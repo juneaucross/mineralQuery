@@ -17,8 +17,8 @@ self.addEventListener('install', function(e) {
        '/assets/js/index.min.css',
        '/assets/js/jquery-3.3.1.min.js',
        '/assets/js/cache-polyfill.js',
-       '/assets/svg/*.svg',
-       '/assets/fonts/*.*',
+      //  '/assets/svg/*.svg',
+      //  '/assets/fonts/*.*',
      ]);
    })
  );
