@@ -1,11 +1,11 @@
 
 @font-face {
 	font-family: 'DIN Pro';
-	src: url('./assets/fonts/DINPro.eot');
-	src: local('./assets/fonts/DIN Pro'), local('./assets/fonts/DINPro'),
-		url('./assets/fonts/DINPro.eot?#iefix') format('embedded-opentype'),
-		url('./assets/fonts/DINPro.woff') format('woff'),
-		url('./assets/fonts/DINPro.ttf') format('truetype');
+	src: url('..fonts/DINPro.eot');
+	src: local('..fonts/DIN Pro'), local('..fonts/DINPro'),
+		url('..fonts/DINPro.eot?#iefix') format('embedded-opentype'),
+		url('..fonts/DINPro.woff') format('woff'),
+		url('..fonts/DINPro.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -43,7 +43,9 @@
 	font-style: normal;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   font-family: 'DIN Pro', Arial, sans-serif;
 }
