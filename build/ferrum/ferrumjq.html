@@ -215,5 +215,14 @@
   <script src="../assets/js/jquery-3.3.1.min.js"></script>
   <script src="./ferrumjq.min.js"></script>
 
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+               .register('../sw.js')
+               .then(function() { console.log("Service Worker Registered");
+             });
+    }
+  </script>
+
 </body>
 </html>
