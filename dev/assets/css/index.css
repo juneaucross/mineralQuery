@@ -93,8 +93,6 @@ body {
   height: 80px;
 	overflow: hidden;
 	transform: translateX(-17px);
-  /*margin-bottom: 8px;*/
-  /*background-color: forestgreen;*/
 }
 
 .header-description-text,
@@ -306,11 +304,9 @@ body {
   }
 
   .footer__description {
-    margin: 0;
-    /*margin-bottom: 20px;*/
     font-size: 17px;
     line-height: 1.3;
-    text-align: center;
+    text-align: left;
   }
 
   .footer__email {
