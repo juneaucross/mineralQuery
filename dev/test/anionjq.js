@@ -1,5 +1,7 @@
 'use strict';
 
+// var Chart = require('node_modules/chart.js/dist/Chart.js');
+
 // visibility settings
 $('.description-text--more').hide();
 $('.main__input-cell--H2O').hide();
@@ -9,10 +11,61 @@ $('.main__output-cell--F').hide();
 $('.main__input-cell--Cl').hide();
 $('.main__output-cell--Cl').hide();
 
+$('.chart-section').hide();
+var isChartOpen = false;
+$('.chart-wrap').slideUp();
+
 // media querys options
 if ($(window).width() < 600) {
   $('.main__output-area').hide();
 }
+
+class Element {
+  constructor (name, mol, anionMultiplier = 0, cationMultiplier = 0) {
+    this.name = name;
+    this.mol = mol;
+    this.value = 0;
+    this.molRatio = 0;
+    this.anionRatio = 0;
+    this.anionMultiplier = anionMultiplier;
+    this.cationRatio = 0;
+    this.cationMultiplier = cationMultiplier;
+    this.apfu = 0;
+  }
+}
+
+var elementsArr = [];
+elementsArr.push(new Element('Na2O', 61.979, 0, 2));
+elementsArr.push(new Element('K2O', 94.196, 0, 2));
+elementsArr.push(new Element('Al2O3', 101.961, 3, 2));
+elementsArr.push(new Element('MgO', 40.304));
+elementsArr.push(new Element('FeO', 71.846));
+elementsArr.push(new Element('Fe2O3', 159.692, 3, 2));
+elementsArr.push(new Element('CaO', 56.077));
+elementsArr.push(new Element('MnO', 70.938));
+elementsArr.push(new Element('TiO2', 79.879, 2));
+elementsArr.push(new Element('SiO2', 60.084, 2));
+elementsArr.push(new Element('H2O', 18.015, 0, 2));
+elementsArr.push(new Element('F', 18.994));
+elementsArr.push(new Element('Cl', 35.453));
+
+class ChartElem {
+  constructor (label, data) {
+    this.label = label;
+    this.pointBackgroundColor = 'red';
+    this.borderColor = 'green';
+    this.borderWidth = 2;
+    this.pointRadius = 10;
+    this.pointHitRadius = 10;
+    this.data = [
+      {
+        x: data,
+        y: data,
+      }
+    ]
+  }
+}
+
 
 // CONSTS
 // var MOL_CONSTS = {
@@ -37,151 +90,151 @@ var KEYCODES = {
 };
 
 // setting element values
-var elementsArr = [
-  {
-    name: 'Na2O',
-    mol: 61.979,
-    value: 0,
-    molRatio: 0,
-    anionRatio: 0,
-    anionMultiplier: 0,
-    cationRatio: 0,
-    cationMultiplier: 2,
-    apfu: 0,
-  },
-  {
-    name: 'K2O',
-    mol: 94.196,
-    value: 0,
-    molRatio: 0,
-    anionRatio: 0,
-    anionMultiplier: 0,
-    cationRatio: 0,
-    cationMultiplier: 2,
-    apfu: 0,
-  },
-  {
-    name: 'Al2O3',
-    mol: 101.961,
-    value: 0,
-    molRatio: 0,
-    anionRatio: 0,
-    anionMultiplier: 3,
-    cationRatio: 0,
-    cationMultiplier: 2,
-    apfu: 0,
-  },
-  {
-    name: 'MgO',
-    mol: 40.304,
-    value: 0,
-    molRatio: 0,
-    anionRatio: 0,
-    anionMultiplier: 0,
-    cationRatio: 0,
-    cationMultiplier: 0,
-    apfu: 0,
-  },
-  {
-    name: 'FeO',
-    mol: 71.846,
-    value: 0,
-    molRatio: 0,
-    anionRatio: 0,
-    anionMultiplier: 0,
-    cationRatio: 0,
-    cationMultiplier: 0,
-    apfu: 0,
-  },
-  {
-    name: 'Fe2O3',
-    mol: 159.692,
-    value: 0,
-    molRatio: 0,
-    anionRatio: 0,
-    anionMultiplier: 3,
-    cationRatio: 0,
-    cationMultiplier: 2,
-    apfu: 0,
-  },
-  {
-    name: 'CaO',
-    mol: 56.077,
-    value: 0,
-    molRatio: 0,
-    anionRatio: 0,
-    anionMultiplier: 0,
-    cationRatio: 0,
-    cationMultiplier: 0,
-    apfu: 0,
-  },
-  {
-    name: 'MnO',
-    mol: 70.938,
-    value: 0,
-    molRatio: 0,
-    anionRatio: 0,
-    anionMultiplier: 0,
-    cationRatio: 0,
-    cationMultiplier: 0,
-    apfu: 0,
-  },
-  {
-    name: 'TiO2',
-    mol: 79.879,
-    value: 0,
-    molRatio: 0,
-    anionRatio: 0,
-    anionMultiplier: 2,
-    cationRatio: 0,
-    cationMultiplier: 0,
-    apfu: 0,
-  },
-  {
-    name: 'SiO2',
-    mol: 60.084,
-    value: 0,
-    molRatio: 0,
-    anionRatio: 0,
-    anionMultiplier: 2,
-    cationRatio: 0,
-    cationMultiplier: 0,
-    apfu: 0,
-  },
-  {
-    name: 'H2O',
-    mol: 18.015,
-    value: 0,
-    molRatio: 0,
-    anionRatio: 0,
-    anionMultiplier: 0,
-    cationRatio: 0,
-    cationMultiplier: 2,
-    apfu: 0,
-  },
-  {
-    name: 'F',
-    mol: 18.994,
-    value: 0,
-    molRatio: 0,
-    anionRatio: 0,
-    anionMultiplier: 0,
-    cationRatio: 0,
-    cationMultiplier: 0,
-    apfu: 0,
-  },
-  {
-    name: 'Cl',
-    mol: 35.453,
-    value: 0,
-    molRatio: 0,
-    anionRatio: 0,
-    anionMultiplier: 0,
-    cationRatio: 0,
-    cationMultiplier: 0,
-    apfu: 0,
-  },
-];
+// var elementsArr = [
+//   {
+//     name: 'Na2O',
+//     mol: 61.979,
+//     value: 0,
+//     molRatio: 0,
+//     anionRatio: 0,
+//     anionMultiplier: 0,
+//     cationRatio: 0,
+//     cationMultiplier: 2,
+//     apfu: 0,
+//   },
+//   {
+//     name: 'K2O',
+//     mol: 94.196,
+//     value: 0,
+//     molRatio: 0,
+//     anionRatio: 0,
+//     anionMultiplier: 0,
+//     cationRatio: 0,
+//     cationMultiplier: 2,
+//     apfu: 0,
+//   },
+//   {
+//     name: 'Al2O3',
+//     mol: 101.961,
+//     value: 0,
+//     molRatio: 0,
+//     anionRatio: 0,
+//     anionMultiplier: 3,
+//     cationRatio: 0,
+//     cationMultiplier: 2,
+//     apfu: 0,
+//   },
+//   {
+//     name: 'MgO',
+//     mol: 40.304,
+//     value: 0,
+//     molRatio: 0,
+//     anionRatio: 0,
+//     anionMultiplier: 0,
+//     cationRatio: 0,
+//     cationMultiplier: 0,
+//     apfu: 0,
+//   },
+//   {
+//     name: 'FeO',
+//     mol: 71.846,
+//     value: 0,
+//     molRatio: 0,
+//     anionRatio: 0,
+//     anionMultiplier: 0,
+//     cationRatio: 0,
+//     cationMultiplier: 0,
+//     apfu: 0,
+//   },
+//   {
+//     name: 'Fe2O3',
+//     mol: 159.692,
+//     value: 0,
+//     molRatio: 0,
+//     anionRatio: 0,
+//     anionMultiplier: 3,
+//     cationRatio: 0,
+//     cationMultiplier: 2,
+//     apfu: 0,
+//   },
+//   {
+//     name: 'CaO',
+//     mol: 56.077,
+//     value: 0,
+//     molRatio: 0,
+//     anionRatio: 0,
+//     anionMultiplier: 0,
+//     cationRatio: 0,
+//     cationMultiplier: 0,
+//     apfu: 0,
+//   },
+//   {
+//     name: 'MnO',
+//     mol: 70.938,
+//     value: 0,
+//     molRatio: 0,
+//     anionRatio: 0,
+//     anionMultiplier: 0,
+//     cationRatio: 0,
+//     cationMultiplier: 0,
+//     apfu: 0,
+//   },
+//   {
+//     name: 'TiO2',
+//     mol: 79.879,
+//     value: 0,
+//     molRatio: 0,
+//     anionRatio: 0,
+//     anionMultiplier: 2,
+//     cationRatio: 0,
+//     cationMultiplier: 0,
+//     apfu: 0,
+//   },
+//   {
+//     name: 'SiO2',
+//     mol: 60.084,
+//     value: 0,
+//     molRatio: 0,
+//     anionRatio: 0,
+//     anionMultiplier: 2,
+//     cationRatio: 0,
+//     cationMultiplier: 0,
+//     apfu: 0,
+//   },
+//   {
+//     name: 'H2O',
+//     mol: 18.015,
+//     value: 0,
+//     molRatio: 0,
+//     anionRatio: 0,
+//     anionMultiplier: 0,
+//     cationRatio: 0,
+//     cationMultiplier: 2,
+//     apfu: 0,
+//   },
+//   {
+//     name: 'F',
+//     mol: 18.994,
+//     value: 0,
+//     molRatio: 0,
+//     anionRatio: 0,
+//     anionMultiplier: 0,
+//     cationRatio: 0,
+//     cationMultiplier: 0,
+//     apfu: 0,
+//   },
+//   {
+//     name: 'Cl',
+//     mol: 35.453,
+//     value: 0,
+//     molRatio: 0,
+//     anionRatio: 0,
+//     anionMultiplier: 0,
+//     cationRatio: 0,
+//     cationMultiplier: 0,
+//     apfu: 0,
+//   },
+// ];
 
 // var elementValues = {
 //   Na2O: 0,
@@ -402,6 +455,9 @@ var calculate = function () {
   // $('#F-output').text(setToFixed(F_apfu));
   // $('#Cl-output').text(setToFixed(Cl_apfu));
   //
+
+  $('.chart-section').show('fast');
+
   //media settings
   if ($(window).width() < 600) {
     $('.main__output-area').slideDown('fast', function () {
@@ -409,6 +465,116 @@ var calculate = function () {
     });
   }
 
+  // var chartData = [];
+  // for (var i = 0; i < elementsArr.length; i++) {
+  //   var currentElem = elementsArr[i];
+  //   if (currentElem.apfu) {
+  //     chartData.push(new ChartElem(currentElem.name, currentElem.apfu));
+  //   }
+  // };
+
+  var chartData = [];
+  for (var i = 0; i < elementsArr.length; i++) {
+    var currentFirst = elementsArr[i];
+    // console.log('outer i', i);
+    for (var j = i + 1; j < elementsArr.length; j++) {
+      var currentSecond = elementsArr[j];
+      // console.log('inner i', i);
+      // console.log('inner j', j);
+      if (currentFirst.value && currentSecond.value) {
+        chartData.push(
+          {
+            label: `${currentFirst.name}/${currentSecond.name}`,
+            backgroundColor: `rgb(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)})`,
+            borderColor: `rgb(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)})`,
+            borderWidth: 2,
+            pointRadius: 10,
+            pointHitRadius: 10,
+            data: [
+              {
+                x: setToFixed(currentFirst.apfu),
+                y: setToFixed(currentSecond.apfu),
+              }
+            ]
+          }
+        );
+      }
+    }
+  };
+
+  console.log(chartData);
+
+
+  var gar = chartData.map((elem) => {
+    return elem;
+  });
+  console.log(gar);
+
+
+
+  if (mineralSelectValue == 8) {
+    var myRadarChart = new Chart(ctx, {
+      type: 'scatter',
+      data: {
+        datasets: gar,
+      }
+    });
+  } else {
+    var myChart = new Chart(ctx, {
+      type: 'scatter',
+        data: {
+            datasets: [
+              {
+                label: 'Scatter Dataset',
+                pointBackgroundColor: 'red',
+                borderColor: 'green',
+                borderWidth: 2,
+                pointRadius: 10,
+                pointHitRadius: 10,
+                data: [{
+                    x: Math.random() * 10,
+                    y: Math.random() * 10
+                }, {
+                    x: Math.random() * 10,
+                    y: Math.random() * 10
+                }, {
+                    x: Math.random() * 10,
+                    y: Math.random() * 10
+                }]
+            },
+            {
+                label: 'Scatter Dataset 42',
+                pointBackgroundColor: 'green',
+                borderColor: 'red',
+                borderWidth: 2,
+                pointRadius: 10,
+                pointHitRadius: 10,
+                data: [{
+                    x: Math.random() * 10,
+                    y: Math.random() * 10
+                }, {
+                    x: Math.random() * 10,
+                    y: Math.random() * 10
+                }, {
+                    x: Math.random() * 10,
+                    y: Math.random() * 10
+                }]
+            }
+          ]
+        },
+        options: {
+          scales: {
+            xAxes: [{
+              type: 'linear',
+              position: 'bottom'
+            }],
+            yAxes: [{
+                stacked: true
+            }]
+          }
+        }
+    });
+  }
 };
 
 // getting <select> value
@@ -447,7 +613,6 @@ $('#mineral-select').on('change', function() {
 })
 
 //clear function
-
 var clear = () => {
   elementsArr.forEach((elem) => {
     elem.value = 0;
@@ -460,6 +625,8 @@ var clear = () => {
   $('.main__input').val('');
   $('.main__output').text('');
   inputsArr.length = 0;
+
+  $('.chart-section').hide('fast');
 
   $('.button--calculate-anion').prop('disabled', true);
 
@@ -557,5 +724,23 @@ $('.main').on('input', function (e) {
   }
 
 });
+
+// chart.js visibility
+var chartBtn = $('.button--chart');
+chartBtn.on('click', () => {
+  $('.chart-wrap').slideToggle('fast');
+  $('html, body').animate({ scrollTop: $(document).height() }, 'fast');
+  isChartOpen = !isChartOpen;
+  if (isChartOpen) {
+    $(chartBtn).text('Close chart');
+  } else {
+    $(chartBtn).text('Open chart');
+  }
+});
+
+var ctx = $("#myChart");
+
+
+
 
 // thats all, falks
