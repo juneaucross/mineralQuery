@@ -230,9 +230,20 @@
         <button class="button button--clear button--main" type="button">Clear</button>
       </section>
     </form>
+
+    <section class="chart-section">
+      <h2 class="section-heading visually-hidden">Chart section</h2>
+      <button class="button button--chart">Open chart</button>
+      <div class="chart-wrap">
+        <canvas id="myChart" width="400" height="400"></canvas>
+      </div>
+    </section>
+
   </div>
 
   <script src="../jquery-3.3.1.min.js"></script>
+  <!-- <script src="https://cdnjs.com/libraries/Chart.js"></script> -->
+  <script src="../../node_modules/chart.js/dist/chart.js"></script>
   <script src="./anionjq.js" defer></script>
 
 </body>
