@@ -1,0 +1,15 @@
+{
+  "name": "Adularia project",
+  "short_name": "Adularia",
+  "start_url": "index.html",
+  "display": "standalone",
+  "theme_color": "rgb(62, 87, 179)",
+  "background_color": "#fff",
+  "icons": [
+    {
+      "src": "",
+      "sizes": "",
+      "type": "",
+    }
+  ]
+}

@@ -16,6 +16,13 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="description" content="This application converts weight percents to formula units for common rock forming minerals. We have two calculators that use different methods.">
   <meta name="keywords" content="mineral calculation, mineralogy, mineral formula calculation, iron ratio, oxidized reduced iron, electron microprobe, chemical analysis, recalculation of mineral formula">
+  <link rel="manifest" href="./manifest.json"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Adularia Project">
+  <!-- <meta name="msapplication-TileImage" content="./assets/svg/logo.svg"> -->
+  <meta name="msapplication-TileColor" content="#000">
+  <!-- <link rel="apple-touch-icon" href="link to the smaller icon"> -->
   <title>Adularia - Main page</title>
   <link rel="stylesheet" href="./assets/css/index.min.css">
   <!-- <link rel="stylesheet" href="./assets/css/index.css"> -->
@@ -100,17 +107,8 @@
 
   </div>
 
-  <script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-      navigator.serviceWorker.register('./sw.js').then(function(registration) {
-          console.log('ServiceWorker registration successful with scope: ', registration.scope);
-      }).catch(function(err) {
-          console.log('ServiceWorker registration failed: ', err);
-        });
-      });
-    }
-  </script>
+
+  <script src="main.js"></script>
 </body>
 
 </html>
