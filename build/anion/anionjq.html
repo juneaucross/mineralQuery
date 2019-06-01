@@ -13,9 +13,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="This application converts weight percents to formula units for common rock forming minerals. We have two calculators that use different methods.">
   <meta name="keywords" content="mineral calculation, mineralogy, mineral formula calculation, iron ratio, oxidized reduced iron, electron microprobe, chemical analysis, recalculation of mineral formula">
   <title>Adularia - Anion method</title>
+  <link rel="shortcut icon" href="../favicon.ico"/>
   <link rel="stylesheet" href="../assets/css/style.min.css">
   <!-- <link rel="stylesheet" href="../assets/css/style.css"> -->
   <!-- Yandex.Metrika counter -->
@@ -72,7 +72,6 @@
 
       <section class="select-wrap">
         <h2 class="section-heading visually-hidden">Element select section</h2>
-        <label for="mineral-select" class="select-label">Select mineral:</label>
         <select id="mineral-select" name="mineral select">
           <option value="8" class="anhydrous">Feldspars (8 anions)</option>
           <option value="6" class="anhydrous">Pyroxenes (6 anions)</option>
@@ -158,7 +157,7 @@
 
       <section class="main__output-area">
         <h2 class="section-heading visually-hidden">Output section</h2>
-        <span class="main__output-title">Value</span>
+        <span class="main__output-title">Formula units</span>
 
         <div class="main__output-cell">
           <label class="main__output-label">Na</label>
@@ -234,8 +233,11 @@
     </form>
   </div>
 
-<script src="../assets/js/jquery-3.3.1.min.js"></script>
-<script src="./anionjq.min.js" defer></script>
+  <script src="../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="./anionjq.min.js"></script>
+
+  <!-- <script src="../jquery-3.3.1.min.js"></script>
+  <script src="./anionjq.js" defer></script> -->
 
 </body>
 </html>
