@@ -1,14 +1,11 @@
 {
   "name": "mineraljs",
-  "version": "0.0.1",
-  "description": "this is the kind of JS powered amphibole formula unit calculator for my friend and great scientist david",
+  "version": "1.0.0",
+  "description": "This application converts weight percents to formula units for common rock forming minerals. We have two calculators that use different methods.",
   "main": "index.html",
   "scripts": {
     "test": "test"
   },
   "author": "peter cross",
-  "license": "ISC",
-  "dependencies": {
-    "chart.js": "^2.7.3"
-  }
+  "license": "MIT",
 }
