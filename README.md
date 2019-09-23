@@ -1,4 +1,4 @@
-# adularia project
+![](https://adulariaproject.github.io/mineralQuery/assets/svg/logo.svg)
 
 This application converts weight percents to formula units for common rock forming minerals. We have two calculators that use different methods:
 
