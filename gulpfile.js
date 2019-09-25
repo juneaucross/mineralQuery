@@ -16,12 +16,12 @@ var gulp        = require('gulp'),
 
 var path = {
   build: {
-    html: 'docs0/',
-    js: 'docs0/assets/js/',
-    libs: 'docs0/assets/libs/',
-    css: 'docs0/assets/css/',
-    svg: 'docs0/assets/svg/',
-    fonts: 'docs0/assets/fonts/',
+    html: 'docs/',
+    js: 'docs/assets/js/',
+    libs: 'docs/assets/libs/',
+    css: 'docs/assets/css/',
+    svg: 'docs/assets/svg/',
+    fonts: 'docs/assets/fonts/',
   },
   src: {
     html: 'src/[^_]*.{html,ico,txt,json}',
@@ -39,12 +39,12 @@ var path = {
     fonts: 'src/fonts/**/*.*',
     libs: 'src/libs/*.js',
   },
-  clean: './docs0',
+  clean: './docs',
 };
 
 var config = {
   server: {
-    baseDir: "./docs0",
+    baseDir: "./docs",
   },
   tunnel: true,
   host: 'localhost',

@@ -2,23 +2,24 @@
 <html lang="en">
 <head>
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127303017-1"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127303017-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
     gtag('config', 'UA-127303017-1');
-  </script> -->
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="keywords" content="mineral calculation, mineralogy, mineral formula calculation, iron ratio, oxidized reduced iron, electron microprobe, chemical analysis, recalculation of mineral formula">
   <title>Adularia - Anion method</title>
-  <!-- <link rel="stylesheet" href="../assets/css/style.min.css"> -->
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="manifest" href="./manifest.json"/>
+  <link rel="shortcut icon" href="./favicon.ico"/>
+  <link rel="stylesheet" href="./assets/css/style.css">
   <!-- Yandex.Metrika counter -->
-  <!-- <script>
+  <script>
       (function (d, w, c) {
           (w[c] = w[c] || []).push(function() {
               try {
@@ -44,16 +45,16 @@
           } else { f(); }
       })(document, window, "yandex_metrika_callbacks2");
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/50687413" style="position:absolute; left:-9999px;" alt="" /></div></noscript> -->
+  <noscript><div><img src="https://mc.yandex.ru/watch/50687413" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
 </head>
 <body>
   <div class="container">
     <header class="header">
       <div class="header__logo">
-        <a href="../index.html" class="header__logo-link" title="To the main page!">
+        <a href="./index.html" class="header__logo-link" title="To the main page!">
           <h1 class="header__logo-heading">Adularia</h1>
-          <img src="../assets/svg/logo.svg" alt="project logo" class="header__logo-img">
+          <img src="./assets/svg/logo.svg" alt="project logo" class="header__logo-img">
         </a>
       </div>
       <h2 class="title">Anion method</h2>
@@ -156,7 +157,7 @@
 
       <section class="main__output-area">
         <h2 class="section-heading visually-hidden">Output section</h2>
-        <span class="main__output-title">Value</span>
+        <span class="main__output-title">Formula units</span>
 
         <div class="main__output-cell">
           <label class="main__output-label">Na</label>
@@ -230,21 +231,10 @@
         <button class="button button--clear button--main" type="button">Clear</button>
       </section>
     </form>
-
-    <section class="chart-section">
-      <h2 class="section-heading visually-hidden">Chart section</h2>
-      <button class="button button--chart">Open chart</button>
-      <div class="chart-wrap">
-        <canvas id="myChart" width="400" height="400"></canvas>
-      </div>
-    </section>
-
   </div>
 
-  <script src="../jquery-3.3.1.min.js"></script>
-  <!-- <script src="https://cdnjs.com/libraries/Chart.js"></script> -->
-  <script src="../../node_modules/chart.js/dist/chart.js"></script>
-  <script src="./anionjq.js" defer></script>
+  <script src="./assets/libs/jquery-3.3.1.min.js"></script>
+  <script src="./assets/js/anion.js" defer></script>
 
 </body>
 </html>
