@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127303017-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-127303017-1');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="keywords" content="mineral calculation, mineralogy, mineral formula calculation, iron ratio, oxidized reduced iron, electron microprobe, chemical analysis, recalculation of mineral formula">
+  <title>Adularia - Anion method</title>
+  <link rel="shortcut icon" href="./favicon.ico"/>
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <!-- Yandex.Metrika counter -->
+  <script>
+      (function (d, w, c) {
+          (w[c] = w[c] || []).push(function() {
+              try {
+                  w.yaCounter50687413 = new Ya.Metrika2({
+                      id:50687413,
+                      clickmap:true,
+                      trackLinks:true,
+                      accurateTrackBounce:true,
+                      webvisor:true
+                  });
+              } catch(e) { }
+          });
+
+          var n = d.getElementsByTagName("script")[0],
+              s = d.createElement("script"),
+              f = function () { n.parentNode.insertBefore(s, n); };
+          s.type = "text/javascript";
+          s.async = true;
+          s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+          if (w.opera == "[object Opera]") {
+              d.addEventListener("DOMContentLoaded", f, false);
+          } else { f(); }
+      })(document, window, "yandex_metrika_callbacks2");
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/50687413" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header__logo">
+        <a href="./index.html" class="header__logo-link" title="To the main page!">
+          <h1 class="header__logo-heading">Adularia</h1>
+          <img src="./assets/svg/logo.svg" alt="project logo" class="header__logo-img">
+        </a>
+      </div>
+      <h2 class="title">Anion method</h2>
+      <div class="description-wrap">
+        <p class="description-text">The formula units are calculated based on the amount of anions.</p>
+        <!-- <p class="description-text">This method uses the amount of anions per formula unit as a basis for calculation.
+          <span class="description-text--more">
+            To compute the formula of a mineral select appropriate mineral, enter the oxide percent values and click "Calculate". Currently no other additional anions but OH- are implemented.</span>
+          <span role="button" tabindex="0" class="description-toggle">Show more.</span>
+        </p> -->
+      </div>
+    </header>
+
+    <form class="main">
+
+      <section class="select-wrap">
+        <h2 class="section-heading visually-hidden">Element select section</h2>
+        <select id="mineral-select" name="mineral select">
+          <option value="8" class="anhydrous">Feldspars (8 anions)</option>
+          <option value="6" class="anhydrous">Pyroxenes (6 anions)</option>
+          <option value="12" class="anhydrous">Garnets (12 anions)</option>
+          <option value="4" class="anhydrous">Olivines (4 anions)</option>
+          <option value="23" class="anhydrous">Amphiboles anhydrous (23 anions)</option>
+          <option value="24" class="hydrousAmphiboles">Amphiboles hydrous (24 anions)</option>
+          <option value="12" class="micas">Micas hydrous (12 anions)</option>
+        </select>
+      </section>
+
+      <section class="main__input-area">
+        <h2 class="section-heading visually-hidden">Input section</h2>
+        <span class="main__input-title">Element %</span>
+
+        <div class="main__input-cell">
+          <label for="Na2O-input" class="main__input-label">Na<sub>2</sub>O</label>
+          <input class="main__input" type="number" id="Na2O-input">
+        </div>
+
+        <div class="main__input-cell">
+          <label for="K2O-input" class="main__input-label">K<sub>2</sub>O</label>
+          <input class="main__input" type="number" id="K2O-input">
+        </div>
+
+        <div class="main__input-cell">
+          <label for="CaO-input" class="main__input-label">CaO</label>
+          <input class="main__input" type="number" id="CaO-input">
+        </div>
+
+        <div class="main__input-cell">
+          <label for="MgO-input" class="main__input-label">MgO</label>
+          <input class="main__input" type="number" id="MgO-input">
+        </div>
+
+        <div class="main__input-cell">
+          <label for="MnO-input" class="main__input-label">MnO</label>
+          <input class="main__input" type="number" id="MnO-input">
+        </div>
+
+        <div class="main__input-cell">
+          <label for="FeO-input" class="main__input-label">FeO</label>
+          <input class="main__input" type="number" id="FeO-input">
+        </div>
+
+        <div class="main__input-cell">
+          <label for="Fe2O3-input" class="main__input-label">Fe<sub>2</sub>O<sub>3</sub></label>
+          <input class="main__input" type="number" id="Fe2O3-input">
+        </div>
+
+        <div class="main__input-cell">
+          <label for="Al2O3-input" class="main__input-label">Al<sub>2</sub>O<sub>3</sub></label>
+          <input class="main__input" type="number" id="Al2O3-input">
+        </div>
+
+        <div class="main__input-cell">
+          <label for="TiO2-input" class="main__input-label">TiO<sub>2</sub></label>
+          <input class="main__input" type="number" id="TiO2-input">
+        </div>
+
+        <div class="main__input-cell">
+          <label for="SiO2-input" class="main__input-label">SiO<sub>2</sub></label>
+          <input class="main__input" type="number" id="SiO2-input">
+        </div>
+
+        <div class="main__input-cell main__input-cell--H2O">
+          <label for="H2O-input" class="main__input-label">H<sub>2</sub>O</label>
+          <input class="main__input" type="number" id="H2O-input">
+        </div>
+
+        <div class="main__input-cell main__input-cell--F">
+          <label for="F-input" class="main__input-label">F</label>
+          <input class="main__input" type="number" id="F-input">
+        </div>
+
+        <div class="main__input-cell main__input-cell--Cl">
+          <label for="Cl-input" class="main__input-label">Cl</label>
+          <input class="main__input" type="number" id="Cl-input">
+        </div>
+      </section>
+
+      <button class="button button--clear button--adaptive" type="button">Clear</button>
+
+      <section class="main__output-area">
+        <h2 class="section-heading visually-hidden">Output section</h2>
+        <span class="main__output-title">Formula units</span>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Na</label>
+          <output class="main__output" id="Na2O-output"></output>
+        </div>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">K</label>
+          <output class="main__output" id="K2O-output"></output>
+        </div>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Ca</label>
+          <output class="main__output" id="CaO-output"></output>
+        </div>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Mg</label>
+          <output class="main__output" id="MgO-output"></output>
+        </div>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Mn<sup>2+</sup></label>
+          <output class="main__output" id="MnO-output"></output>
+        </div>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Fe<sup>2+</sup></label>
+          <output class="main__output" id="FeO-output"></output>
+        </div>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Fe<sup>3+</sup></label>
+          <output class="main__output" id="Fe2O3-output"></output>
+        </div>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Al</label>
+          <output class="main__output" id="Al2O3-output"></output>
+        </div>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Ti</label>
+          <output class="main__output" id="TiO2-output"></output>
+        </div>
+
+        <div class="main__output-cell">
+          <label class="main__output-label">Si</label>
+          <output class="main__output" id="SiO2-output"></output>
+        </div>
+
+        <div class="main__output-cell main__output-cell--H2O">
+          <label class="main__output-label">OH</label>
+          <output class="main__output" id="H2O-output"></output>
+        </div>
+
+        <div class="main__output-cell main__output-cell--F">
+          <label class="main__output-label">F</label>
+          <output class="main__output" id="F-output"></output>
+        </div>
+
+        <div class="main__output-cell main__output-cell--Cl">
+          <label class="main__output-label">Cl</label>
+          <output class="main__output" id="Cl-output"></output>
+        </div>
+      </section>
+
+      <section class="main__buttons-area">
+        <h2 class="section-heading visually-hidden">Buttons section</h2>
+        <button class="button button--calculate-anion" type="button">Calculate</button>
+        <button class="button button--clear button--main" type="button">Clear</button>
+      </section>
+    </form>
+  </div>
+
+  <script src="./assets/libs/jquery-3.3.1.min.js"></script>
+  <script src="./assets/js/anion.js" defer></script>
+
+</body>
+</html>
