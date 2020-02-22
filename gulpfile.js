@@ -21,7 +21,7 @@ const path = {
     fonts: 'docs/assets/fonts/',
   },
   src: {
-    meta: 'src/[^_]*.{ico,txt,json}',
+    meta: 'src/meta/*',
     html: 'src/[^_]*.html',
     js: 'src/js/*.js',
     libs: 'src/libs/*.js',
