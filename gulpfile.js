@@ -1,20 +1,17 @@
-'use strict';
+const gulp        = require('gulp'),
+      watch       = require('gulp-watch'),
+      browserSync = require("browser-sync"),
+      terser      = require('gulp-terser'),
+      prefixer    = require('gulp-autoprefixer'),
+      cssmin      = require('gulp-clean-css'),
+      sourcemaps  = require('gulp-sourcemaps'),
+      rimraf      = require('rimraf'),
+      replace     = require('gulp-replace'),
+      plumber     = require('gulp-plumber'),
+      svgo        = require('gulp-svgo'),
+      reload      = browserSync.reload;
 
-var gulp        = require('gulp'),
-    watch       = require('gulp-watch'),
-    browserSync = require("browser-sync"),
-    uglify      = require('gulp-uglify'),
-    prefixer    = require('gulp-autoprefixer'),
-    cssmin      = require('gulp-clean-css'),
-    sourcemaps  = require('gulp-sourcemaps'),
-    rimraf      = require('rimraf'),
-    replace     = require('gulp-replace'),
-    plumber     = require('gulp-plumber'),
-    babel       = require('gulp-babel'),
-    svgo        = require('gulp-svgo'),
-    reload      = browserSync.reload;
-
-var path = {
+const path = {
   build: {
     html: 'docs/',
     js: 'docs/assets/js/',
@@ -24,7 +21,8 @@ var path = {
     fonts: 'docs/assets/fonts/',
   },
   src: {
-    html: 'src/[^_]*.{html,ico,txt,json}',
+    meta: 'src/[^_]*.{ico,txt,json}',
+    html: 'src/[^_]*.html',
     js: 'src/js/*.js',
     libs: 'src/libs/*.js',
     style: 'src/css/*.css',
@@ -42,99 +40,104 @@ var path = {
   clean: './docs',
 };
 
-var config = {
+const config = {
   server: {
     baseDir: "./docs",
   },
-  tunnel: true,
+  tunnel: false,
   host: 'localhost',
   port: 9000,
   logPrefix: "adularia",
 };
 
-gulp.task('html:build', function () {
+function copyMeta (done) {
+  gulp.src(path.src.meta)
+    .pipe(gulp.dest(path.build.html))
+  done();
+}
+
+function html (done) {
   gulp.src(path.src.html)
     .pipe(plumber())
     .pipe(gulp.dest(path.build.html))
-    .pipe(reload({stream: true})); //перезагружаем сервер
-});
+    .pipe(reload({stream: true}));
+  done();
+}
 
-gulp.task('js:build', function () {
+function js (done) {
   gulp.src(path.src.js)
     .pipe(plumber())
-    .pipe(sourcemaps.init()) //инициализация source-map
-    .pipe(babel({
-            presets: ['@babel/env']
-        }))
-    .pipe(uglify()) //минификация JS файла
-    .pipe(sourcemaps.write()) //запись source-map
+    .pipe(sourcemaps.init())
+    .pipe(terser())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest(path.build.js))
     .pipe(reload({stream: true}));
-});
+  done();
+}
 
-gulp.task('style:build', function () {
+function style (done) {
   gulp.src(path.src.style)
     .pipe(plumber())
     .pipe(sourcemaps.init())
-    .pipe(prefixer({
-        browsers: ['last 6 versions']
-    }))
+    .pipe(prefixer())
     .pipe(cssmin())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(path.build.css))
     .pipe(reload({stream: true}));
-});
+  done();
+}
 
-gulp.task('svg:build', function () {
+function svg (done) {
   gulp.src(path.src.svg)
-      .pipe(plumber())
-      .pipe(svgo())
-      .pipe(gulp.dest(path.build.svg))
-      .pipe(reload({stream: true}));
-});
+    .pipe(plumber())
+    .pipe(svgo())
+    .pipe(gulp.dest(path.build.svg))
+    .pipe(reload({stream: true}));
+  done();
+}
 
-gulp.task('fonts:build', function() {
+function fonts (done) {
   gulp.src(path.src.fonts)
-      .pipe(plumber())
-      .pipe(gulp.dest(path.build.fonts))
-});
+    .pipe(plumber())
+    .pipe(gulp.dest(path.build.fonts));
+  done();
+}
 
-gulp.task('libs:build', function() {
+function libs (done) {
   gulp.src(path.src.libs)
-      .pipe(plumber())
-      .pipe(gulp.dest(path.build.libs))
-});
+    .pipe(plumber())
+    .pipe(gulp.dest(path.build.libs));
+  done();
+}
 
-gulp.task('build', [
-    'html:build',
-    'js:build',
-    'style:build',
-    'fonts:build',
-    'svg:build',
-    'libs:build',
-    // 'copycss'
-]);
+function watchTask () {
+    watch(path.watch.html, gulp.series('html'));
+    watch([path.watch.style], gulp.series('style'));
+    watch([path.watch.js], gulp.series('js'));
+    watch([path.watch.svg], gulp.series('svg'));
+    watch([path.watch.fonts], gulp.series('fonts'));
+    watch([path.watch.libs], gulp.series('libs'));
+}
 
-gulp.task('watch', function(){
-    watch([path.watch.html], function(event, cb) {
-        gulp.start('html:build');
-    });
-    watch([path.watch.style], function(event, cb) {
-        gulp.start('style:build');
-    });
-    watch([path.watch.js], function(event, cb) {
-        gulp.start('js:build');
-    });
-    watch([path.watch.svg], function(event, cb) {
-        gulp.start('svg:build');
-    });
-    watch([path.watch.fonts], function(event, cb) {
-        gulp.start('fonts:build');
-    });
-    watch([path.watch.libs], function(event, cb) {
-        gulp.start('libs:build');
-    });
-});
+gulp.task('meta', copyMeta);
+gulp.task('html', html);
+gulp.task('js', js);
+gulp.task('style', style);
+gulp.task('svg', svg);
+gulp.task('fonts', fonts);
+gulp.task('libs', libs);
+
+gulp.task('build', gulp.series(
+  copyMeta,
+  html,
+  js,
+  style,
+  fonts,
+  svg,
+  libs
+));
+
+gulp.task('watch', watchTask);
 
 gulp.task('webserver', function () {
     browserSync(config);
@@ -144,4 +147,4 @@ gulp.task('clean', function (cb) {
     rimraf(path.clean, cb);
 });
 
-gulp.task('default', ['build', 'webserver', 'watch']);
+gulp.task('default', gulp.series('build', gulp.parallel('webserver', 'watch')));
