@@ -243,8 +243,6 @@ var calculate = function () {
     $('.main__input-cell--Fe2O3').slideUp('fast');
     $('.main__output-cell--Fe2O3').slideUp('fast');
 
-    console.log('тут апфу! и все охуенно пашет !!');
-
     $('#Na2O-output').text(setToFixed(Na2O_apfu));
     $('#K2O-output').text(setToFixed(K2O_apfu));
     $('#Al2O3-output').text(setToFixed(Al2O3_apfu));
@@ -263,8 +261,6 @@ var calculate = function () {
       $('.main__input-cell--Fe2O3').slideDown('fast');
       $('.main__output-cell--Fe2O3').slideDown('fast');
 
-      console.log('тут корр! и все охуенно пашет !!');
-
       $('#Na2O-output').text(setToFixed(Na2O_corr));
       $('#K2O-output').text(setToFixed(K2O_corr));
       $('#Al2O3-output').text(setToFixed(Al2O3_corr)); //
@@ -279,8 +275,6 @@ var calculate = function () {
     } else {
       // $('.main__input-cell--Fe2O3').slideDown('fast');
       $('.main__output-cell--Fe2O3').slideDown('fast');
-
-      console.log('тут корр! и все охуенно пашет !!');
 
       $('#Na2O-output').text(setToFixed(Na2O_corr));
       $('#K2O-output').text(setToFixed(K2O_corr));
@@ -301,8 +295,6 @@ var calculate = function () {
       $('.main__input-cell--Fe2O3').slideDown('fast');
       $('.main__output-cell--Fe2O3').slideDown('fast');
 
-      console.log('тут ферум');
-
       $('#Na2O-output').text(setToFixed(Na2O_corr));
       $('#K2O-output').text(setToFixed(K2O_corr));
       $('#Al2O3-output').text(setToFixed(Al2O3_apfu));
@@ -317,8 +309,6 @@ var calculate = function () {
     } else {
       // $('.main__input-cell--Fe2O3').slideDown('fast');
       $('.main__output-cell--Fe2O3').slideDown('fast');
-
-      console.log('тут ферум');
 
       $('#Na2O-output').text(setToFixed(Na2O_corr));
       $('#K2O-output').text(setToFixed(K2O_corr));
