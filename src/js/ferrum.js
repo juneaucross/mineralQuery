@@ -397,38 +397,6 @@ $('.button--clear').on('click', function () {
   clear();
 });
 
-// $('.button--toggle').on('click', function () {
-//
-//   if ($('.description-wrap').is(':hidden'))
-//   {
-//     $('.button--toggle').text('Hide description');
-//   } else if ($('.description-wrap').not(':hidden')) {
-//     $('.button--toggle').text('Show description');
-//   }
-//
-//   $('.description-wrap').slideToggle('fast');
-// });
-
-// description visibility
-// var descriptionToggle = function () {
-//   $('.description-text--more').fadeToggle('fast', function() {
-//     if ($('.description-text--more').is(':hidden'))
-//     {
-//       $('.description-toggle').text('Show more.');
-//     } else if ($('.description-text--more').not(':hidden')) {
-//       $('.description-toggle').text('Show less.');
-//     }
-//   });
-// };
-
-// $('.description-toggle').on('click', descriptionToggle);
-
-// $('.description-toggle').on('keyup', function (e) {
-//   if (e.keyCode === KEYCODES.SPACE || e.keyCode === KEYCODES.ENTER) {
-//     descriptionToggle();
-//   }
-// });
-
 // button disable settings
 $('.button--calculate-ferrum').prop('disabled', true);
 
