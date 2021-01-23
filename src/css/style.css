@@ -154,6 +154,16 @@ body {
   font-weight: lighter;
 }
 
+.description-link {
+  color: rgb(0, 113, 255);
+  margin: 0;
+  margin-bottom: 15px;
+  padding: 0;
+  font-size: 22px;
+  line-height: 1;
+  font-weight: light;
+}
+
 .description-toggle {
   font-size: 22px;
   font-weight: bold;
